@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html ng-app="starter">
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+<meta charset="utf-8">
+<link rel="stylesheet" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="../jquery-3.2.1.min.js" ></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="Registrar_usuario.css">
+</head>
+<body >
+   <header>
+   	  <div class="header">
+   	  	
+   	  </div>
+   </header>  
+   <div class="body"  ng-controller="registrarUsuarioController as vm">
+         <h1 class="titulo">Registrar usuario</h1>
+   	    <div class="row">   	    	
+	   	     <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Nombre1*</label>
+	           <input type="text" class="form-control" ng-model="vm.nombre1">
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Nombre2*</label>
+	           <input type="text" class="form-control" ng-model="vm.nombre2">
+	         </div>
+   	    </div>
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Apellido1*</label>
+	           <input type="text" class="form-control" ng-model="vm.apellido1">
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Apellido2*</label>
+	           <input type="text" class="form-control" ng-model="vm.apellido2">
+	         </div>
+   	    </div>
+   	     <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Télefono fijo</label>
+	           <input type="text" class="form-control" ng-model="vm.telefonoFijo">
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Télefono movil</label>
+	           <input type="text" class="form-control" ng-model="vm.telefonoMovil">
+	         </div>
+   	    </div>
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">email*</label>
+	           <input type="text" class="form-control" ng-model="vm.email">
+	         </div>	         
+   	    </div>
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Pregunta de seguridad*</label>
+	           <input type="text" class="form-control" ng-model="vm.preguntaSeguridad">
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Respuesta*</label>
+	           <input type="text" class="form-control" ng-model="vm.respuesta">
+	         </div>
+   	    </div>
+   	     <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Contraseña*</label>
+	           <input type="text" class="form-control" ng-model="vm.contrasena">
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Confirmar Contraseña*</label>
+	           <input type="text" class="form-control" ng-model="vm.confirmarContrasena">
+	         </div>
+   	    </div>
+   	    <div class="row botones">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <button type="button" class="btn btn-success">Cancelar</button>
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
+	         </div>
+   	    </div>
+   </div> 
+   <footer>
+   	<div class="footer"></div>
+   </footer> 
+   <script src="../angular.min.js"></script>
+	<script src="../angular-route.min.js"></script>
+
+	<script src="Registrar_usuario.js"></script>
+	<script src="Registrar_usuario.service.js"></script>
+	<!--
+	<script src="prueba.js"></script>-->
+</body>
+</html>
