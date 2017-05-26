@@ -11,33 +11,72 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="../jquery-3.2.1.min.js" ></script>
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<link rel="stylesheet" href="Menu.css">
 <link rel="stylesheet" href="Registrar_usuario.css">
 </head>
 <body >
    <header>
-   	  <div class="header">
-   	  	
+   	  <div class="header">   
+   	    <div class="nav">	     
+   	 	 <ul id="nav">
+			<li class="subs"><a href="#">Mascotas</a>
+                <ul>
+				  <li><a href="#">Perdidos</a></li>
+				  <li><a href="#">Encontrados</a></li>
+				  <li><a href="#">En adopción</a></li>				  
+				</ul>
+			</li>
+
+			</li>
+			<li class="subs"><a href="#s1">Fundaciones</a>
+				<ul>
+					<li><a href="#">Información</a></li>
+					<li><a href="#">Miembros</a></li>
+					<li><a href="#">Donaciones</a></li>
+			    </ul>
+			</li>
+			<li class="subs"><a href="#s2">Información de adopciones</a>
+			<ul>
+				<li><a href="#">Proceso y requisito</a></li>			
+			</ul>
+			</li>
+			<li class="subs"><a href="#s2">Interes</a>
+				<ul>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Eventos</a></li>
+					<li><a href="#">Cuidados de animales</a></li>
+				</ul>
+			</li>
+			<li ><button class="inicio">Iniciar sesión</button></li>
+		</ul>
+		</div>		
    	  </div>
    </header>  
-   <div class="body"  ng-controller="registrarUsuarioController as vm">
+   <div class="body"  ng-controller="registrarUsuarioController as vm" id="dialogContainer" >
          <h1 class="titulo">Registrar usuario</h1>
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Nombre1*</label>
+	           <label for="usr">Primer nombre*</label>
 	           <input type="text" class="form-control" ng-model="vm.nombre1">
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Nombre2*</label>
+	           <label for="usr">Segundo nombre*</label>
 	           <input type="text" class="form-control" ng-model="vm.nombre2">
 	         </div>
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Apellido1*</label>
+	           <label for="usr">Primer apellido*</label>
 	           <input type="text" class="form-control" ng-model="vm.apellido1">
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Apellido2*</label>
+	           <label for="usr">Segundo apellido*</label>
 	           <input type="text" class="form-control" ng-model="vm.apellido2">
 	         </div>
    	    </div>
@@ -53,7 +92,7 @@
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">email*</label>
+	           <label for="usr">Correo electrónico*</label>
 	           <input type="text" class="form-control" ng-model="vm.email">
 	         </div>	         
    	    </div>
@@ -85,13 +124,24 @@
 	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
 	         </div>
    	    </div>
-   </div> 
+   	 
+        <md-content>       
+          
+            <div ng-if="status">
+               <br/>
+               <b layout="row" layout-align="center center" class="md-padding">
+                  {{status}}
+               </b>
+            </div>
+         </md-content>   
+       </div>
+    
+</div>
    <footer>
    	<div class="footer"></div>
    </footer> 
-   <script src="../angular.min.js"></script>
+ <!--  <script src="../angular.min.js"></script>-->
 	<script src="../angular-route.min.js"></script>
-
 	<script src="Registrar_usuario.js"></script>
 	<script src="Registrar_usuario.service.js"></script>
 	<!--

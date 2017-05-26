@@ -2,17 +2,17 @@
     'use strict';
 
     angular
-    .module('starter',[])
+    .module('starter',['ngMaterial'])
     .controller('registrarUsuarioController', registrarUsuarioController);
-    registrarUsuarioController.$inject = ['registarUsuarioServices'];
+ //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
-    function registrarUsuarioController(service) {
+    function registrarUsuarioController($scope, $mdDialog,registarUsuarioServices) {
         var vm = this;
-
         vm.registrarUsuario = registrarUsuario;
-     
 
-      function registrarUsuario() { 
+
+     function registrarUsuario() { 
+
                  var requestJson = {
                     "nombre1" : vm.nombre1,
                     "nombre2" : vm.nombre2,
@@ -26,23 +26,32 @@
                     "contrasena" :vm.contrasena,
                     "confirmarContrasena" : vm.confirmarContrasena
                     }        
-
+             vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
-              service.registrarUsuario(requestJson).then(function(data){
-            if(data.resultado.codigoRespuesta == "200") {                
-                vm.logos =  data.resultado.conveniosRecaudo;
-                vm.loader=false;
+
+              registarUsuarioServices.registrarUsuario(requestJson).then(function(data){
+                debugger;
+            if(data.resultado.codRespuesta == "200") {                
+                $mdDialog.show(
+                  $mdDialog.alert()
+                     .parent(angular.element(document.querySelector('#dialogContainer')))
+                     .clickOutsideToClose(true)
+                     .title('Registrar usuario')
+                     .textContent('Usuario registrado')
+                     .ariaLabel('Usuario registrado')
+                     .ok('Cerrar')                     
+               );
             }else{
-                vm.loader=false;
-                vm.principal = false;
-                vm.principalsub = false;
-                vm.successPoliza = true;
-                vm.messageSubtitle = "¡Lamentablemente no hemos podido procesar tu solicitud!";
-                vm.description = "Por favor intenta más tarde.";
-                vm.userName =  vm.nombreUsuario; 
-                vm.urlPrincipalBtn = "/wps/portal/girosyfinanzas/transacciones";
-                vm.textPrincipalBtn = "Aceptar";
-                vm.messageImagen = "img/app/mensaje_de_error_icono.png";
+                $mdDialog.show(
+                  $mdDialog.alert()
+                     .parent(angular.element(document.querySelector('#dialogContainer')))
+                     .clickOutsideToClose(true)
+                     .title('Registrar usuario')
+                     .textContent('Usuario no registrado')
+                     .ariaLabel('Usuario no registrado')
+                     .ok('Cerrar')
+                     
+               );
             }  
        });
    }
