@@ -18,7 +18,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 <link rel="stylesheet" href="../Menu.css">
-<link rel="stylesheet" href="Registrar_usuario.css">
+<link rel="stylesheet" href="Login.css">
 </head>
 <body >
    <header>
@@ -59,63 +59,19 @@
    	  </div>
    </header>  
    <div class="body"  ng-controller="registrarUsuarioController as vm" id="dialogContainer" >
-         <h1 class="titulo">Registrar usuario</h1>
+         <h1 class="titulo">Iniciar sesión</h1>
    	    <div class="row">   	    	
-	   	     <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Primer nombre*</label>
-	           <input type="text" class="form-control" ng-model="vm.nombre1">
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Segundo nombre*</label>
-	           <input type="text" class="form-control" ng-model="vm.nombre2">
+	   	     <div class="form-group col-xs-12 col-sm-12">
+	           <label for="usr">Usuario*</label>
+	           <input type="text" class="form-control" ng-model="vm.usuario">
 	         </div>
    	    </div>
    	    <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Primer apellido*</label>
-	           <input type="text" class="form-control" ng-model="vm.apellido1">
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Segundo apellido*</label>
-	           <input type="text" class="form-control" ng-model="vm.apellido2">
-	         </div>
-   	    </div>
-   	     <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Télefono fijo</label>
-	           <input type="text" class="form-control" ng-model="vm.telefonoFijo">
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Télefono movil</label>
-	           <input type="text" class="form-control" ng-model="vm.telefonoMovil">
-	         </div>
-   	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Correo electrónico*</label>
-	           <input type="text" class="form-control" ng-model="vm.email">
-	         </div>	         
-   	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Pregunta de seguridad*</label>
-	           <input type="text" class="form-control" ng-model="vm.preguntaSeguridad">
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Respuesta*</label>
-	           <input type="text" class="form-control" ng-model="vm.respuesta">
-	         </div>
-   	    </div>
-   	     <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
+   	    	 <div class="form-group col-xs-12 col-sm-12">
 	           <label for="usr">Contraseña*</label>
 	           <input type="text" class="form-control" ng-model="vm.contrasena">
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Confirmar Contraseña*</label>
-	           <input type="text" class="form-control" ng-model="vm.confirmarContrasena">
-	         </div>
-   	    </div>
+   	    </div>   	  
    	    <div class="row botones">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <button type="button" class="btn btn-success">Cancelar</button>
@@ -123,8 +79,7 @@
 	         <div class="form-group col-xs-6 col-sm-6"">
 	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
 	         </div>
-   	    </div>
-   	 
+   	    </div>   	 
         <md-content>       
           
             <div ng-if="status">
@@ -134,9 +89,8 @@
                </b>
             </div>
          </md-content>   
-       </div>
-    
-</div>
+   </div>  
+
    <footer>
    	<div class="footer"></div>
    </footer> 
