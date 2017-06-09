@@ -2,19 +2,21 @@
 	'use strict';
 	angular
 		.module('starter')
-		.service('registarUsuarioServices',registarUsuarioServices);
+		.service('loginServices',loginServices);
 
 
-	registarUsuarioServices.$inject = ['$http','$q'];
+	loginServices.$inject = ['$http','$q'];
 
-	function registarUsuarioServices($http,$q){
-         var self = this;
+	function loginServices($http,$q){
+        var self = this;
         var ipserver = 'http://localhost:8091'; 
-        self.registrarUsuario = registrarUsuario;
+        self.login = login;
 
-        function registrarUsuario(auditJson){                
+        function login(auditJson){                
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/services/registrarUsuario",auditJson)
+            debugger;
+            $http.post(ipserver+"/mimas/rest/services/login"
+                        ,auditJson)
                 .success(function(data){
                     promesa.resolve({
                         resultado:data
