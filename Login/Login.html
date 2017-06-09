@@ -53,12 +53,12 @@
 					<li><a href="#">Cuidados de animales</a></li>
 				</ul>
 			</li>
-			<li ><button class="inicio">Iniciar sesión</button></li>
+			<li ><button class="inicio" href="Login.html">Iniciar sesión</button></li>
 		</ul>
 		</div>		
    	  </div>
    </header>  
-   <div class="body"  ng-controller="registrarUsuarioController as vm" id="dialogContainer" >
+   <div class="body"  ng-controller="loginController as vm" id="dialogContainer" >
          <h1 class="titulo">Iniciar sesión</h1>
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-12 col-sm-12">
@@ -77,15 +77,23 @@
 	           <button type="button" class="btn btn-success">Cancelar</button>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
-	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
+	            <button type="button" class="btn btn-success" ng-click="vm.ingresar()">Aceptar</button>
 	         </div>
-   	    </div>   	 
-        <md-content>       
-          
+   	    </div>
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-12 col-sm-12">
+	           <a href="#">¿Olvidaste tu cuenta?</a>	           
+	         </div>
+   	    </div>
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-12 col-sm-12">
+	           <a href="../Registrar_usuaro/Registrar_usuario.html">Registrate</a>	           
+	         </div>
+   	    </div>     	 
+        <md-content>          
             <div ng-if="status">
                <br/>
-               <b layout="row" layout-align="center center" class="md-padding">
-                  {{status}}
+               <b layout="row" layout-align="center center" class="md-padding">               
                </b>
             </div>
          </md-content>   
@@ -95,9 +103,9 @@
    	<div class="footer"></div>
    </footer> 
  <!--  <script src="../angular.min.js"></script>-->
-	<script src="../angular-route.min.js"></script>
-	<script src="Registrar_usuario.js"></script>
-	<script src="Registrar_usuario.service.js"></script>
+	<script src="../angular-route.min.js"></script>	
+	<script src="Login.js"></script>
+	<script src="Login.service.js"></script>
 	<!--
 	<script src="prueba.js"></script>-->
 </body>

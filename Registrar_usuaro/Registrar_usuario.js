@@ -31,7 +31,7 @@
 
               registarUsuarioServices.registrarUsuario(requestJson).then(function(data){
                 debugger;
-            if(data.resultado.codRespuesta == "200") {                
+            if(data.resultado[0].codRespuesta == "200") {                
                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
