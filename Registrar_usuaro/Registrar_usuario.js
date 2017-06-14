@@ -41,8 +41,30 @@
                      .ariaLabel('Usuario registrado')
                      .ok('Cerrar')                     
                );
-            }else{
+            }else if(data.resultado[0].codRespuesta == "202"){
                 $mdDialog.show(
+                  $mdDialog.alert()
+                     .parent(angular.element(document.querySelector('#dialogContainer')))
+                     .clickOutsideToClose(true)
+                     .title('Registrar usuario')
+                     .textContent('Usuario no registrado, faltan datos por llenar')
+                     .ariaLabel('Usuario no registrado')
+                     .ok('Cerrar')
+                     
+               );
+            }else if(data.resultado[0].codRespuesta == "203"){
+                $mdDialog.show(
+                  $mdDialog.alert()
+                     .parent(angular.element(document.querySelector('#dialogContainer')))
+                     .clickOutsideToClose(true)
+                     .title('Registrar usuario')
+                     .textContent('Usuario no registrado, Contraseña y confirmación no coinciden')
+                     .ariaLabel('Usuario no registrado')
+                     .ok('Cerrar')
+                     
+               );
+            }  else {
+                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
@@ -52,7 +74,7 @@
                      .ok('Cerrar')
                      
                );
-            }  
+            } 
        });
    }
 }        
