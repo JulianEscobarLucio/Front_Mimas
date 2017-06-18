@@ -63,37 +63,37 @@
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Primer nombre*</label>
-	           <input type="text" class="form-control" ng-model="vm.nombre1">
+	           <input type="text" class="form-control" ng-model="vm.nombre1" ng-maxlength="20">
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Segundo nombre</label>
-	           <input type="text" class="form-control" ng-model="vm.nombre2">
+	           <input type="text" class="form-control" ng-model="vm.nombre2"  ng-maxlength="20>
 	         </div>
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Primer apellido*</label>
-	           <input type="text" class="form-control" ng-model="vm.apellido1">
+	           <input type="text" class="form-control" ng-model="vm.apellido1" ng-maxlength="20>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Segundo apellido</label>
-	           <input type="text" class="form-control" ng-model="vm.apellido2">
+	           <input type="text" class="form-control" ng-model="vm.apellido2" ng-maxlength="20>
 	         </div>
    	    </div>
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Télefono fijo</label>
-	           <input type="text" class="form-control" ng-model="vm.telefonoFijo">
+	           <input type="text" class="form-control" ng-model="vm.telefonoFijo" ng-keyup="vm.soloNumeros()"  maxlength="7" oninput="this.value=this.value.replace(/[^0-9]/g,'');" >
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Télefono movil</label>
-	           <input type="text" class="form-control" ng-model="vm.telefonoMovil">
+	           <input type="number" class="form-control" ng-maxlength="5"   ng-model="vm.telefonoMovil" maxlength="10" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
 	         </div>
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Correo electrónico*</label>
-	           <input type="text" class="form-control" ng-model="vm.email">
+	           <input type="text" class="form-control" ng-model="vm.email" ng-maxlength="20>
 	         </div>	         
    	    </div>
    	    <div class="row">
@@ -109,11 +109,11 @@
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Contraseña*</label>
-	           <input type="text" class="form-control" ng-model="vm.contrasena">
+	           <input type="Password" class="form-control" ng-model="vm.contrasena">
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Confirmar Contraseña*</label>
-	           <input type="text" class="form-control" ng-model="vm.confirmarContrasena">
+	           <input type="Password" class="form-control" ng-model="vm.confirmarContrasena">
 	         </div>
    	    </div>
    	    <div class="row botones">

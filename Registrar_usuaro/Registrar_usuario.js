@@ -9,6 +9,19 @@
     function registrarUsuarioController($scope, $mdDialog,registarUsuarioServices) {
         var vm = this;
         vm.registrarUsuario = registrarUsuario;
+        vm.cantidadCaracteres   = cantidadCaracteres;
+
+
+    function cantidadCaracteres(){
+       var telefonoFijo =  vm.telefonoFijo.lenght;
+        if(telefonoFijo >  7 ){
+          return false;
+        }else{
+          return true;
+        }
+
+      }
+
 
 
      function registrarUsuario() { 
@@ -24,14 +37,26 @@
                     "pregunta":  vm.preguntaSeguridad,
                     "respuesta" :  vm.respuesta,
                     "contrasena" :vm.contrasena,
-                    "confirmarContrasena" : vm.confirmarContrasena
+                    "confirmarContrasena" : vm.confirmarContrasena  
                     }        
              vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
 
               registarUsuarioServices.registrarUsuario(requestJson).then(function(data){
                 debugger;
-            if(data.resultado[0].codRespuesta == "200") {                
+            if(data.resultado[0].codRespuesta == "200") {
+               vm.nombre1 = '',
+               vm.nombre2 ='',
+               vm.apellido1 = '',
+               vm.apellido2 = '',
+               vm.telefonoFijo =  '',
+               vm.telefonoMovil = '', 
+               vm.email = '',
+               vm.preguntaSeguridad = '',
+               vm.respuesta = '',
+               vm.contrasena = '',
+               vm.confirmarContrasena = '',
+
                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
@@ -41,6 +66,7 @@
                      .ariaLabel('Usuario registrado')
                      .ok('Cerrar')                     
                );
+               
             }else if(data.resultado[0].codRespuesta == "202"){
                 $mdDialog.show(
                   $mdDialog.alert()
@@ -75,6 +101,9 @@
                      
                );
             } 
+
+
+       
        });
    }
 }        
