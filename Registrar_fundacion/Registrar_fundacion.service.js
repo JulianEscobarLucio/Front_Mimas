@@ -9,12 +9,13 @@
 
 	function registarFundacionServices($http,$q){
          var self = this;
-        var ipserver = 'http://localhost:8090'; 
+        var ipserver = 'http://localhost:8091'; 
         self.registrarFundacion = registrarFundacion;
-
-        function registrarFundacion(auditJson){                
+      
+        function registrarFundacion(auditJson){  
+          debugger;              
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/services/registrarFundacion",auditJson)
+            $http.post(ipserver+"/mimas/rest/fundacionServices/registrarFundacion",auditJson)
                 .success(function(data){
                     promesa.resolve({
                         resultado:data
