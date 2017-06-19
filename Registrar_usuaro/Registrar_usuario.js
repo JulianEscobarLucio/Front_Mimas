@@ -9,24 +9,169 @@
     function registrarUsuarioController($scope, $mdDialog,registarUsuarioServices) {
         var vm = this;
         vm.registrarUsuario = registrarUsuario;
-        vm.cantidadCaracteres   = cantidadCaracteres;
+        vm.mensajeNombre1 = "";
+        vm.mensajeNombre2 = "";
+        vm.mensajeApellido1 = "";
+        vm.mensajeApellido2 = "";
+        vm.mensajeTelefonoFijo = "";
+        vm.mensajeTelefonoMovil = "";
+        vm.mensajeEmail = "";
+        vm.mensajePreguntaSeguridad = "";
+        vm.mensajeRespuesta = "";
+        vm.mensajeContrasena = "";
+        vm.mensajeConfirmarContrasena = "";
+        vm.functionNombre1 =  functionNombre1;
+        vm.functionNombre2 =  functionNombre2;
+        vm.functionApellido1 =  functionApellido1;
+        vm.functionApellido2 =  functionApellido2;
+        vm.functionTelefonoFijo =  functionTelefonoFijo;
+        vm.functionTelefonoMovil =  functionTelefonoMovil;
+        vm.functionEmail =  functionEmail;
+        vm.functionPreguntaSeguridad = functionPreguntaSeguridad;
+        vm.functionRespuesta = functionRespuesta;
+        vm.functionContrasena = funcitonContrasena;
+        vm.functionConfirmarContrasena = functionConfirmarContrasena;         
+                
+            
+        function functionNombre1(){
+            if(vm.nombre1.length > 0){
+               vm.mensajeNombre1 = "";
+            }        
+
+        }  
 
 
-    function cantidadCaracteres(){
-       var telefonoFijo =  vm.telefonoFijo.lenght;
-        if(telefonoFijo >  7 ){
-          return false;
-        }else{
-          return true;
+        function functionNombre2(){
+
+
+        } 
+
+
+        function functionApellido1(){
+            if(vm.apellido1.length > 0){
+              vm.mensajeApellido1 = "";
+            } 
+        } 
+
+
+
+        function functionApellido2(){
+            if(vm.apellido2.length > 0){
+              vm.mensajeApellido2 = "";
+            }     
+
+        } 
+
+
+
+        function functionTelefonoFijo(){
+            if(vm.telefonoFijo.length > 0){
+              vm.mensajeTelefonoFijo = "";
+              vm.mensajeTelefonoMovil= "";
+            }     
+
+        } 
+
+
+
+        function functionTelefonoMovil(){
+            if(vm.telefonoMovil.length > 0){
+              vm.mensajeTelefonoFijo = "";
+              vm.mensajeTelefonoMovil= "";
+            }      
+
+        } 
+
+
+        function functionEmail(){
+            if(vm.email.length > 0){
+               vm.mensajeEmail = "";
+              
+            }      
+
         }
 
-      }
 
+        function functionPreguntaSeguridad(){
+            if(vm.preguntaSeguridad.length > 0){
+              vm.mensajePreguntaSeguridad= "";
+            }     
+
+        }
+
+
+        function functionRespuesta(){
+            if(vm.respuesta.length > 0){
+              vm.mensajeRespuesta= "";
+            }   
+
+        }
+
+
+
+       function funcitonContrasena(){
+          if(vm.contrasena.length > 0){
+              vm.mensajeContrasena= "";
+           }      
+
+        }
+
+
+        function functionConfirmarContrasena(){
+           if(vm.confirmarContrasena.length > 0){
+              vm.mensajeConfirmarContrasena= "";
+
+             if(vm.contrasena !=  vm.confirmarContrasena)   {
+                vm.mensajeConfirmarContrasena   = "La confirmación no coincide con la contraseña";
+             } 
+           }
+
+
+
+        }
 
 
      function registrarUsuario() { 
+          
 
-                 var requestJson = {
+          if(vm.nombre1 == undefined || vm.nombre1 == '' ){
+               vm.mensajeNombre1   = "Debes ingresar un valido para este campo";
+               return;
+
+           }else if(vm.apellido1 == undefined || vm.apellido1 == '' ){
+              vm.mensajeApellido1   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(vm.telefonoFijo == undefined || vm.telefonoFijo == ''  && (vm.telefonoMovil == undefined || vm.telefonoMovil == '') ){
+              vm.mensajeTelefonoFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              vm.mensajeTelefonoMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              return;
+          }else if(vm.email == undefined || vm.email == '' ){
+              vm.mensajeEmail   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
+              vm.mensajeEmail   = "El correo no es valido";
+              return;
+          }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '' ){
+              vm.mensajePreguntaSeguridad   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(vm.respuesta == undefined || vm.respuesta == '' ){
+              vm.mensajeRespuesta   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(vm.contrasena == undefined || vm.contrasena == '' ){
+              vm.mensajeContrasena   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(vm.confirmarContrasena == undefined || vm.confirmarContrasena == '' ){
+              vm.mensajeConfirmarContrasena   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(vm.confirmarContrasena !=  vm.confirmarContrasena  ){
+              vm.mensajeConfirmarContrasena   = "La confirmación no coincide con la contraseña";
+              return;
+          }
+
+
+
+
+          var requestJson = {
                     "nombre1" : vm.nombre1,
                     "nombre2" : vm.nombre2,
                     "apellido1" : vm.apellido1,
