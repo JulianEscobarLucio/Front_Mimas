@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html ng-app="starter">
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+<meta charset="utf-8">
+<link rel="stylesheet" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="../jquery-3.2.1.min.js" ></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<link rel="stylesheet" href="../Menu.css">
+<link rel="stylesheet" href="Rol.css">
+</head>
+<body >
+  <header>
+   	  <div class="header">   
+   	    <div class="nav">	     
+   	 	 <ul id="nav">
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
+                <ul>
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>				  
+				</ul>
+			</li>
+
+			</li>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
+			</li>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
+			<ul>
+				<li><a href="#">Registro de mascotas</a></li>			
+			</ul>
+			</li>
+			<li class="subs"><a href="#s2">Fundaciones</a>
+				<ul>
+					<li><a href="#">Adopciones</a></li>
+					<li><a href="#">Eventos</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
+				</ul>
+			</li>
+			 <li class="subs"><a href="#s1">Roles</a>
+				
+			</li>
+			<li ><button class="inicio" href="#">Cerrar sesión</button></li>
+		</ul>
+		</div>		
+   	  </div>
+   </header>  
+   <div class="body"  ng-controller="rolController as vm" id="dialogContainer" >
+         <h1 class="titulo">Rol</h1>
+   	    <div class="row">   	    	
+	   	     <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Id Rol*</label>
+	           <input type="text" class="form-control" ng-model="vm.idRol" maxlength="20" ng-keyup="vm.functionRol()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeRol" ></p>
+	         </div>	
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Nombre</label>
+	           <input type="text" class="form-control" ng-model="vm.nombre" maxlength="20" ng-keyup="vm.functionNombre()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeNombre" ></p>
+	         </div>
+   	    </div>
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Descripción*</label>
+	           <input type="text" class="form-control" ng-model="vm.descripcion" maxlength="20" ng-keyup="vm.functionDescripcion()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeDescripcion" ></p>
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Formularios de acceso</label>
+	           <input type="text" class="form-control" ng-model="vm.formularios" maxlength="20" ng-keyup="vm.functionFormularios()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeFormularios"></p>
+	         </div>
+   	    </div>
+   	     <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Funcionalidades</label>
+	           <input type="text" class="form-control" ng-model="vm.funcionalidades" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="7" ng-keyup="vm.functionFuncionalidades()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeFuncionalidades"></p>
+	         </div>	      
+   	    </div>
+   	  
+   	    <div class="row botones">
+   	    	 <div class="form-group col-xs-3 col-sm-3">
+	           <button type="button" class="btn btn-success" ng-click="vm.registrar()">Registrar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-click="vm.consultar()">Consultar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-click="vm.actualizar()">Actualizar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-click="vm.eliminar()">Eliminar</button>
+	         </div>
+   	    </div>
+   	 
+        <md-content>       
+          
+            <div ng-if="status">
+               <br/>
+               <b layout="row" layout-align="center center" class="md-padding">
+                  {{status}}
+               </b>
+            </div>
+         </md-content>   
+       </div>
+    
+</div>
+   <footer>
+   	<div class="footer"></div>
+   </footer> 
+ <!--  <script src="../angular.min.js"></script>-->
+	<script src="../angular-route.min.js"></script>
+	<script src="Rol.js"></script>
+	<script src="Rol.service.js"></script>
+	<!--
+	<script src="prueba.js"></script>-->
+</body>
+</html>
