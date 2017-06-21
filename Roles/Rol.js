@@ -287,12 +287,7 @@
                        .ariaLabel('!Rol eliminado exitósamente¡')
                        .ok('Cerrar')                     
                       );
- 
-                     vm.idRol = data.resultado[0].idRol,
-                     vm.nombre = data.resultado[0].nombre,
-                     vm.descripcion =  data.resultado[0].descripcion,
-                     vm.formularios = data.resultado[0].formularios, 
-                     vm.funcionalidades = data.resultado[0].funcionalidades,   
+   
                      vm.idDisabled = false;
                      vm.registrarDisabled = false;
                      vm.consultarDisabled = false; 

@@ -5,9 +5,10 @@
     .module('starter',['ngMaterial'])
     .controller('loginController', loginController);
 
-  function loginController($scope, $mdDialog,loginServices) {
+  function loginController($scope, $mdDialog,loginServices, $location) {
         var vm = this;
         vm.ingresar = ingresar;
+        vm.cancelar = cancelar;
 
       function ingresar() { 
                  var requestJson = {
@@ -16,6 +17,7 @@
                     }        
             vm.modalShown2 = true;
             console.log(JSON.stringify(requestJson));
+                      
             loginServices.login(requestJson).then(function(data){
             debugger;
             if(data.resultado[0].codRespuesta == "200") {                
@@ -28,6 +30,10 @@
                      .ariaLabel('Usuario registrado')
                      .ok('Cerrar')                     
                );
+               document.getElementById("redirect").click();
+               
+                
+
             }else{
                 $mdDialog.show(
                   $mdDialog.alert()
@@ -41,6 +47,12 @@
                );
             }  
        });
+   }
+
+
+   function cancelar(){
+     vm.usuario = "";
+     vm.contrasena = "";
    }
 }        
     

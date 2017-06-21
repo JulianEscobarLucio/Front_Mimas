@@ -53,7 +53,7 @@
 					<li><a href="#">Cuidados de animales</a></li>
 				</ul>
 			</li>
-			<li ><button class="inicio" href="Login.html">Iniciar sesión</button></li>
+			<li ><a class="inicio" href="Login.html">Iniciar sesión</a><a id="redirect" style="display: none;" href="../Home_Transaccional/Home_transaccional.html"></a></li>
 		</ul>
 		</div>		
    	  </div>
@@ -74,7 +74,7 @@
    	    </div>   	  
    	    <div class="row botones">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <button type="button" class="btn btn-success">Cancelar</button>
+	           <button type="button" class="btn btn-success" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	            <button type="button" class="btn btn-success" ng-click="vm.ingresar()">Aceptar</button>
