@@ -9,7 +9,6 @@
 
 .botones{
 	margin-left: 13%;
-    margin-top: 5%;
 }
 
 .btn{
@@ -23,6 +22,7 @@
 }
 
 .footer{
+	margin-top: 34%;
 	height: 150px;
     background-color: rgb(197, 195, 195);
 }
@@ -41,7 +41,3 @@
     color: #f93a0e;  
 
 }
-
-footer{
-     margin-top: 6.4%;
-   }  

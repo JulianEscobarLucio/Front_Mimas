@@ -15,7 +15,7 @@
         function login(auditJson){                
             var promesa = $q.defer();
             debugger;
-            $http.post(ipserver+"/mimas/rest/services/login"
+            $http.post(ipserver+"/mimas/rest/securityServices/login"
                         ,auditJson)
                 .success(function(data){
                     promesa.resolve({

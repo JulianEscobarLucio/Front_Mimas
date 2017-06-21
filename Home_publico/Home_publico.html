@@ -18,63 +18,59 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 <link rel="stylesheet" href="../Menu.css">
-<link rel="stylesheet" href="Home_controller.css">
+<link rel="stylesheet" href="Home_publico.css">
 </head>
 <body >
    <header>
    	  <div class="header">   
    	    <div class="nav">	     
    	 	 <ul id="nav">
-			<li class="subs"><a href="#">Adoptar o apadrinar</a>
+			<li class="subs"><a href="#">Mascotas</a>
                 <ul>
-				  <li><a href="#">Adoptar</a></li>
-				  <li><a href="#">Apadrinar</a></li>
-				  <li><a href="#">Estado y revisión del proceso</a></li>				  
+				  <li><a href="#">Perdidos</a></li>
+				  <li><a href="#">Encontrados</a></li>
+				  <li><a href="#">En adopción</a></li>				  
 				</ul>
 			</li>
 
 			</li>
-			<li class="subs"><a href="#s1">Mi Perfil</a>
-				
+			<li class="subs"><a href="#s1">Fundaciones</a>
+				<ul>
+					<li><a href="#">Información</a></li>
+					<li><a href="#">Miembros</a></li>
+					<li><a href="#">Donaciones</a></li>
+			    </ul>
 			</li>
-			<li class="subs"><a href="#s2">Mis mascotas</a>
+			<li class="subs"><a href="#s2">Información de adopciones</a>
 			<ul>
-				<li><a href="#">Registro de mascotas</a></li>			
+				<li><a href="#">Proceso y requisito</a></li>			
 			</ul>
 			</li>
-			<li class="subs"><a href="#s2">Fundaciones</a>
+			<li class="subs"><a href="#s2">Interes</a>
 				<ul>
-					<li><a href="#">Adopciones</a></li>
+					<li><a href="#">Blog</a></li>
 					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Colaboradores</a></li>
-					<li><a href="#">Contacto</a></li>
-					<li><a href="#">Donaciones</a></li>
-					<li><a href="#">Reportes y estadisticas</a></li>
+					<li><a href="#">Cuidados de animales</a></li>
 				</ul>
 			</li>
-			 <li class="subs"><a href="#s2">Administración</a>
-			  <ul>
-			    <li><a href="../Roles/Rol.html">Roles</a></li>
-			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
-			  </ul>
-			</li>
-			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
+			<li ><a class="inicio" href="../Login/Login.html">Iniciar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
    </header>  
-   <div class="body"  ng-controller="homeController as vm" id="dialogContainer" >
-        
-      
-       </div>
-    
+   <div class="body"  ng-controller="hotmepublicoController as vm" id="dialogContainer" >
+         
+   	   
+   	    
+   	    
+
 </div>
    <footer>
    	<div class="footer"></div>
    </footer> 
  <!--  <script src="../angular.min.js"></script>-->
 	<script src="../angular-route.min.js"></script>
-	<script src="Home_transaccional.js"></script>	
+	<script src="Home_publico.js"></script>
 	<!--
 	<script src="prueba.js"></script>-->
 </body>
