@@ -31,3 +31,16 @@
 	margin-bottom: 30px;
 	color: #66af96;
 }
+
+
+
+.mensajeError {
+    font-family: sourcesanspro;
+    font-size: 14px;
+    color: #f93a0e;  
+
+}
+
+footer{
+     margin-top: 8.5%;
+   }  
