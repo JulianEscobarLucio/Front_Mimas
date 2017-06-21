@@ -63,57 +63,75 @@
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Primer nombre*</label>
-	           <input type="text" class="form-control" ng-model="vm.nombre1">
-	         </div>
+	           <input type="text" class="form-control" ng-model="vm.nombre1" maxlength="20" ng-keyup="vm.functionNombre1()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeNombre1" ></p>
+	         </div>	
 	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Segundo nombre*</label>
-	           <input type="text" class="form-control" ng-model="vm.nombre2">
+	           <label for="usr">Segundo nombre</label>
+	           <input type="text" class="form-control" ng-model="vm.nombre2" maxlength="20" ng-keyup="vm.functionNombre2()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeNombre2" ></p>
 	         </div>
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Primer apellido*</label>
-	           <input type="text" class="form-control" ng-model="vm.apellido1">
+	           <input type="text" class="form-control" ng-model="vm.apellido1" maxlength="20" ng-keyup="vm.functionApellido1()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeApellido1" ></p>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Segundo apellido*</label>
-	           <input type="text" class="form-control" ng-model="vm.apellido2">
+	           <label for="usr">Segundo apellido</label>
+	           <input type="text" class="form-control" ng-model="vm.Apellido2" maxlength="20" ng-keyup="vm.functionApellido2()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeApellido2"></p>
 	         </div>
    	    </div>
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Télefono fijo</label>
-	           <input type="text" class="form-control" ng-model="vm.telefonoFijo">
+	           <input type="text" class="form-control" ng-model="vm.telefonoFijo" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="7" ng-keyup="vm.functionTelefonoFijo()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeTelefonoFijo"></p>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Télefono movil</label>
-	           <input type="text" class="form-control" ng-model="vm.telefonoMovil">
+	           <input type="text"  ng-keyup="vm.functionTelefonoMovil()" class="form-control" ng-model="vm.telefonoMovil" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  maxlength="10" >
+	             <p class="mensajeError"  ng-bind="vm.mensajeTelefonoMovil"></p>
 	         </div>
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Correo electrónico*</label>
-	           <input type="text" class="form-control" ng-model="vm.email">
+	           <input type="text" class="form-control" ng-model="vm.email" maxlength="30" ng-keyup="vm.functionEmail()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeEmail"></p>	        
 	         </div>	         
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Pregunta de seguridad*</label>
-	           <input type="text" class="form-control" ng-model="vm.preguntaSeguridad">
+	            <label for="usr">Pregunta de seguridad*</label>
+                <select class="form-control" ng-model="vm.preguntaSeguridad" >
+                  <option value="1" ng-selected="true">Seleccione una pregunta...</option>
+                  <option value="2">¿Cuál es su comida favorita?</option>
+                  <option value="3">¿Cuál es el segundo nombre de su padre?</option>
+                  <option value="4">¿Cuál es su Canción preferida?</option>
+                  <option value="4">¿Cuál es su Canción preferida?</option>
+                  <option value="4">¿Cuál es el nombre de su mascota?</option>	
+                </select>	         
+	            <p class="mensajeError"  ng-bind="vm.mensajePreguntaSeguridad"></p>	         
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Respuesta*</label>
-	           <input type="text" class="form-control" ng-model="vm.respuesta">
+	           <input type="text" class="form-control" ng-model="vm.respuesta" maxlength="30">
+	            <p class="mensajeError"  ng-bind="vm.mensajeRespuesta"></p>         
 	         </div>
    	    </div>
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Contraseña*</label>
-	           <input type="text" class="form-control" ng-model="vm.contrasena">
+	           <input type="password" class="form-control" ng-model="vm.contrasena" maxlength="10" ng-keyup="vm.functionContrasena()">
+	            <p class="mensajeError"  ng-bind="vm.mensajeContrasena"></p>	       
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Confirmar Contraseña*</label>
-	           <input type="text" class="form-control" ng-model="vm.confirmarContrasena">
+	           <input type="password" class="form-control" ng-model="vm.confirmarContrasena" maxlength="10" ng-keyup="vm.functionConfirmarContrasena()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeConfirmarContrasena"></p>	          
 	         </div>
    	    </div>
    	    <div class="row botones">
