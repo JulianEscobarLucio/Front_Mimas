@@ -65,11 +65,11 @@
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Id Rol*</label>
-	           <input type="text" class="form-control" ng-model="vm.idRol" maxlength="20" ng-keyup="vm.functionRol()">
-	           <p class="mensajeError"  ng-bind="vm.mensajeRol" ></p>
+	           <input type="text" class="form-control" ng-model="vm.idRol" maxlength="2" ng-disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionRol()">
+	           <p class="mensajeError"   ng-bind="vm.mensajeRol" ></p>
 	         </div>	
 	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Nombre</label>
+	           <label for="usr">Nombre*</label>
 	           <input type="text" class="form-control" ng-model="vm.nombre" maxlength="20" ng-keyup="vm.functionNombre()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeNombre" ></p>
 	         </div>
@@ -77,35 +77,35 @@
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Descripción*</label>
-	           <input type="text" class="form-control" ng-model="vm.descripcion" maxlength="20" ng-keyup="vm.functionDescripcion()">
+	           <input type="text" class="form-control" ng-model="vm.descripcion" maxlength="50" ng-keyup="vm.functionDescripcion()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeDescripcion" ></p>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Formularios de acceso</label>
-	           <input type="text" class="form-control" ng-model="vm.formularios" maxlength="20" ng-keyup="vm.functionFormularios()">
+	           <label for="usr">Formularios de acceso*</label>
+	           <input type="text" class="form-control" ng-model="vm.formularios" maxlength="50" ng-keyup="vm.functionFormularios()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeFormularios"></p>
 	         </div>
    	    </div>
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Funcionalidades</label>
-	           <input type="text" class="form-control" ng-model="vm.funcionalidades" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="7" ng-keyup="vm.functionFuncionalidades()">
+	           <label for="usr">Funcionalidades*</label>
+	           <input type="text" class="form-control" ng-model="vm.funcionalidades" maxlength="50" ng-keyup="vm.funtionFuncionalidades()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeFuncionalidades"></p>
 	         </div>	      
    	    </div>
    	  
    	    <div class="row botones">
    	    	 <div class="form-group col-xs-3 col-sm-3">
-	           <button type="button" class="btn btn-success" ng-click="vm.registrar()">Registrar</button>
+	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrar()">Registrar</button>
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3"">
-	            <button type="button" class="btn btn-success" ng-click="vm.consultar()">Consultar</button>
+	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3"">
-	            <button type="button" class="btn btn-success" ng-click="vm.actualizar()">Actualizar</button>
+	            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3"">
-	            <button type="button" class="btn btn-success" ng-click="vm.eliminar()">Eliminar</button>
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminar()">Eliminar</button>
 	         </div>
    	    </div>
    	 
