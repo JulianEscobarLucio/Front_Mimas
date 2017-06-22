@@ -14,7 +14,7 @@
 
         function registrarUsuario(auditJson){                
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/usuarioServices/registrarUsuario",auditJson)
+            $http.post(ipserver+"/mimas/rest/fundacionServices/registrarFundacion",auditJson)
                 .success(function(data){
                     promesa.resolve({
                         resultado:data

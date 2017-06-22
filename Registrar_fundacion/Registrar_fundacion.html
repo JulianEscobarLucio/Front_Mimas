@@ -33,8 +33,7 @@
 				</ul>
 			</li>
 
-			</li>
-			<li class="subs"><a href="#s1">Fundaciones</a>
+		     <li class="subs"><a href="#s1">Fundaciones</a>
 				<ul>
 					<li><a href="#">Información</a></li>
 					<li><a href="#">Miembros</a></li>
@@ -58,7 +57,7 @@
 		</div>		
    	  </div>
    </header>  
-   <div class="body"  ng-controller="registrarController as vm" id="dialogContainer" >
+   <div class="body"  ng-controller="registrarFundacionController as vm" id="dialogContainer" >
          <h1 class="titulo">Registrar Fundación</h1>
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
@@ -73,7 +72,7 @@
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Télefono fijo</label>
-	           <input type="number" pattern="[09]{10}" class="form-control" ng-model="vm.telefonoFijo">
+	           <input type="number" class="form-control" ng-model="vm.tele">
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Télefono movil</label>
@@ -119,22 +118,18 @@
           
             <div ng-if="status">
                <br/>
-               <b layout="row" layout-align="center center" class="md-padding">
-                  {{status}}
-               </b>
+            
             </div>
          </md-content>   
-       </div>
-    
-</div>
-   <footer>
+    </div>
+  <footer>
    	<div class="footer"></div>
    </footer> 
  <!--  <script src="../angular.min.js"></script>-->
 	<script src="../angular-route.min.js"></script>
 	<script src="Registrar_fundacion.js"></script>
 	<script src="Registrar_fundacion.service.js"></script>
-	<!--
-	<script src="prueba.js"></script>-->
+	
+	<!--<<script src="prueba.js"></script>-->
 </body>
 </html>

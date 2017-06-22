@@ -3,7 +3,7 @@
 
     angular
     .module('starter',['ngMaterial'])
-    .controller('registrarController', registrarFundacionController);
+    .controller('registrarFundacionController', registrarFundacionController);
     debugger;
  //    registrarFundacionController.$inject = ['registarFundacionServices'];
 
@@ -13,8 +13,8 @@
         
         vm.registrarFundacion = registrarFundacion;
         vm.actualizarFundacion = actualizarFundacion;
-        vm.consultarFundacion = consultarFundacion;
-        vm.eliminarFundacion = eliminarFundacion;
+       // vm.consultarFundacion = consultarFundacion;
+       // vm.eliminarFundacion = eliminarFundacion;
         vm.registrarDisabled = false;
         vm.consultarDisabled = false; 
         vm.actualizarDisabled = true;
@@ -26,9 +26,9 @@
 
                  var requestJson = {
                     "identificacion" : vm.identificacion,
-                    "razonSocial" : vm.razonSocial,
-                    "telefonoFijo" : vm.telefonoFijo,
-                    "telefonomovil" : vm.telefonoMovil, 
+                    "razonSocial" : vm.razonSocial,                    
+                    "telefonoMovil" : vm.telefonoMovil,
+                    "telefonoFijo" : vm.tele, 
                     "email" : vm.email,
                     "direccion" : vm.direccion,
                     "usuario" :vm.usuario,
@@ -52,10 +52,10 @@
                      .ok('Cerrar')
                       );
                       
-                     vm.idRol = "",
-                     vm.identificacion = "",
-                     vm.razonSocial = "",
-                     vm.telefonoFijo = "",
+                    
+                     vm.identificacion = "";
+                     vm.razonSocial = "";
+                     vm.tele = "";
                      vm.telefonoMovil = "", 
                      vm.email = "",
                      vm.direccion = "",
@@ -81,13 +81,13 @@
      
      
      
-     function actualizar(){ 
+     function actualizarFundacion(){ 
 
     	 
     	 var requestJson = {
     			 "identificacion" : vm.identificacion,
                  "razonSocial" : vm.razonSocial,
-                 "telefonoFijo" : vm.telefonoFijo,
+                 "telefonoFijo" : vm.tele,
                  "telefonomovil" : vm.telefonoMovil, 
                  "email" : vm.email,
                  "direccion" : vm.direccion,
@@ -108,10 +108,10 @@
                   .ok('Cerrar')                     
                  );
 
-                  vm.idRol = "",
+              
                   vm.identificacion = "",
                   vm.razonSocial = "",
-                  vm.telefonoFijo = "",
+                  vm.tele = "",
                   vm.telefonoMovil = "", 
                   vm.email = "",
                   vm.direccion = "",
@@ -138,13 +138,6 @@
            }           
         });
    } 
-     
-     
-     
-     
-     
-     
-     
      
      
 }        
