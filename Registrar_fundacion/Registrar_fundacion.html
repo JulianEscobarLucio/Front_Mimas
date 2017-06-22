@@ -11,15 +11,20 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="../jquery-3.2.1.min.js" ></script>
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
 <link rel="stylesheet" href="../Menu.css">
-<link rel="stylesheet" href="Registrar_fundacion.css">
+<link rel="stylesheet" href="Fundacion.css">
 </head>
+
+
+
 <body >
    <header>
    	  <div class="header">   
@@ -33,7 +38,7 @@
 				</ul>
 			</li>
 
-		     <li class="subs"><a href="#s1">Fundaciones</a>
+		     <li class="subs"><a href="#">Fundaciones</a>
 				<ul>
 					<li><a href="#">Información</a></li>
 					<li><a href="#">Miembros</a></li>
@@ -56,9 +61,13 @@
 		</ul>
 		</div>		
    	  </div>
-   </header>  
-   <div class="body"  ng-controller="registrarFundacionController as vm" id="dialogContainer" >
-         <h1 class="titulo">Registrar Fundación</h1>
+   </header> 
+
+
+   <div class="body"  ng-controller="fundacionController as vm" id="dialogContainer" >
+
+        <h1 class="titulo">Registro Fundaciones</h1>
+
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Identificación fundación*</label>
@@ -72,7 +81,7 @@
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Télefono fijo</label>
-	           <input type="number" class="form-control" ng-model="vm.tele">
+	           <input type="number" class="form-control" ng-model="vm.telefono">
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Télefono movil</label>
@@ -122,13 +131,17 @@
             </div>
          </md-content>   
     </div>
+
+
   <footer>
    	<div class="footer"></div>
    </footer> 
+
+
  <!--  <script src="../angular.min.js"></script>-->
 	<script src="../angular-route.min.js"></script>
-	<script src="Registrar_fundacion.js"></script>
-	<script src="Registrar_fundacion.service.js"></script>
+	<script src="Fundacion.js"></script>
+	<script src="Fundacion.service.js"></script>
 	
 	<!--<<script src="prueba.js"></script>-->
 </body>

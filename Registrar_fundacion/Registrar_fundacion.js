@@ -3,11 +3,11 @@
 
     angular
     .module('starter',['ngMaterial'])
-    .controller('registrarFundacionController', registrarFundacionController);
+    .controller('fundacionController', fundacionController);
     debugger;
  //    registrarFundacionController.$inject = ['registarFundacionServices'];
 
-    function registrarFundacionController($scope, $mdDialog,registarFundacionServices) {
+    function fundacionController($scope, $mdDialog,fundacionServices) {
         debugger;
         var vm = this;
         
@@ -28,7 +28,7 @@
                     "identificacion" : vm.identificacion,
                     "razonSocial" : vm.razonSocial,                    
                     "telefonoMovil" : vm.telefonoMovil,
-                    "telefonoFijo" : vm.tele, 
+                    "telefonoFijo" : vm.telefono, 
                     "email" : vm.email,
                     "direccion" : vm.direccion,
                     "usuario" :vm.usuario,
@@ -39,23 +39,24 @@
              vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
 
-              registarFundacionServices.registrarFundacion(requestJson).then(function(data){
+              fundacionServices.registrarFundacion(requestJson).then(function(data){
                 debugger;
+
             if(data.resultado[0].codRespuesta == "200") {                
                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
                      .title('Registrar Fundacion')
-                     .textContent('!Se registró la Fundación exitósamente¡')
-                     .ariaLabel('!Se registró la Fundación exitósamente¡')
+                     .textContent(' !  Se registró la Fundación exitósamente  ¡ ')
+                     .ariaLabel(' !  Se registró la Fundación exitósamente  ¡ ')
                      .ok('Cerrar')
                       );
                       
                     
                      vm.identificacion = "";
                      vm.razonSocial = "";
-                     vm.tele = "";
+                     vm.telefono = "";
                      vm.telefonoMovil = "", 
                      vm.email = "",
                      vm.direccion = "",
@@ -67,9 +68,9 @@
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
-                     .title('Registrar Fundacion')
-                     .textContent('Fundacion no registrada')
-                     .ariaLabel('Fundacion no registrada')
+                     .title('Registrar Fundación')
+                     .textContent('Fundación no registrada')
+                     .ariaLabel('Fundación no registrada')
                      .ok('Cerrar')
                      
                );
@@ -85,16 +86,17 @@
 
     	 
     	 var requestJson = {
-    			 "identificacion" : vm.identificacion,
+    			       "identificacion" : vm.identificacion,
                  "razonSocial" : vm.razonSocial,
-                 "telefonoFijo" : vm.tele,
+                 "telefonoFijo" : vm.telefono,
                  "telefonomovil" : vm.telefonoMovil, 
                  "email" : vm.email,
                  "direccion" : vm.direccion,
                  "usuario" :vm.usuario,
                  "tipoEntidad" :vm.tipoEntidad                     
                }
-    	 registarFundacionServices.actualizarFundacion(requestJson).then(function(data){
+
+    	   fundacionServices.actualizarFundacion(requestJson).then(function(data){
            debugger;
            
            if(data.resultado[0].codRespuesta == "200") {     
@@ -103,8 +105,8 @@
                   .parent(angular.element(document.querySelector('#dialogContainer')))
                   .clickOutsideToClose(true)
                   .title('Actualizar Fundación')
-                  .textContent('!Se actualizó la Fundación exitósamente¡')
-                  .ariaLabel('!Se actualizó la Fundación exitósamente¡')
+                  .textContent('! Se actualizó la Fundación exitósamente ¡')
+                  .ariaLabel('! Se actualizó la Fundación exitósamente ¡')
                   .ok('Cerrar')                     
                  );
 
