@@ -31,3 +31,50 @@
 	margin-bottom: 30px;
 	color: #66af96;
 }
+
+
+
+.mensajeError {
+    font-family: sourcesanspro;
+    font-size: 14px;
+    color: #f93a0e;  
+
+}
+
+footer{
+     margin-top: 8.5%;
+   }  
+
+
+/*
+.body{
+	width: 50%;
+    margin-left: 25%;
+    margin-top: 5%;
+}
+
+
+.botones{
+	margin-left: 13%;
+}
+
+.btn{
+	width: 65%;
+}
+
+
+.header{
+	height: 90px;
+    background-color: #66af96;
+}
+
+.footer{
+	height: 150px;
+    background-color: rgb(197, 195, 195);
+}
+
+.titulo{
+	
+	margin-bottom: 30px;
+	color: #66af96;
+}

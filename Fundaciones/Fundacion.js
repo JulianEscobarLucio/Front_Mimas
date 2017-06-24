@@ -4,25 +4,119 @@
     angular
     .module('starter',['ngMaterial'])
     .controller('fundacionController', fundacionController);
-    debugger;
+    //debugger;
     // fundacionController.$inject = ['fundacionServices'];
 
     function fundacionController($scope, $mdDialog,fundacionServices) {
-        debugger;
+        //debugger;
         var vm = this;
+        
         
         vm.registrarFundacion = registrarFundacion;
         vm.actualizarFundacion = actualizarFundacion;
         vm.consultarFundacion = consultarFundacion;
         vm.eliminarFundacion = eliminarFundacion;
-        vm.registrarDisabled = false;
-        vm.consultarDisabled = false; 
-        vm.actualizarDisabled = true;
-        vm.eliminarDisabled = true;
+        //vm.registrarDisabled = false;
+        //vm.consultarDisabled = false; 
+        //vm.actualizarDisabled = true;
+        //vm.eliminarDisabled = true;
+
+
+        vm.fnIdentificacion = fnIdentificacion;
+        vm.msjIdentificacion = "";
+        vm.fnRazonSocial = fnRazonSocial;
+        vm.msjRazonSocial = "";
+        vm.fnTelefonos = fnTelefonos;
+        vm.tel = false;
+        vm.msjTelFijo = "";
+        vm.msjTelMovil = "";
+        vm.fnEmail = fnEmail;
+        vm.msjEmail = "";
+        vm.fnDireccion = fnDireccion;
+        vm.msjDireccion = "";
+        vm.fnUsuario = fnUsuario;
+        vm.msjUsuario = "";
+
+
+        
+        function fnIdentificacion(){
+            if(vm.identificacion.length > 0){
+              vm.msjIdentificacion = "";
+            } 
+        } 
+        function fnRazonSocial(){
+            if(vm.razonSocial.length > 0){
+              vm.msjRazonSocial = "";
+            }     
+
+        } 
+        function fnTelefonos(){
+            if(vm.telefono.length > 0 || vm.telefonoMovil.length > 0){
+
+              vm.msjTelFijo = "";
+              vm.msjTelMovil= "";
+            }    
+
+        } 
+        function fnEmail(){
+            if(vm.email.length > 0){
+               vm.msjEmail = "";
+            }      
+
+        }
+        function fnDireccion(){
+            if(vm.direccion.length > 0){
+              vm.msjDireccion= "";
+            }     
+
+        }
+        function fnUsuario(){
+            if(vm.usuario.length > 0){
+              vm.msjUsuario= "";
+            }     
+
+        }
+
+
+
         
 
 
      function registrarFundacion() { 
+
+      //debugger;
+      //validaciones campos obligatorios
+        if(vm.identificacion == undefined || vm.identificacion == '' ){
+               vm.msjIdentificacion   = "Debes ingresar un valido para este campo";
+               return;
+           }else if(vm.razonSocial == undefined || vm.razonSocial == '' ){
+              vm.msjRazonSocial   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(vm.telefono == undefined || vm.telefono == ''){
+              if (vm.telefonoMovil == undefined || vm.telefonoMovil == '') {
+              vm.msjTelFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              vm.msjTelMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              return;
+            }
+          }
+          if(vm.email == undefined || vm.email == '' ){
+              vm.msjEmail   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
+              vm.msjEmail   = "El correo no es valido";
+              return;
+          }else if(vm.direccion == undefined || vm.direccion == '' ){
+              vm.msjDireccion   = "Debes ingresar un valido para este campo";
+              return;
+          }
+          else if(vm.usuario == undefined || vm.usuario == '' ){
+              vm.msjUsuario  = "Debes ingresar un valido para este campo";
+              return;
+          }
+
+
+
+
 
                  var requestJson = {
                     "identificacion" : vm.identificacion,
@@ -40,7 +134,7 @@
                console.log(JSON.stringify(requestJson));
 
               fundacionServices.registrarFundacion(requestJson).then(function(data){
-                debugger;
+                //debugger;
 
             if(data.resultado[0].codRespuesta == "200") {                
                 $mdDialog.show(
@@ -84,6 +178,36 @@
      
     function actualizarFundacion(){ 
 
+      //validaciones campos obligatorios
+        if(vm.identificacion == undefined || vm.identificacion == '' ){
+               vm.msjIdentificacion   = "Debes ingresar un valido para este campo";
+               return;
+           }else if(vm.razonSocial == undefined || vm.razonSocial == '' ){
+              vm.msjRazonSocial   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(vm.telefono == undefined || vm.telefono == ''){
+              if (vm.telefonoMovil == undefined || vm.telefonoMovil == '') {
+              vm.msjTelFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              vm.msjTelMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              return;
+            }
+          }
+          if(vm.email == undefined || vm.email == '' ){
+              vm.msjEmail   = "Debes ingresar un valido para este campo";
+              return;
+          }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
+              vm.msjEmail   = "El correo no es valido";
+              return;
+          }else if(vm.direccion == undefined || vm.direccion == '' ){
+              vm.msjDireccion   = "Debes ingresar un valido para este campo";
+              return;
+          }
+          else if(vm.usuario == undefined || vm.usuario == '' ){
+              vm.msjUsuario  = "Debes ingresar un valido para este campo";
+              return;
+          }
+
+
     	         var requestJson = {
                     "identificacion" : vm.identificacion,
                     "razonSocial" : vm.razonSocial,                    
@@ -96,7 +220,7 @@
                     }  
     	 
     	   fundacionServices.actualizarFundacion(requestJson).then(function(data){
-           debugger;
+           //debugger;
            
            if(data.resultado[0].codRespuesta == "200") {     
                   $mdDialog.show(
@@ -112,18 +236,17 @@
               
                   vm.identificacion = "",
                   vm.razonSocial = "",
-                  vm.tele = "",
+                  vm.telefono = "",
                   vm.telefonoMovil = "", 
                   vm.email = "",
                   vm.direccion = "",
-                  vm.usuario = "",
-                  vm.tipoEntidad = ""
+                  vm.usuario = ""
 
     
-                vm.registrarDisabled = false;
-                vm.consultarDisabled = false; 
-                vm.actualizarDisabled = true;
-                vm.eliminarDisabled = true;
+                //vm.registrarDisabled = false;
+                //vm.consultarDisabled = false; 
+                //vm.actualizarDisabled = true;
+                //vm.eliminarDisabled = true;
                 
                 
            }else{
@@ -144,6 +267,11 @@
 
 
     function consultarFundacion(){
+
+        if(vm.identificacion == undefined || vm.identificacion == '' ){
+           vm.msjIdentificacion   = "Debes ingresar una identificación";
+           return;
+        }
    
 
        var requestJson = {
@@ -173,18 +301,18 @@
 
                  vm.identificacion = data.resultado[0].identificacion,
                  vm.razonSocial = data.resultado[0].razonSocial,
-                 vm.telefono =  data.resultado[0].telefono,
+                 vm.telefono =  data.resultado[0].telefonoFijo,
                  vm.telefonoMovil = data.resultado[0].telefonoMovil, 
                  vm.email = data.resultado[0].email,
                  vm.direccion = data.resultado[0].direccion,
                  vm.usuario = data.resultado[0].usuario,
-                 vm.tipoEntidad = data.resultado[0].tipoEntidad,
+                 vm.tipoEntidad = data.resultado[0].tipoEntidad
 
 
-                 vm.actualizarDisabled = false;
-                 vm.eliminarDisabled = false;
-                 vm.registrarDisabled = true;
-                 vm.consultarDisabled = true; 
+                 //vm.actualizarDisabled = false;
+                 //vm.eliminarDisabled = false;
+                 //vm.registrarDisabled = true;
+                 //vm.consultarDisabled = true; 
 
             }else {
 
@@ -233,17 +361,17 @@
 
                  vm.identificacion = data.resultado[0].identificacion,
                  vm.razonSocial = data.resultado[0].razonSocial,
-                 vm.telefono =  data.resultado[0].telefono,
+                 vm.telefono =  data.resultado[0].telefonoFijo,
                  vm.telefonoMovil = data.resultado[0].telefonoMovil, 
                  vm.email = data.resultado[0].email,
                  vm.direccion = data.resultado[0].direccion,
                  vm.usuario = data.resultado[0].usuario,
-                 vm.tipoEntidad = data.resultado[0].tipoEntidad,   
+                 vm.tipoEntidad = data.resultado[0].tipoEntidad  
                  
-                 vm.registrarDisabled = false;
-                 vm.consultarDisabled = false; 
-                 vm.actualizarDisabled = true;
-                 vm.eliminarDisabled = true; 
+                 //vm.registrarDisabled = false;
+                 //vm.consultarDisabled = false; 
+                 //vm.actualizarDisabled = true;
+                 //vm.eliminarDisabled = true; 
 
             }else {
                   $mdDialog.show(
