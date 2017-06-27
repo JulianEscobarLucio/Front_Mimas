@@ -42,7 +42,7 @@
 				<li><a href="#">Registro de mascotas</a></li>			
 			</ul>
 			</li>
-			<li class="subs"><a href="#s2">Fundaciones</a>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
 				<ul>
 					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
@@ -85,7 +85,7 @@
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Segundo apellido</label>
-	           <input type="text" class="form-control" ng-model="vm.Apellido2" maxlength="20" ng-keyup="vm.functionApellido2()">
+	           <input type="text" class="form-control" ng-model="vm.apellido2" maxlength="20" ng-keyup="vm.functionApellido2()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeApellido2"></p>
 	         </div>
    	    </div>
@@ -101,12 +101,18 @@
 	             <p class="mensajeError"  ng-bind="vm.mensajeTelefonoMovil"></p>
 	         </div>
    	    </div>
-   	    <div class="row">
+   	   	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Correo electrónico*</label>
-	           <input type="text" class="form-control" ng-model="vm.email" ng-disabled="vm.DisabledEmail" maxlength="30" ng-keyup="vm.functionEmail()">
-	           <p class="mensajeError"  ng-bind="vm.mensajeEmail"></p>	        
-	         </div>	         
+	            <label for="usr">Rol*</label>
+                <select class="form-control" ng-model="vm.rol"  ng-change="vm.FunctionRol()" >
+                  <option value="0" ng-selected="true">Seleccione un rol...</option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Administrador de la fundacióm</option>
+                  <option value="3">Colaborador</option>
+                  <option value="4">Visitante</option>                
+                </select>	         
+	            <p class="mensajeError"  ng-bind="vm.mensajeRol"></p>	         
+	         </div>	     
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
@@ -140,17 +146,20 @@
 	         </div>
    	    </div>
    	    <div class="row botones">
-   	    	 <div class="form-group col-xs-4 col-sm-4">
-	           <button type="button" class="btn btn-success" ng-disabled="vm.DisabledConsultar" ng-click="vm.consultarUsuario()" >Consultar</button>
+   	    	 <div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledConsultar" ng-click="vm.consultarUsuario()" >Consultar</button>	
+	         </div>              
+	         <div class="form-group col-xs-3 col-sm-3  email">	       
+	              <input type="text" class="form-control" style="" placeholder="Correo electrónico" ng-model="vm.email" ng-disabled="vm.DisabledEmail" maxlength="30" ng-keyup="vm.functionEmail()">
+	              <p class="mensajeError"  ng-bind="vm.mensajeEmail"></p>	
 	         </div>
-	         <div class="form-group col-xs-4 col-sm-4">
+	         <div class="form-group col-xs-3 col-sm-3">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledActualizar" ng-click="vm.actualizarUsuario()">Actualizar</button>
 	         </div>
-	               <div class="form-group col-xs-4 col-sm-4">
+	         <div class="form-group col-xs-3 col-sm-3">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledEliminar"  ng-click="vm.eliminarUsuario()">Eliminar</button>
 	         </div>
-   	    </div>
-   	 
+   	    </div>   	 
         <md-content>       
           
             <div ng-if="status">

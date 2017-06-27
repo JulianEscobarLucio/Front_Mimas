@@ -294,6 +294,14 @@
                      vm.actualizarDisabled = true;
                      vm.eliminarDisabled = true; 
 
+
+
+                    vm.idRol = '';
+                    vm.nombre = '';
+                    vm.descripcion ='';
+                    vm.formularios = '';
+                    vm.funcionalidades = ''; 
+
                 }else {
                       $mdDialog.show(
                         $mdDialog.alert()

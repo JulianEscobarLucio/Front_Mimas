@@ -10,12 +10,11 @@
         var vm = this;
         vm.actualizarUsuario = actualizarUsuario;
         vm.eliminarUsuario = eliminarUsuario;
-        vm.consultarUsuario = consultarUsuario;
-        vm.cerrarSesion = cerrarSesion;
+        vm.consultarUsuario = consultarUsuario;      
         vm.mensajeNombre1 = "";
         vm.mensajeNombre2 = "";
         vm.mensajeApellido1 = "";
-        vm.mensajeApellido2 = "";
+        vm.mensajeapellido2 = "";
         vm.mensajeTelefonoFijo = "";
         vm.mensajeTelefonoMovil = "";
         vm.mensajeEmail = "";
@@ -26,7 +25,7 @@
         vm.functionNombre1 =  functionNombre1;
         vm.functionNombre2 =  functionNombre2;
         vm.functionApellido1 =  functionApellido1;
-        vm.functionApellido2 =  functionApellido2;
+        vm.functionapellido2 =  functionapellido2;
         vm.functionTelefonoFijo =  functionTelefonoFijo;
         vm.functionTelefonoMovil =  functionTelefonoMovil;
         vm.functionEmail =  functionEmail;
@@ -50,6 +49,7 @@
         vm.respuesta = "";
         vm.contrasena = "";
         vm.confirmarContrasena = ""; 
+        vm.FunctionRol = FunctionRol;
        
                     
 
@@ -61,6 +61,15 @@
 
         }   
 
+
+       
+        function FunctionRol(){
+            if(vm.rol != undefined || vm.rol != '0' ){
+              vm.mensajeRol   = "";
+              return;
+            }
+
+        } 
     
                 
             
@@ -86,9 +95,9 @@
 
 
 
-        function functionApellido2(){
+        function functionapellido2(){
             if(vm.apellido2.length > 0){
-              vm.mensajeApellido2 = "";
+              vm.mensajeapellido2 = "";
             }     
 
         } 
@@ -166,38 +175,42 @@
           
 
           if(vm.nombre1 == undefined || vm.nombre1 == '' ){
-               vm.mensajeNombre1   = "Debes ingresar un valido para este campo";
+               vm.mensajeNombre1   = "Debes ingresar un válido para este campo";
                return;
 
            }else if(vm.apellido1 == undefined || vm.apellido1 == '' ){
-              vm.mensajeApellido1   = "Debes ingresar un valido para este campo";
+              vm.mensajeApellido1   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.telefonoFijo == undefined || vm.telefonoFijo == ''  && (vm.telefonoMovil == undefined || vm.telefonoMovil == '') ){
               vm.mensajeTelefonoFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
               vm.mensajeTelefonoMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
               return;
           }else if(vm.email == undefined || vm.email == '' ){
-              vm.mensajeEmail   = "Debes ingresar un valido para este campo";
+              vm.mensajeEmail   = "Debes ingresar un válido para este campo";
               return;
           }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
-              vm.mensajeEmail   = "El correo no es valido";
+              vm.mensajeEmail   = "El correo no es válido";
               return;
           }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '1' ){
               vm.mensajePreguntaSeguridad   = "Debes seleccionar una pregunta ";
               return;
           }else if(vm.respuesta == undefined || vm.respuesta == '' ){
-              vm.mensajeRespuesta   = "Debes ingresar un valido para este campo";
+              vm.mensajeRespuesta   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.contrasena == undefined || vm.contrasena == '' ){
-              vm.mensajeContrasena   = "Debes ingresar un valido para este campo";
+              vm.mensajeContrasena   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.confirmarContrasena == undefined || vm.confirmarContrasena == '' ){
-              vm.mensajeConfirmarContrasena   = "Debes ingresar un valido para este campo";
+              vm.mensajeConfirmarContrasena   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.confirmarContrasena !=  vm.confirmarContrasena  ){
               vm.mensajeConfirmarContrasena   = "La confirmación no coincide con la contraseña";
               return;
+          }else if(vm.rol == undefined || vm.rol == '0' ){
+              vm.mensajeRol  = "Debes seleccionar un Rol ";
+              return;
           }
+
 
 
 
@@ -212,8 +225,8 @@
                     "email" : vm.email,
                     "pregunta":  vm.preguntaSeguridad,
                     "respuesta" :  vm.respuesta,
-                    "contrasena" :vm.contrasena,
-                    "confirmarContrasena" : vm.confirmarContrasena  
+                    "contrasena" :vm.contrasena,                   
+                    "rol" : vm.rol   
                     }        
              vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
@@ -237,7 +250,7 @@
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
-                     .title('Registrar usuario')
+                     .title('Actualizar usuario')
                      .textContent('Usuario actualizado')
                      .ariaLabel('Usuario actualizado')
                      .ok('Cerrar')                     
@@ -297,7 +310,7 @@
                     "pregunta":  vm.preguntaSeguridad,
                     "respuesta" :  vm.respuesta,
                     "contrasena" :vm.contrasena,
-                    "confirmarContrasena" : vm.confirmarContrasena  
+                    "rol" : vm.rol     
                     }      
              UsuarioServices.consultarUsuario(requestJson).then(function(data){
                 if(data.resultado[0].codRespuesta == "200") { 
@@ -313,14 +326,16 @@
 
                      vm.nombre1 = data.resultado[0].nombre1;
                      vm.nombre2 = data.resultado[0].nombre2;
-                     vm.apellido1 = data.resultado[0].apellido1;
+                     vm.apellido1 = data.resultado[0].apellido1;                  
                      vm.apellido2 =  data.resultado[0].apellido2;
                      vm.telefonoFijo = data.resultado[0].telefonoFijo;
                      vm.telefonoMovil = data.resultado[0].telefonomovil;                    
                      vm.preguntaSeguridad = data.resultado[0].pregunta;
                      vm.respuesta = data.resultado[0].respuesta;
                      vm.contrasena = data.resultado[0].contrasena;
-                     vm.confirmarContrasena  = data.resultado[0].confirmarContrasena;
+                     vm.confirmarContrasena  =  data.resultado[0].contrasena;
+                     vm.rol  =  data.resultado[0].rol;
+
 
                      vm.DisabledEmail = true;
                      vm.DisabledConsultar = true; 
@@ -345,7 +360,7 @@
 
       function eliminarUsuario(){
             if(vm.email == undefined  || vm.email == ''){
-                   vm.mensajeRol = "Debes ingresar un email para consultar";
+                   vm.mensajeEmail = "Debes ingresar un email para consultar";
                    return;
              }       
 
@@ -359,8 +374,8 @@
                     "email" : vm.email,
                     "pregunta":  vm.preguntaSeguridad,
                     "respuesta" :  vm.respuesta,
-                    "contrasena" :vm.contrasena,
-                    "confirmarContrasena" : vm.confirmarContrasena  
+                    "contrasena" :vm.contrasena,            
+                    "rol" : vm.rol   
                     }      
              UsuarioServices.eliminarUsuario(requestJson).then(function(data){
                 debugger;
