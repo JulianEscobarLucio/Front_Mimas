@@ -22,43 +22,49 @@
 
 </head>
 <body >
-   <header>
+  <header>
    	  <div class="header">   
    	    <div class="nav">	     
    	 	 <ul id="nav">
-			<li class="subs"><a href="#">Mascotas</a>
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
                 <ul>
-				  <li><a href="#">Perdidos</a></li>
-				  <li><a href="#">Encontrados</a></li>
-				  <li><a href="#">En adopción</a></li>				  
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>				  
 				</ul>
 			</li>
 
 			</li>
-			<li class="subs"><a href="#s1">Fundaciones</a>
-				<ul>
-					<li><a href="#">Información</a></li>
-					<li><a href="#">Miembros</a></li>
-					<li><a href="#">Donaciones</a></li>
-			    </ul>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
 			</li>
-			<li class="subs"><a href="#s2">Información de adopciones</a>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
 			<ul>
-				<li><a href="#">Proceso y requisito</a></li>			
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
 			</ul>
 			</li>
-			<li class="subs"><a href="#s2">Interes</a>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
 				<ul>
-					<li><a href="#">Blog</a></li>
+					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Cuidados de animales</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
 				</ul>
 			</li>
-			<li ><a class="inicio" href="../Login/Login.html">Iniciar sesión</a></li>
+			 <li class="subs"><a href="#s2">Administración</a>
+			  <ul>
+			    <li><a href="../Roles/Rol.html">Roles</a></li>
+			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+			  </ul>
+			</li>
+			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
-   </header>  
+   </header>   
+ 
    <div class="body"  ng-controller="registrarMascotaController as vm" id="dialogContainer" >
          <h1 class="titulo">Mascota</h1>
    	    <div class="row">   	    	
@@ -182,12 +188,18 @@
 	         <div class="form-group col-xs-3 col-sm-3"">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
 	         </div>
+	         <div class="form-group col-xs-3 col-sm-3  identificacion">	       
+	              <input type="text" class="form-control" ng-model="vm.Id2" ng-Disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionId2()" placeholder="Identificador">
+	           <p class="mensajeError"  ng-bind="vm.mensajeId2"></p>	
+	         </div>
 	         <div class="form-group col-xs-3 col-sm-3"">
 		            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
 	         </div>
-	         <div class="form-group col-xs-3 col-sm-3"">
+   	    </div>
+   	    <div class="row botones">
+   	       	  <div class="form-group col-xs-3 col-sm-3"">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminar()">Eliminar</button>
-	         </div>
+	         </div>   	    	
    	    </div>
    	 
         <md-content>       

@@ -241,10 +241,11 @@
                vm.telefonoFijo =  '';
                vm.telefonoMovil = ''; 
                vm.email = '';
-               vm.preguntaSeguridad = '';
+               vm.preguntaSeguridad = "1";
                vm.respuesta = '';
                vm.contrasena = '';
                vm.confirmarContrasena = '';
+                vm.rol = "0";
 
                 $mdDialog.show(
                   $mdDialog.alert()
@@ -397,11 +398,11 @@
                      vm.apellido2 =  "";
                      vm.telefonoFijo = "";
                      vm.telefonoMovil = "";                    
-                     vm.preguntaSeguridad = "";
+                     vm.preguntaSeguridad = "1";
                      vm.respuesta = "";
                      vm.contrasena = "";
                      vm.confirmarContrasena  = "";
- 
+                     vm.rol = "0";
                  
                      vm.DisabledEmail = false;
                      vm.DisabledConsultar = false; 

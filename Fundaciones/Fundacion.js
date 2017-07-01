@@ -36,6 +36,16 @@
         vm.msjDireccion = "";
         vm.fnUsuario = fnUsuario;
         vm.msjUsuario = "";
+        vm.funtionIdentificacion2 = funtionIdentificacion2;
+        vm.DisabledIdentificacion = false;
+
+
+
+        function funtionIdentificacion2(){
+            if(vm.identificacion2.length > 0){
+              vm.msjIdentificacion2 = "";
+            }
+        }
 
 
         
@@ -148,14 +158,15 @@
                       );
                       
                     
-                     vm.identificacion = "";
-                     vm.razonSocial = "";
-                     vm.telefono = "";
-                     vm.telefonoMovil = "", 
-                     vm.email = "",
-                     vm.direccion = "",
-                     vm.usuario = "",
-                     vm.tipoEntidad = ""
+                 vm.identificacion = "",
+                 vm.razonSocial = "",
+                 vm.telefono =  "",
+                 vm.telefonoMovil = "", 
+                 vm.email = "",
+                 vm.direccion = "",
+                 vm.usuario = "",
+                 vm.tipoEntidad = ""
+                 vm.identificacion2 = "";
                     	 
             }else{
                 $mdDialog.show(
@@ -233,20 +244,22 @@
                   .ok('Cerrar')                     
                  );
 
-              
-                  vm.identificacion = "",
-                  vm.razonSocial = "",
-                  vm.telefono = "",
-                  vm.telefonoMovil = "", 
-                  vm.email = "",
-                  vm.direccion = "",
-                  vm.usuario = ""
+                 vm.identificacion = "",
+                 vm.razonSocial = "",
+                 vm.telefono =  "",
+                 vm.telefonoMovil = "", 
+                 vm.email = "",
+                 vm.direccion = "",
+                 vm.usuario = "",
+                 vm.tipoEntidad = ""
+                 vm.identificacion2 = "";
 
-    
-                //vm.registrarDisabled = false;
-                //vm.consultarDisabled = false; 
-                //vm.actualizarDisabled = true;
-                //vm.eliminarDisabled = true;
+                vm.DisabledIdentificacion2  = false;
+                vm.DisabledIdentificacion  = false;
+                vm.registrarDisabled = false;
+                vm.consultarDisabled = false; 
+                vm.actualizarDisabled = true;
+                vm.eliminarDisabled = true;
                 
                 
            }else{
@@ -268,14 +281,14 @@
 
     function consultarFundacion(){
 
-        if(vm.identificacion == undefined || vm.identificacion == '' ){
-           vm.msjIdentificacion   = "Debes ingresar una identificación";
+        if(vm.identificacion2 == undefined || vm.identificacion2 == '' ){
+           vm.msjIdentificacion2   = "Debes ingresar una identificación";
            return;
         }
    
 
        var requestJson = {
-                    "identificacion" : vm.identificacion,
+                    "identificacion" : vm.identificacion2,
                     "razonSocial" : vm.razonSocial,                    
                     "telefonoFijo" : vm.telefono,
                     "telefonoMovil" : vm.telefonoMovil,
@@ -299,7 +312,7 @@
                    .ok('Cerrar')                     
                   );
 
-                 vm.identificacion = data.resultado[0].identificacion,
+                 vm.identificacion = vm.identificacion2,
                  vm.razonSocial = data.resultado[0].razonSocial,
                  vm.telefono =  data.resultado[0].telefonoFijo,
                  vm.telefonoMovil = data.resultado[0].telefonoMovil, 
@@ -307,12 +320,14 @@
                  vm.direccion = data.resultado[0].direccion,
                  vm.usuario = data.resultado[0].usuario,
                  vm.tipoEntidad = data.resultado[0].tipoEntidad
+               
 
-
-                 //vm.actualizarDisabled = false;
-                 //vm.eliminarDisabled = false;
-                 //vm.registrarDisabled = true;
-                 //vm.consultarDisabled = true; 
+                 vm.DisabledIdentificacion2  = true;
+                 vm.DisabledIdentificacion  = true;
+                 vm.actualizarDisabled = false;
+                 vm.eliminarDisabled = false;
+                 vm.registrarDisabled = true;
+                 vm.consultarDisabled = true; 
 
             }else {
 
@@ -359,19 +374,22 @@
                    .ok('Cerrar')                     
                   );
 
-                 vm.identificacion = data.resultado[0].identificacion,
-                 vm.razonSocial = data.resultado[0].razonSocial,
-                 vm.telefono =  data.resultado[0].telefonoFijo,
-                 vm.telefonoMovil = data.resultado[0].telefonoMovil, 
-                 vm.email = data.resultado[0].email,
-                 vm.direccion = data.resultado[0].direccion,
-                 vm.usuario = data.resultado[0].usuario,
-                 vm.tipoEntidad = data.resultado[0].tipoEntidad  
-                 
-                 //vm.registrarDisabled = false;
-                 //vm.consultarDisabled = false; 
-                 //vm.actualizarDisabled = true;
-                 //vm.eliminarDisabled = true; 
+                 vm.identificacion = "",
+                 vm.razonSocial = "",
+                 vm.telefono =  "",
+                 vm.telefonoMovil = "", 
+                 vm.email = "",
+                 vm.direccion = "",
+                 vm.usuario = "",
+                 vm.tipoEntidad = ""
+                 vm.identificacion2 = "";
+
+                 vm.DisabledIdentificacion2  = false;
+                 vm.DisabledIdentificacion  = false;
+                 vm.registrarDisabled = false;
+                 vm.consultarDisabled = false; 
+                 vm.actualizarDisabled = true;
+                 vm.eliminarDisabled = true; 
 
             }else {
                   $mdDialog.show(

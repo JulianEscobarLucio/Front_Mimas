@@ -44,7 +44,7 @@
         vm.confirmarContrasena = '';    
 
 
-        function FunctionPreguntaSeguridad(){
+        function functionPreguntaSeguridad(){
             if(vm.preguntaSeguridad != undefined || vm.preguntaSeguridad != '1' ){
               vm.mensajePreguntaSeguridad   = "";
               return;
@@ -114,14 +114,6 @@
         }
 
 
-        function functionPreguntaSeguridad(){
-            if(vm.preguntaSeguridad.length > 0){
-              vm.mensajePreguntaSeguridad= "";
-            }     
-
-        }
-
-
         function functionRespuesta(){
             if(vm.respuesta.length > 0){
               vm.mensajeRespuesta= "";
@@ -173,8 +165,8 @@
           }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
               vm.mensajeEmail   = "El correo no es válido";
               return;
-          }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '' ){
-              vm.mensajePreguntaSeguridad   = "Debes ingresar un válido para este campo";
+          }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '1' ){
+              vm.mensajePreguntaSeguridad   = "Debes seleccionar una opción valida";
               return;
           }else if(vm.respuesta == undefined || vm.respuesta == '' ){
               vm.mensajeRespuesta   = "Debes ingresar un válido para este campo";
@@ -203,8 +195,7 @@
                     "email" : vm.email,
                     "pregunta":  vm.preguntaSeguridad,
                     "respuesta" :  vm.respuesta,
-                    "contrasena" :vm.contrasena,
-                    "confirmarContrasena" : vm.confirmarContrasena  
+                    "contrasena" :vm.contrasena         
                     }        
              vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
@@ -219,7 +210,7 @@
                vm.telefonoFijo =  '',
                vm.telefonoMovil = '', 
                vm.email = '',
-               vm.preguntaSeguridad = '',
+               vm.preguntaSeguridad = '1',
                vm.respuesta = '',
                vm.contrasena = '',
                vm.confirmarContrasena = '',

@@ -10,7 +10,7 @@
 
     function registrarMascotaController($scope, $mdDialog,registarMascotaServices) {
         var vm = this;
-        vm.FechaN= new Date();
+        vm.FechaN = "";
         vm.isOpen = false;
 
              
@@ -41,6 +41,7 @@
         vm.mensajepersonalidad = "";
         vm.mensajeEstadoSalud = "";
         vm.functionId = functionId;
+         vm.functionId2 = functionId2;
         vm.functionNombre = functionNombre;
         vm.functionResponsable = functionResponsable;
         vm.functionEspecie = functionEspecie;
@@ -63,8 +64,11 @@
 
 
  
-
-
+      function functionId2(){
+             if(vm.Id2.length > 0){
+               vm.mensajeId2 ="";
+             }
+        }
 
         
 
@@ -257,9 +261,7 @@
                    vm.mensajeEstadoSalud = "Debes ingresar un dato válido para este campo";
                     return;
               }    
-          
   
-
           var requestJson = {
                     "id" : vm.Id,
                     "nombre" : vm.nombre,
@@ -326,7 +328,7 @@
 
 
         function actualizar(){ 
-if(vm.Id == undefined  || vm.Id  == ''){
+             if(vm.Id == undefined  || vm.Id  == ''){
                    vm.mensajeId = "Debes ingresar un dato válido para este campo";
                    return;
               }
@@ -447,24 +449,24 @@ if(vm.Id == undefined  || vm.Id  == ''){
                        .ariaLabel('!Se actualizó la mascota exitósamente¡')
                        .ok('Cerrar')                     
                       );
-
-                    vm.Id = "",
-                    vm.nombre = "",
-                    vm.IdResponsable  = "",
-                    vm.Especie = "",
-                    vm.Raza = "",
-                    vm.Genero = "",
-                    vm.Edad = "",
-                    vm.Tamano = "",
-                    vm.Estado = "",
-                    vm.Caracteristicas = "",
-                    vm.Vacunas = "",
-                    vm.FechaN = "",
-                    vm.Senales = "",
-                    vm.Color = "",
-                    vm.Colorojos = "",
-                    vm.Personalidad = "",
-                    vm.EstadoSalud   = "" 
+                    vm.Id2 = "";
+                    vm.Id = "";
+                    vm.nombre = "";
+                    vm.IdResponsable  = "";
+                    vm.Especie = "";
+                    vm.Raza = "";
+                    vm.Genero = "";
+                    vm.Edad = "";
+                    vm.Tamano = "";
+                    vm.Estado = "";
+                    vm.Caracteristicas = "";
+                    vm.Vacunas = "";
+                    vm.FechaN = "";
+                    vm.Senales = "";
+                    vm.Color = "";
+                    vm.Colorojos = "";
+                    vm.Personalidad = "";
+                    vm.EstadoSalud   = ""; 
  
          
                      vm.idDisabled = false;
@@ -488,14 +490,14 @@ if(vm.Id == undefined  || vm.Id  == ''){
 
 
         function consultar(){
-            if(vm.Id == undefined  || vm.Id  == ''){
-                   vm.mensajeId = "Debes ingresar un id para consultar";
+            if(vm.Id2 == undefined  || vm.Id2  == ''){
+                   vm.mensajeId2 = "Debes ingresar un id para consultar";
                    return;
              }
        
 
            var requestJson = {
-                     "id" : vm.Id,
+                     "id" : vm.Id2,
                     "nombre" : vm.nombre,
                     "idResponsable": vm.IdResponsable ,
                     "especie" : vm.Especie,
@@ -520,11 +522,11 @@ if(vm.Id == undefined  || vm.Id  == ''){
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Consultar Mascota')
-                       .textContent('Masocta consultada')
+                       .textContent('Mascota consultada')
                        .ariaLabel('Mascota consultada')
                        .ok('Cerrar')                     
                       );
-
+                    vm.Id = vm.Id2;
                     vm.nombre = data.resultado[0].nombre,
                     vm.IdResponsable  = data.resultado[0].idResponsable,
                     vm.Especie = data.resultado[0].especie,
@@ -539,7 +541,9 @@ if(vm.Id == undefined  || vm.Id  == ''){
                     vm.Color = data.resultado[0].color,
                     vm.Colorojos = data.resultado[0].colorOjos,
                     vm.Personalidad = data.resultado[0].personalidad,
-                    vm.EstadoSalud   = data.resultado[0].estadoSalud,   
+                    vm.EstadoSalud   = data.resultado[0].estadoSalud,  
+
+                    vm.Id2 = ""; 
                      vm.idDisabled = true;
                      vm.actualizarDisabled = false;
                      vm.eliminarDisabled = false;

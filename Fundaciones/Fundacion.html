@@ -30,48 +30,53 @@
    	  <div class="header">   
    	    <div class="nav">	     
    	 	 <ul id="nav">
-			<li class="subs"><a href="#">Mascotas</a>
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
                 <ul>
-				  <li><a href="#">Perdidos</a></li>
-				  <li><a href="#">Encontrados</a></li>
-				  <li><a href="#">En adopción</a></li>				  
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>				  
 				</ul>
 			</li>
 
-		     <li class="subs"><a href="#">Fundaciones</a>
-				<ul>
-					<li><a href="#">Información</a></li>
-					<li><a href="#">Miembros</a></li>
-					<li><a href="#">Donaciones</a></li>
-			    </ul>
 			</li>
-			<li class="subs"><a href="#s2">Información de adopciones</a>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
+			</li>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
 			<ul>
-				<li><a href="#">Proceso y requisito</a></li>			
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
 			</ul>
 			</li>
-			<li class="subs"><a href="#s2">Interes</a>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
 				<ul>
-					<li><a href="#">Blog</a></li>
+					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Cuidados de animales</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
 				</ul>
 			</li>
-			<li ><button class="inicio" href="../Login/Login.html">Iniciar sesión</button></li>
+			 <li class="subs"><a href="#s2">Administración</a>
+			  <ul>
+			    <li><a href="../Roles/Rol.html">Roles</a></li>
+			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+			  </ul>
+			</li>
+			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
-   </header> 
-
+   </header>   
 
    <div class="body"  ng-controller="fundacionController as vm" id="dialogContainer" >
 
-        <h1 class="titulo">Registro Fundaciones</h1>
+        <h1 class="titulo">Fundaciones</h1>
 
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Identificación fundación*</label>
-	           <input type="text" class="form-control" maxlength="15" ng-model="vm.identificacion" ng-keyup="vm.fnIdentificacion()">
+	           <input type="text" class="form-control" maxlength="15" ng-model="vm.identificacion" ng-keyup="vm.fnIdentificacion()"  ng-disabled="vm.DisabledIdentificacion">
 	           <p class="mensajeError"  ng-bind="vm.msjIdentificacion" ></p>
 	         </div>
 
@@ -127,7 +132,7 @@
                 </select>
 	         </div>
    	    </div>
-
+        <br>
    	    <div class="row botones">
    	    	 <div class="form-group col-xs-3 col-sm-3">
 	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrarFundacion()">Ingresar</button>
@@ -135,14 +140,19 @@
 	         <div class="form-group col-xs-3 col-sm-3"">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultarFundacion()">Consultar</button>
 	         </div>
+	         <div class="form-group col-xs-3 col-sm-3  identificacion">	       
+	              <input type="text" class="form-control" maxlength="15" ng-model="vm.identificacion2" ng-keyup="vm.funtionIdentificacion2()" placeholder="Identificación">
+	              <p class="mensajeError"  ng-bind="vm.msjIdentificacion2" ></p>	
+	         </div>
 	         <div class="form-group col-xs-3 col-sm-3"">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizarFundacion()">Actualizar</button>
-	         </div>
-	         <div class="form-group col-xs-3 col-sm-3"">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminarFundacion()">Eliminar</button>
-	         </div>
+	         </div>	      
    	    </div>
-   	 
+   	    <div class="row botones">
+   	    	<div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminarFundacion()">Eliminar</button>
+	         </div>   	    	
+   	    </div> 	 
         <md-content>       
           
             <div ng-if="status">

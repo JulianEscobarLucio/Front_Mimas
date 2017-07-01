@@ -106,7 +106,7 @@
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	            <label for="usr">Pregunta de seguridad*</label>
-                <select class="form-control" ng-model="vm.preguntaSeguridad" >
+                <select class="form-control" ng-model="vm.preguntaSeguridad" ng-change="vm.functionPreguntaSeguridad()">
                   <option value="1" ng-selected="true">Seleccione una pregunta...</option>
                   <option value="2">¿Cuál es su comida favorita?</option>
                   <option value="3">¿Cuál es el segundo nombre de su padre?</option>
@@ -118,7 +118,7 @@
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Respuesta*</label>
-	           <input type="text" class="form-control" ng-model="vm.respuesta" maxlength="30">
+	           <input type="text" class="form-control" ng-model="vm.respuesta" maxlength="30" ng-keyup="vm.functionRespuesta()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeRespuesta"></p>         
 	         </div>
    	    </div>
