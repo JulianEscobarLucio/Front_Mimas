@@ -231,8 +231,8 @@
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
                      .title('Registrar usuario')
-                     .textContent('Usuario no registrado, faltan datos por llenar')
-                     .ariaLabel('Usuario no registrado')
+                     .textContent('El usuario no ha sido registrado, Usuario existente')
+                     .ariaLabel('Usuario existente')
                      .ok('Cerrar')
                      
                );
