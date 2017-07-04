@@ -18,7 +18,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 <link rel="stylesheet" href="../Menu.css">
-<link rel="stylesheet" href="Login.css">
+<link rel="stylesheet" href="Home_publico.css">
 </head>
 <body >
    <header>
@@ -53,60 +53,24 @@
 					<li><a href="#">Cuidados de animales</a></li>
 				</ul>
 			</li>
-			<li ><a class="inicio" href="Login.html">Iniciar sesión</a><a id="redirect" style="display: none;" href="../Home_Transaccional/Home_transaccional.html"></a></li>
+			<li ><a class="inicio" href="../Login/Login.html">Iniciar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
    </header>  
-   <div class="body"  ng-controller="loginController as vm" id="dialogContainer" >
-         <h1 class="titulo">Iniciar sesión</h1>
-   	    <div class="row">   	    	
-	   	     <div class="form-group col-xs-12 col-sm-12">
-	           <label for="usr">Usuario*</label>
-	           <input type="text" class="form-control" ng-model="vm.usuario"  ng-keyup="vm.functionUsuario()">
-	             <p class="mensajeError"  ng-bind="vm.mensajeUsuario" ></p>
-	         </div>
-   	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-12 col-sm-12">
-	           <label for="usr">Contraseña*</label>
-	           <input type="password" class="form-control" ng-model="vm.contrasena"  ng-keyup="vm.functionContrasena()">
-	            <p class="mensajeError"  ng-bind="vm.mensajeContrasena" ></p>
-	         </div>
-   	    </div>   	  
-   	    <div class="row botones">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <button type="button" class="btn btn-success" ng-click="vm.cancelar()">Cancelar</button>
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	            <button type="button" class="btn btn-success" ng-click="vm.ingresar()">Aceptar</button>
-	         </div>
-   	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-12 col-sm-12">
-	           <a href="#">¿Olvidaste tu cuenta?</a>	           
-	         </div>
-   	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-12 col-sm-12">
-	           <a href="../Registrar_usuaro/Registrar_usuario.html">Registrate</a>	           
-	         </div>
-   	    </div>     	 
-        <md-content>          
-            <div ng-if="status">
-               <br/>
-             
-            </div>
-         </md-content>   
-   </div>  
+   <div class="body"  ng-controller="hotmepublicoController as vm" id="dialogContainer" >
+         
+   	   
+   	    
+   	    
 
+</div>
    <footer>
    	<div class="footer"></div>
    </footer> 
  <!--  <script src="../angular.min.js"></script>-->
-	<script src="../angular-route.min.js"></script>	
-	<script src="Login.js"></script>
-	<script src="Login.service.js"></script>
+	<script src="../angular-route.min.js"></script>
+	<script src="Home_publico.js"></script>
 	<!--
 	<script src="prueba.js"></script>-->
 </body>

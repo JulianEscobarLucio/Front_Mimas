@@ -24,6 +24,7 @@
         vm.mensajeFormularios = "";
         vm.mensajeFuncionalidades = "";
         vm.functionRol = functionRol;
+        vm.functionRol2 = functionRol2;
         vm.functionNombre = functionNombre;
         vm.functionDescripcion = functionDescripcion;
         vm.functionFormularios = functionFormularios;
@@ -33,6 +34,12 @@
         function functionRol(){
              if(vm.idRol.length > 0){
                vm.mensajeRol ="";
+             }
+        }
+
+          function functionRol2(){
+             if(vm.idRol2.length > 0){
+               vm.mensajeRol2 ="";
              }
         }
 
@@ -181,7 +188,8 @@
                        .ariaLabel('!Se actualizó el Rol exitósamente¡')
                        .ok('Cerrar')                     
                       );
-
+                    
+                     vm.idRol2 = "",
                      vm.idRol = "",
                      vm.nombre = "",
                      vm.descripcion = "",
@@ -210,14 +218,14 @@
 
 
         function consultar(){
-            if(vm.idRol == undefined  || vm.idRol  == ''){
-                   vm.mensajeRol = "Debes ingresar un id para consultar";
+            if(vm.idRol2 == undefined  || vm.idRol2  == ''){
+                   vm.mensajeRol2 = "Debes ingresar un id para consultar";
                    return;
              }
        
 
            var requestJson = {
-                    "idRol" : vm.idRol,
+                    "idRol" : vm.idRol2,
                     "nombre" : vm.nombre,
                     "descripcion" : vm.descripcion,
                     "formularios" : vm.formularios,
@@ -236,7 +244,7 @@
                        .ok('Cerrar')                     
                       );
  
-                     vm.idRol = data.resultado[0].idRol,
+                     vm.idRol = vm.idRol2,
                      vm.nombre = data.resultado[0].nombre,
                      vm.descripcion =  data.resultado[0].descripcion,
                      vm.formularios = data.resultado[0].formularios, 
@@ -287,17 +295,20 @@
                        .ariaLabel('!Rol eliminado exitósamente¡')
                        .ok('Cerrar')                     
                       );
- 
-                     vm.idRol = data.resultado[0].idRol,
-                     vm.nombre = data.resultado[0].nombre,
-                     vm.descripcion =  data.resultado[0].descripcion,
-                     vm.formularios = data.resultado[0].formularios, 
-                     vm.funcionalidades = data.resultado[0].funcionalidades,   
+   
                      vm.idDisabled = false;
                      vm.registrarDisabled = false;
                      vm.consultarDisabled = false; 
                      vm.actualizarDisabled = true;
                      vm.eliminarDisabled = true; 
+
+
+                    vm.idRol2 = '',
+                    vm.idRol = '';
+                    vm.nombre = '';
+                    vm.descripcion ='';
+                    vm.formularios = '';
+                    vm.funcionalidades = ''; 
 
                 }else {
                       $mdDialog.show(

@@ -18,48 +18,53 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 <link rel="stylesheet" href="../Menu.css">
-<link rel="stylesheet" href="Registrar_usuario.css">
+<link rel="stylesheet" href="Usuario.css">
 </head>
 <body >
    <header>
    	  <div class="header">   
    	    <div class="nav">	     
    	 	 <ul id="nav">
-			<li class="subs"><a href="#">Mascotas</a>
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
                 <ul>
-				  <li><a href="#">Perdidos</a></li>
-				  <li><a href="#">Encontrados</a></li>
-				  <li><a href="#">En adopción</a></li>				  
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>				  
 				</ul>
 			</li>
 
 			</li>
-			<li class="subs"><a href="#s1">Fundaciones</a>
-				<ul>
-					<li><a href="#">Información</a></li>
-					<li><a href="#">Miembros</a></li>
-					<li><a href="#">Donaciones</a></li>
-			    </ul>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
 			</li>
-			<li class="subs"><a href="#s2">Información de adopciones</a>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
 			<ul>
-				<li><a href="#">Proceso y requisito</a></li>			
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
 			</ul>
 			</li>
-			<li class="subs"><a href="#s2">Interes</a>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
 				<ul>
-					<li><a href="#">Blog</a></li>
+					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Cuidados de animales</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
 				</ul>
 			</li>
-			<li ><a class="inicio" href="../Login/Login.html">Iniciar sesión</a></li>
+			 <li class="subs"><a href="#s2">Administración</a>
+			  <ul>
+			    <li><a href="../Roles/Rol.html">Roles</a></li>
+			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+			  </ul>
+			</li>
+			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
-   </header>  
-   <div class="body"  ng-controller="registrarUsuarioController as vm" id="dialogContainer" >
-         <h1 class="titulo">Registrar usuario</h1>
+   </header>   
+   <div class="body"  ng-controller="UsuarioController as vm" id="dialogContainer" >
+         <h1 class="titulo">Usuario</h1>
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Primer nombre*</label>
@@ -96,22 +101,28 @@
 	             <p class="mensajeError"  ng-bind="vm.mensajeTelefonoMovil"></p>
 	         </div>
    	    </div>
-   	    <div class="row">
+   	   	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Correo electrónico*</label>
-	           <input type="text" class="form-control" ng-model="vm.email" maxlength="30" ng-keyup="vm.functionEmail()">
-	           <p class="mensajeError"  ng-bind="vm.mensajeEmail"></p>	        
-	         </div>	         
+	            <label for="usr">Rol*</label>
+                <select class="form-control" ng-model="vm.rol"  ng-change="vm.FunctionRol()" >
+                  <option value="0" ng-selected="true">Seleccione un rol...</option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Administrador de la fundación</option>
+                  <option value="3">Colaborador</option>
+                  <option value="4">Visitante</option>                
+                </select>	         
+	            <p class="mensajeError"  ng-bind="vm.mensajeRol"></p>	         
+	         </div>	     
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	            <label for="usr">Pregunta de seguridad*</label>
-                <select class="form-control" ng-model="vm.preguntaSeguridad" ng-change="vm.functionPreguntaSeguridad()">
+                <select class="form-control" ng-model="vm.preguntaSeguridad"  ng-change="vm.FunctionPreguntaSeguridad()" >
                   <option value="1" ng-selected="true">Seleccione una pregunta...</option>
                   <option value="2">¿Cuál es su comida favorita?</option>
                   <option value="3">¿Cuál es el segundo nombre de su padre?</option>
-                  <option value="4">¿Cuál es su Canción preferida?</option>          
-                  <option value="5">¿Cuál es el nombre de su mascota?</option>	
+                  <option value="4">¿Cuál es su Canción preferida?</option>
+                   <option value="5">¿Cuál es el nombre de su mascota?</option>	
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajePreguntaSeguridad"></p>	         
 	         </div>
@@ -134,21 +145,27 @@
 	         </div>
    	    </div>
    	    <div class="row botones">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <button type="button" class="btn btn-success">Cancelar</button>
+   	    	 <div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledConsultar" ng-click="vm.consultarUsuario()" >Consultar</button>	
+	         </div>              
+	         <div class="form-group col-xs-3 col-sm-3  email">	       
+	              <input type="text" class="form-control" style="" placeholder="Correo electrónico" ng-model="vm.email" ng-disabled="vm.DisabledEmail" maxlength="30" ng-keyup="vm.functionEmail()">
+	              <p class="mensajeError"  ng-bind="vm.mensajeEmail"></p>	
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
+	         <div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledActualizar" ng-click="vm.actualizarUsuario()">Actualizar</button>
 	         </div>
-   	    </div>
-   	 
+	         <div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledEliminar"  ng-click="vm.eliminarUsuario()">Eliminar</button>
+	         </div>
+   	    </div>   	 
         <md-content>       
           
             <div ng-if="status">
                <br/>
-               <b layout="row" layout-align="center center" class="md-padding">
+            <!--   <b layout="row" layout-align="center center" class="md-padding">
                   {{status}}
-               </b>
+               </b>-->
             </div>
          </md-content>   
        </div>
@@ -159,8 +176,8 @@
    </footer> 
  <!--  <script src="../angular.min.js"></script>-->
 	<script src="../angular-route.min.js"></script>
-	<script src="Registrar_usuario.js"></script>
-	<script src="Registrar_usuario.service.js"></script>
+	<script src="Usuario.js"></script>
+	<script src="Usuario.service.js"></script>
 	<!--
 	<script src="prueba.js"></script>-->
 </body>

@@ -7,9 +7,8 @@
 }
 
 
-.botones{
-	margin-left: 13%;
-    margin-top: 5%;
+.botones {
+    margin-left: -2%;
 }
 
 .btn{
@@ -43,10 +42,10 @@
 }
 
 footer{
-     margin-top: 6.4%;
-   }  
+     margin-top: 8.5%;
+   } 
 
-   .identificacion{
-    margin-left: -60px;
+.identificacion{
+    margin-left: -76px;
     width: 202px;
-}
+} 
