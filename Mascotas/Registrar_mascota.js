@@ -55,10 +55,60 @@
         vm.functionColorojos = functionColorojos;
         vm.functionPersonalidad = functionPersonalidad;
         vm.functionEstadoSalud = functionEstadoSalud;
+        vm.showConfirm = showConfirm;
+        vm.cancelar = cancelar;
+        vm.DisabledCancelar = true;
+        vm.IdResponsable = localStorage.getItem("user"); 
+
+
+
+      function cancelar(){
+        vm.consultarDisabled = false; 
+        vm.actualizarDisabled = true;
+        vm.DisabledCancelar = true;
+        vm.eliminarDisabled = true;
+        vm.idDisabled = false;
+        vm.registrarDisabled = false;
+        
+        vm.Id2 = "";
+        vm.Id = "";
+        vm.nombre = "";
+        vm.IdResponsable  = "";
+        vm.Especie = "";
+        vm.Raza = "";
+        vm.Genero = "";
+        vm.Edad = "";
+        vm.Tamano = "";
+        vm.Estado = "",
+        vm.Caracteristicas = "";
+        vm.Vacunas = "";
+        vm.FechaN = "";
+        vm.Senales = "";
+        vm.Color = "";
+        vm.Colorojos = "";
+        vm.Personalidad = "";
+        vm.EstadoSalud   = "" 
+
+       } 
 
         
 
+     function showConfirm (ev) {
+          // Appending dialog to document.body to cover sidenav in docs app
+          var confirm = $mdDialog.confirm()
+                .title('Vas a eliminar una mascota')
+                .textContent('Estás seguro que vas a eliminar esta mascota.')
+                .ariaLabel('Lucky day')
+                .targetEvent(ev)
+                .ok('Aceptar')
+                .cancel('Cancelar');
 
+          $mdDialog.show(confirm).then(function() {
+            vm.eliminar();
+          }, function() {
+            //$scope.status = 'You decided to keep your debt.';
+          });
+        };
 
 
  
@@ -545,6 +595,7 @@
                      vm.idDisabled = true;
                      vm.actualizarDisabled = false;
                      vm.eliminarDisabled = false;
+                      vm.DisabledCancelar = false;
 
                      vm.registrarDisabled = true;
                      vm.consultarDisabled = true; 

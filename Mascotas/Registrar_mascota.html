@@ -101,19 +101,15 @@
 		  	<div  class="form-group col-xs-6 col-sm-6"  flex-gt-xs>
 		      <label for="usr">Fecha de nacimiento*</label>
 		      <md-datepicker ng-model="vm.FechaN" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
-		    </div>
-	         <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Edad</label>
-	           <input type="text" class="form-control" ng-model="vm.Edad">
-	         </div>
+		    </div>	
    	    </div>
    	    <div class="row">
    	          <div class="form-group col-xs-6 col-sm-6">
 	            <label for="usr">Género*</label>
                 <select class="form-control" ng-model="vm.Genero"  ng-change="vm.functionGenero()" >
                   <option value="0" ng-selected="true">Seleccione un genero...</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>                              
+                  <option value="1">Macho</option>
+                  <option value="2">Hembra</option>                              
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajeGenero"></p>
 	         </div>
@@ -201,7 +197,10 @@
    	    </div>
    	    <div class="row botones">
    	       	  <div class="form-group col-xs-3 col-sm-3"">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminar()">Eliminar</button>
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.showConfirm($event)">Eliminar</button>
+	         </div> 
+	          <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledCancelar" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>   	    	
    	    </div>   	 
         <md-content>       

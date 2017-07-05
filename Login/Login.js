@@ -1,6 +1,5 @@
 (function() {
     'use strict';
-
     angular
     .module('starter',['ngMaterial'])
     .controller('loginController', loginController);
@@ -55,7 +54,8 @@
                       
             loginServices.login(requestJson).then(function(data){
             debugger;
-            if(data.resultado[0].codRespuesta == "200") {                
+            if(data.resultado[0].codRespuesta == "200") {  
+               localStorage.setItem("user", vm.usuario);              
                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
