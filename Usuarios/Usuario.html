@@ -17,8 +17,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="../librerias/ngMask.js"></script>
 <link rel="stylesheet" href="../Menu.css">
 <link rel="stylesheet" href="Usuario.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body >
    <header>
@@ -92,12 +94,12 @@
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Télefono fijo</label>
-	           <input type="text" class="form-control" ng-model="vm.telefonoFijo" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="7" ng-keyup="vm.functionTelefonoFijo()">
+	           <input type="text" class="form-control" ng-model="vm.telefonoFijo" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="9" ng-keyup="vm.functionTelefonoFijo()" mask="999 99 99">
 	           <p class="mensajeError"  ng-bind="vm.mensajeTelefonoFijo"></p>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Télefono movil</label>
-	           <input type="text"  ng-keyup="vm.functionTelefonoMovil()" class="form-control" ng-model="vm.telefonoMovil" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  maxlength="10" >
+	           <input type="text"  ng-keyup="vm.functionTelefonoMovil()" class="form-control" ng-model="vm.telefonoMovil" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  mask="999 999 99 99">
 	             <p class="mensajeError"  ng-bind="vm.mensajeTelefonoMovil"></p>
 	         </div>
    	    </div>
@@ -112,7 +114,14 @@
                   <option value="4">Visitante</option>                
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajeRol"></p>	         
-	         </div>	     
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6">	         	
+	            <label>Estado*</label>
+                  <md-radio-group ng-model="vm.estado" ng-change="vm.functionEstado($event)">
+				      <md-radio-button value="1" class="md-primary">Activo</md-radio-button>
+				      <md-radio-button value="2">Inactivo</md-radio-button>				
+                  </md-radio-group>	    
+	         </div>		     
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
@@ -122,7 +131,7 @@
                   <option value="2">¿Cuál es su comida favorita?</option>
                   <option value="3">¿Cuál es el segundo nombre de su padre?</option>
                   <option value="4">¿Cuál es su Canción preferida?</option>
-                   <option value="5">¿Cuál es el nombre de su mascota?</option>	
+                  <option value="5">¿Cuál es el nombre de su mascota?</option>	
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajePreguntaSeguridad"></p>	         
 	         </div>
@@ -131,6 +140,16 @@
 	           <input type="text" class="form-control" ng-model="vm.respuesta" maxlength="30" ng-keyup="vm.functionRespuesta()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeRespuesta"></p>         
 	         </div>
+   	    </div>
+   	    <div class="row">
+   	       <md-button class="md-fab">
+            <md-tooltip
+              md-direction="top">
+              <p>Tu contraseña debe tener entre 8 y 12 caracteres. Debe contener al menos una letra en mayúscula y una en minúscula.</p><br>
+              <p> Debe tener al menos un número del 0 al 9 y caracteres especiales.<br>
+            </md-tooltip>
+            <md-icon md-font-icon="face"></md-icon>
+          </md-button>   	    	
    	    </div>
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
@@ -156,7 +175,7 @@
 	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledActualizar" ng-click="vm.actualizarUsuario()">Actualizar</button>
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledEliminar"  ng-click="vm.eliminarUsuario()">Eliminar</button>
+	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledCancelar" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>
    	    </div>   	 
         <md-content>       

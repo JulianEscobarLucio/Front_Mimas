@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('starter',['ngMaterial'])
+    .module('starter',['ngMaterial','ngMask'])
     .controller('registrarUsuarioController', registrarUsuarioController);
  //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
