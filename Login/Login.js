@@ -9,8 +9,43 @@
         var vm = this;
         vm.ingresar = ingresar;
         vm.cancelar = cancelar;
+        vm.mensajeUsuario = '';
+        vm.mensajeContrasena = '';
+        vm.functionUsuario = functionUsuario ;
+        vm.functionContrasena = functionContrasena;
 
-      function ingresar() { 
+
+
+      function functionUsuario(){
+        if (vm.usuario.length > 0) {
+          vm.mensajeUsuario = '';
+        }
+
+      }
+
+      function functionContrasena(){
+         if (vm.contrasena.length > 0) {
+          vm.mensajeContrasena = '';
+        }
+
+      }
+
+
+      function ingresar() {
+
+            if(vm.usuario == undefined || vm.usuario == ''){
+               vm.mensajeUsuario = 'Ingrese un valor válido';
+               return;
+            }
+
+
+            if(vm.contrasena == undefined || vm.contrasena == ''){
+               vm.mensajeContrasena = 'Ingrese un valor válido';
+               return;
+            }
+
+
+
                  var requestJson = {
                     "email" : vm.usuario,
                     "contrasena" : vm.contrasena
@@ -25,7 +60,7 @@
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
-                     .title('Registrar usuario')
+                     .title('Ingresar')
                      .textContent('Usuario valido')
                      .ariaLabel('Usuario registrado')
                      .ok('Cerrar')                     
@@ -39,7 +74,7 @@
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
-                     .title('Registrar usuario')
+                     .title('Ingresar')
                      .textContent('Usuario no valido')
                      .ariaLabel('Usuario no registrado')
                      .ok('Cerrar')

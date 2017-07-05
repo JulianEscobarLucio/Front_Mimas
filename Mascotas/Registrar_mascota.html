@@ -8,157 +8,207 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="../Menu.css">
+<link rel="stylesheet" href="Mascota.css">
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="../jquery-3.2.1.min.js" ></script>
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
-<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-<link rel="stylesheet" href="../Menu.css">
-<link rel="stylesheet" href="Mascota.css">
+
 </head>
 <body >
-   <header>
+  <header>
    	  <div class="header">   
    	    <div class="nav">	     
    	 	 <ul id="nav">
-			<li class="subs"><a href="#">Mascotas</a>
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
                 <ul>
-				  <li><a href="#">Perdidos</a></li>
-				  <li><a href="#">Encontrados</a></li>
-				  <li><a href="#">En adopción</a></li>				  
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>  
 				</ul>
 			</li>
 
 			</li>
-			<li class="subs"><a href="#s1">Fundaciones</a>
-				<ul>
-					<li><a href="#">Información</a></li>
-					<li><a href="#">Miembros</a></li>
-					<li><a href="#">Donaciones</a></li>
-			    </ul>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
 			</li>
-			<li class="subs"><a href="#s2">Información de adopciones</a>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
 			<ul>
-				<li><a href="#">Proceso y requisito</a></li>			
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
 			</ul>
 			</li>
-			<li class="subs"><a href="#s2">Interes</a>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
 				<ul>
-					<li><a href="#">Blog</a></li>
+					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Cuidados de animales</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
 				</ul>
 			</li>
-			<li ><a class="inicio" href="../Login/Login.html">Iniciar sesión</a></li>
+			 <li class="subs"><a href="#s2">Administración</a>
+			  <ul>
+			    <li><a href="../Roles/Rol.html">Roles</a></li>
+			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+			  </ul>
+			</li>
+			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
-   </header>  
-   <div class="body"  ng-controller="registrarUsuarioController as vm" id="dialogContainer" >
+   </header> 
+ 
+   <div class="body"  ng-controller="registrarMascotaController as vm" id="dialogContainer" >
+
          <h1 class="titulo">Mascota</h1>
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Identificador*</label>
-	           <input type="text" class="form-control" ng-model="vm.Identificador">
+	           <input type="text" class="form-control" ng-model="vm.Id" ng-Disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionId()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeId"></p>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Nombre*</label>
-	           <input type="text" class="form-control" ng-model="vm.Nombre">
+	           <input type="text" class="form-control" ng-model="vm.nombre" ng-keyup="vm.functionNombre()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeNombre"></p>
 	         </div>
    	    </div>
    	    <div class="row">
+   	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Responsable*</label>
+	           <input type="text" class="form-control" ng-model="vm.IdResponsable" ng-keyup="vm.functionResponsable()" >
+	           <p class="mensajeError"  ng-bind="vm.mensajeResponsable"></p>
+	         </div>
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Especie*</label>
-	           <input type="text" class="form-control" ng-model="vm.Especie">
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Raza*</label>
-	           <input type="text" class="form-control" ng-model="vm.Raza">
-	         </div>
+	            <select class="form-control" ng-model="vm.Especie"  ng-change="vm.functionEspecie()" >
+                  <option value="0" ng-selected="true">Seleccione una especie...</option>
+                  <option value="1">Perro</option>
+                  <option value="2">Gato</option>                              
+                </select>	         
+	            <p class="mensajeError"  ng-bind="vm.mensajeEspecie"></p>	           
+	         </div>	
    	    </div>
    	     <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Género</label>
-	           <input type="text" class="form-control" ng-model="vm.Genero">
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+		  	<div  class="form-group col-xs-6 col-sm-6"  flex-gt-xs>
+		      <label for="usr">Fecha de nacimiento*</label>
+		      <md-datepicker ng-model="vm.FechaN" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
+		    </div>
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Edad</label>
 	           <input type="text" class="form-control" ng-model="vm.Edad">
 	         </div>
    	    </div>
    	    <div class="row">
+   	          <div class="form-group col-xs-6 col-sm-6">
+	            <label for="usr">Género*</label>
+                <select class="form-control" ng-model="vm.Genero"  ng-change="vm.functionGenero()" >
+                  <option value="0" ng-selected="true">Seleccione un genero...</option>
+                  <option value="1">Masculino</option>
+                  <option value="2">Femenino</option>                              
+                </select>	         
+	            <p class="mensajeError"  ng-bind="vm.mensajeGenero"></p>
+	         </div>
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Tamaño*</label>
-	           <input type="text" class="form-control" ng-model="vm.Tamaño">
+	            <select class="form-control" ng-model="vm.Tamano"  ng-change="vm.functionTamano()" >
+                  <option value="0" ng-selected="true">Seleccione un tamaño...</option>
+                  <option value="1">Pequeño</option>
+                  <option value="2">Mediano</option>
+                  <option value="3">Grande</option>                                                
+                </select>	
+                 <p class="mensajeError"  ng-bind="vm.mensajeTamano"></p>      
+
 	         </div>	         
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Estado*</label>
-	           <input type="text" class="form-control" ng-model="vm.Estado">
+	            <select class="form-control" ng-model="vm.Estado"  ng-change="vm.functionEstado()" >
+                  <option value="0" ng-selected="true">Seleccione un estado...</option>
+                  <option value="1">En adopción</option>
+                  <option value="2">Adoptado</option>
+                  <option value="3">Perdido</option> 
+                  <option value="4">Recuperado</option>                              
+                </select>	         
+	            <p class="mensajeError"  ng-bind="vm.mensajeEstado"></p>	          
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Caracteristicas*</label>
-	           <input type="text" class="form-control" ng-model="vm.Caracteristicas">
+	           <input type="text" class="form-control" ng-model="vm.Caracteristicas" ng-keyup="vm.functionCaracteristicas()">
+	               <p class="mensajeError"  ng-bind="vm.mensajeCaracteristicas"></p>
 	         </div>
    	    </div>
    	     <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">vacunas*</label>
-	           <input type="text" class="form-control" ng-model="vm.vacunas">
+   	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Raza*</label>
+	           <input type="text" class="form-control" ng-model="vm.Raza" ng-keyup="vm.functionRaza()">
+	            <p class="mensajeError"  ng-bind="vm.mensajeRaza"></p>	
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Fecha de Nacimiento*</label>
-	           <input type="text" class="form-control" ng-model="vm.fechaN">
+	          <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Señales*</label>
+	           <input type="text" class="form-control" ng-model="vm.Senales"  ng-keyup="vm.functionSenales()">
+	            <p class="mensajeError"  ng-bind="vm.mensajeSenales"></p>	
 	         </div>
    	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Señales*</label>
-	           <input type="text" class="form-control" ng-model="vm.Señales">
-	         </div>
+   	    <div class="row">   	    	
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Color*</label>
-	           <input type="text" class="form-control" ng-model="vm.Color">
+	           <input type="text" class="form-control" ng-model="vm.Color" ng-keyup="vm.functionColor()">
+	               <p class="mensajeError"  ng-bind="vm.mensajeColor"></p>
+	         </div>
+	          <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Color ojos*</label>
+	           <input type="text" class="form-control" ng-model="vm.Colorojos" ng-keyup="vm.functionColorojos()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeColorojos"></p>
 	         </div>
    	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Colorojos*</label>
-	           <input type="text" class="form-control" ng-model="vm.Colorojos">
-	         </div>
+   	    <div class="row">   	    	
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Personalidad*</label>
-	           <input type="text" class="form-control" ng-model="vm.Personalidad">
+	           <input type="text" class="form-control" ng-model="vm.Personalidad" ng-keyup="vm.functionPersonalidad()">
+	           <p class="mensajeError"  ng-bind="vm.mensajepersonalidad"></p>
 	         </div>
-   	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Estado de Salud*</label>
-	           <input type="text" class="form-control" ng-model="vm.estadosalud">
+	           <input type="text" class="form-control" ng-model="vm.EstadoSalud" ng-keyup="vm.functionEstadoSalud()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeEstadoSalud"></p>
 	         </div>
-	        
+   	    </div>		 
+   	    <br>
+   	    <div class="row botones">
+   	    	 <div class="form-group col-xs-3 col-sm-3">
+	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrar()">Registrar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3  identificacion">	       
+	              <input type="text" class="form-control" ng-model="vm.Id2" ng-Disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionId2()" placeholder="Identificador">
+	           <p class="mensajeError"  ng-bind="vm.mensajeId2"></p>	
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3"">
+		            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
+	         </div>
    	    </div>
    	    <div class="row botones">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <button type="button" class="btn btn-success">Cancelar</button>
-	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
-	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
-	         </div>
-   	    </div>
-   	 
+   	       	  <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminar()">Eliminar</button>
+	         </div>   	    	
+   	    </div>   	 
         <md-content>       
           
             <div ng-if="status">
-               <br/>
-               <b layout="row" layout-align="center center" class="md-padding">
-                  {{status}}
-               </b>
+               <br/>  
+
             </div>
          </md-content>   
        </div>
@@ -169,8 +219,8 @@
    </footer> 
  <!--  <script src="../angular.min.js"></script>-->
 	<script src="../angular-route.min.js"></script>
-	<script src="Registrar_usuario.js"></script>
-	<script src="Registrar_usuario.service.js"></script>
+	<script src="Registrar_mascota.js"></script>
+	<script src="Registrar_mascota.service.js"></script>
 	<!--
 	<script src="prueba.js"></script>-->
 </body>

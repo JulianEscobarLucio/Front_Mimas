@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html ng-app="starter">
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+<meta charset="utf-8">
+<link rel="stylesheet" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="../jquery-3.2.1.min.js" ></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+
+<link rel="stylesheet" href="../Menu.css">
+<link rel="stylesheet" href="Fundacion.css">
+</head>
+
+
+
+<body >
+   <header>
+   	  <div class="header">   
+   	    <div class="nav">	     
+   	 	 <ul id="nav">
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
+                <ul>
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>				  
+				</ul>
+			</li>
+
+			</li>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
+			</li>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
+			<ul>
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
+			</ul>
+			</li>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
+				<ul>
+					<li><a href="#">Adopciones</a></li>
+					<li><a href="#">Eventos</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
+				</ul>
+			</li>
+			 <li class="subs"><a href="#s2">Administración</a>
+			  <ul>
+			    <li><a href="../Roles/Rol.html">Roles</a></li>
+			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+			  </ul>
+			</li>
+			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
+		</ul>
+		</div>		
+   	  </div>
+   </header>   
+
+   <div class="body"  ng-controller="fundacionController as vm" id="dialogContainer" >
+
+        <h1 class="titulo">Fundaciones</h1>
+
+   	    <div class="row">   	    	
+	   	     <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Identificación fundación*</label>
+	           <input type="text" class="form-control" maxlength="15" ng-model="vm.identificacion" ng-keyup="vm.fnIdentificacion()"  ng-disabled="vm.DisabledIdentificacion">
+	           <p class="mensajeError"  ng-bind="vm.msjIdentificacion" ></p>
+	         </div>
+
+	         <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Razón social*</label>
+	           <input type="text" class="form-control" maxlength="75" ng-model="vm.razonSocial" ng-keyup="vm.fnRazonSocial()">
+	           <p class="mensajeError"  ng-bind="vm.msjRazonSocial" ></p>
+	         </div>
+   	    </div>
+
+   	    <div class="row">   	    	
+	   	     <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Teléfono Fijo</label>
+	           <input type="text" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="7" ng-model="vm.telefono" ng-keyup="vm.fnTelefonos()">
+	           <p class="mensajeError"  ng-bind="vm.msjTelFijo" ></p>
+	         </div>
+
+	         <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Teléfono Móvil</label>
+	           <input type="text" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="10" ng-model="vm.telefonoMovil" ng-keyup="vm.fnTelefonos()">
+	           <p class="mensajeError"  ng-bind="vm.msjTelMovil" ></p>
+	         </div>
+   	    </div>
+
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Correo electrónico*</label>
+	           <input type="email" class="form-control" maxlength="30" ng-model="vm.email" ng-keyup="vm.fnEmail()">
+	           <p class="mensajeError"  ng-bind="vm.msjEmail" ></p>
+	         </div>	
+
+	         <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Dirección*</label>
+	           <input type="text" class="form-control" maxlength="75" ng-model="vm.direccion" ng-keyup="vm.fnDireccion()">
+	           <p class="mensajeError"  ng-bind="vm.msjDireccion" ></p>
+	         </div>	         
+   	    </div>
+
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Usuario Responsable*</label>
+	           <input type="text" class="form-control" maxlength="15" ng-model="vm.usuario" ng-keyup="vm.fnUsuario()">
+	           <p class="mensajeError"  ng-bind="vm.msjUsuario" ></p>
+	         </div>
+
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Tipo Entidad*</label>
+	           <select class="form-control" ng-model="vm.tipoEntidad" >
+                  <option value="1" ng-selected="true">Seleccione una Entidad.</option>
+                  <option value="Fundacion">Fundación</option>
+                  <option value="Hogar de paso">Hogar de paso</option>
+                  <option value="Tienda">Tienda</option>
+                </select>
+	         </div>
+   	    </div>
+        <br>
+   	    <div class="row botones">
+   	    	 <div class="form-group col-xs-3 col-sm-3">
+	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrarFundacion()">Ingresar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultarFundacion()">Consultar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3  identificacion">	       
+	              <input type="text" class="form-control" maxlength="15" ng-model="vm.identificacion2" ng-keyup="vm.funtionIdentificacion2()" placeholder="Identificación">
+	              <p class="mensajeError"  ng-bind="vm.msjIdentificacion2" ></p>	
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizarFundacion()">Actualizar</button>
+	         </div>	      
+   	    </div>
+   	    <div class="row botones">
+   	    	<div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminarFundacion()">Eliminar</button>
+	         </div>   	    	
+   	    </div> 	 
+        <md-content>       
+          
+            <div ng-if="status">
+               <br/>
+            
+            </div>
+         </md-content>   
+    </div>
+
+
+  <footer>
+   	<div class="footer"></div>
+   </footer> 
+
+
+ <!--  <script src="../angular.min.js"></script>-->
+	<script src="../angular-route.min.js"></script>
+	<script src="Fundacion.js"></script>
+	<script src="Fundacion.service.js"></script>
+	
+	<!--<<script src="prueba.js"></script>-->
+</body>
+</html>

@@ -2,22 +2,28 @@
 	'use strict';
 	angular
 		.module('starter')
-		.service('registarMascotaServices',registarMascotaServices);
+		.service('fundacionServices',fundacionServices);
 
 
-	registarMascotaServices.$inject = ['$http','$q'];
+	fundacionServices.$inject = ['$http','$q'];
 
-	function registarMascotaServices($http,$q){
-         var self = this;
+	function fundacionServices($http,$q){
+        
+        var self = this;
         var ipserver = 'http://localhost:8091'; 
-        self.registrarMascota = registrarMascota;
-        self.consultarMascotaServices = consultarMascotaServices;
-        self.actualizarMascota = actualizarMascota;
-        self.eliminarMascota = eliminarMascota;
+        self.registrarFundacion = registrarFundacion;
+        self.consultarFundacion = consultarFundacion;
+        self.actualizarFundacion = actualizarFundacion;
+        self.eliminarFundacion = eliminarFundacion;
 
-        function registrarMascota(auditJson){                
+
+
+
+
+        function registrarFundacion(auditJson){  
+        	
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/Mascotaservices/registrarMacota",auditJson)
+            $http.post(ipserver+"/mimas/rest/fundacionServices/registrarFundacion",auditJson)
                 .success(function(data){
                     promesa.resolve({
                         resultado:data
@@ -32,9 +38,11 @@
             
         }
 
-function consultarMascotaServices(auditJson){                
+
+         function consultarFundacion(auditJson){    
+        	 
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/Mascotaservices/consultarMascota",auditJson)
+            $http.post(ipserver+"/mimas/rest/fundacionServices/consultarFundacion",auditJson)
                 .success(function(data){
                     promesa.resolve({
                         resultado:data
@@ -49,9 +57,11 @@ function consultarMascotaServices(auditJson){
             
         }
 
-        function actualizarMascota(auditJson){                
+
+
+         function actualizarFundacion(auditJson){                
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/Mascotaservices/actualizarMascota",auditJson)
+            $http.post(ipserver+"/mimas/rest/fundacionServices/actualizarFundacion",auditJson)
                 .success(function(data){
                     promesa.resolve({
                         resultado:data
@@ -66,10 +76,12 @@ function consultarMascotaServices(auditJson){
             
         }
 
-    
-         function eliminarMascota(auditJson){                
+
+
+         function eliminarFundacion(auditJson){   
+        	 
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/Mascotaservices/eliminarMascota",auditJson)
+            $http.post(ipserver+"/mimas/rest/fundacionServices/eliminarFundacion",auditJson)
                 .success(function(data){
                     promesa.resolve({
                         resultado:data
@@ -83,6 +95,9 @@ function consultarMascotaServices(auditJson){
                 return promesa.promise     
             
         }
+
+
+
 
     }
 

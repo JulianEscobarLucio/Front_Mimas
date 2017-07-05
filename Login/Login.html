@@ -63,13 +63,15 @@
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-12 col-sm-12">
 	           <label for="usr">Usuario*</label>
-	           <input type="text" class="form-control" ng-model="vm.usuario">
+	           <input type="text" class="form-control" ng-model="vm.usuario"  ng-keyup="vm.functionUsuario()">
+	             <p class="mensajeError"  ng-bind="vm.mensajeUsuario" ></p>
 	         </div>
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-12 col-sm-12">
 	           <label for="usr">Contraseña*</label>
-	           <input type="text" class="form-control" ng-model="vm.contrasena">
+	           <input type="password" class="form-control" ng-model="vm.contrasena"  ng-keyup="vm.functionContrasena()">
+	            <p class="mensajeError"  ng-bind="vm.mensajeContrasena" ></p>
 	         </div>
    	    </div>   	  
    	    <div class="row botones">
@@ -93,8 +95,7 @@
         <md-content>          
             <div ng-if="status">
                <br/>
-               <b layout="row" layout-align="center center" class="md-padding">               
-               </b>
+             
             </div>
          </md-content>   
    </div>  

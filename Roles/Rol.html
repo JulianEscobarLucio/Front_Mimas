@@ -39,10 +39,10 @@
 			</li>
 			<li class="subs"><a href="#s2">Mis mascotas</a>
 			<ul>
-				<li><a href="#">Registro de mascotas</a></li>			
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
 			</ul>
 			</li>
-			<li class="subs"><a href="#s2">Fundaciones</a>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
 				<ul>
 					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
@@ -52,7 +52,7 @@
 					<li><a href="#">Reportes y estadisticas</a></li>
 				</ul>
 			</li>
-			<li class="subs"><a href="#s2">Administración</a>
+			 <li class="subs"><a href="#s2">Administración</a>
 			  <ul>
 			    <li><a href="../Roles/Rol.html">Roles</a></li>
 			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
@@ -62,7 +62,7 @@
 		</ul>
 		</div>		
    	  </div>
-   </header>  
+   </header>    
    <div class="body"  ng-controller="rolController as vm" id="dialogContainer" >
          <h1 class="titulo">Rol</h1>
    	    <div class="row">   	    	
@@ -101,15 +101,21 @@
    	    	 <div class="form-group col-xs-3 col-sm-3">
 	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrar()">Registrar</button>
 	         </div>
-	         <div class="form-group col-xs-3 col-sm-3"">
+	         <div class="form-group col-xs-3 col-sm-3">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
 	         </div>
-	         <div class="form-group col-xs-3 col-sm-3"">
+	          <div class="form-group col-xs-3 col-sm-3 identificacion" >
+	         	 <input type="text" class="form-control" ng-model="vm.idRol2" maxlength="2" ng-disabled="vm.idDisabled2" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionRol2()" placeholder="Id Rol">
+	           <p class="mensajeError"   ng-bind="vm.mensajeRol2" ></p>	         	
+	         </div> 
+	         <div class="form-group col-xs-3 col-sm-3">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
-	         </div>
-	         <div class="form-group col-xs-3 col-sm-3"">
+	         </div>		             
+   	    </div>
+   	     <div class="row botones">
+   	       	  <div class="form-group col-xs-3 col-sm-3"">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminar()">Eliminar</button>
-	         </div>
+	         </div>   	    	
    	    </div>
    	 
         <md-content>       

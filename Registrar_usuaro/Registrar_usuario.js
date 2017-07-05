@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('starter',['ngMaterial'])
+    .module('starter',['ngMaterial','ngMask'])
     .controller('registrarUsuarioController', registrarUsuarioController);
  //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
@@ -30,7 +30,29 @@
         vm.functionPreguntaSeguridad = functionPreguntaSeguridad;
         vm.functionRespuesta = functionRespuesta;
         vm.functionContrasena = funcitonContrasena;
-        vm.functionConfirmarContrasena = functionConfirmarContrasena;         
+        vm.functionConfirmarContrasena = functionConfirmarContrasena; 
+     
+        vm.nombre1 = '';
+        vm.nombre2 ='';
+        vm.apellido1 = '';
+        vm.apellido2 = '';
+        vm.telefonoFijo =  '';
+        vm.telefonoMovil = '';
+        vm.email = ''; 
+        vm.respuesta = '';
+        vm.contrasena = '';
+        vm.confirmarContrasena = '';    
+
+
+        function functionPreguntaSeguridad(){
+            if(vm.preguntaSeguridad != undefined || vm.preguntaSeguridad != '1' ){
+              vm.mensajePreguntaSeguridad   = "";
+              return;
+            }
+
+        } 
+
+
                 
             
         function functionNombre1(){
@@ -92,14 +114,6 @@
         }
 
 
-        function functionPreguntaSeguridad(){
-            if(vm.preguntaSeguridad.length > 0){
-              vm.mensajePreguntaSeguridad= "";
-            }     
-
-        }
-
-
         function functionRespuesta(){
             if(vm.respuesta.length > 0){
               vm.mensajeRespuesta= "";
@@ -135,33 +149,33 @@
           
 
           if(vm.nombre1 == undefined || vm.nombre1 == '' ){
-               vm.mensajeNombre1   = "Debes ingresar un valido para este campo";
+               vm.mensajeNombre1   = "Debes ingresar un válido para este campo";
                return;
 
            }else if(vm.apellido1 == undefined || vm.apellido1 == '' ){
-              vm.mensajeApellido1   = "Debes ingresar un valido para este campo";
+              vm.mensajeApellido1   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.telefonoFijo == undefined || vm.telefonoFijo == ''  && (vm.telefonoMovil == undefined || vm.telefonoMovil == '') ){
               vm.mensajeTelefonoFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
               vm.mensajeTelefonoMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
               return;
           }else if(vm.email == undefined || vm.email == '' ){
-              vm.mensajeEmail   = "Debes ingresar un valido para este campo";
+              vm.mensajeEmail   = "Debes ingresar un válido para este campo";
               return;
           }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
-              vm.mensajeEmail   = "El correo no es valido";
+              vm.mensajeEmail   = "El correo no es válido";
               return;
-          }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '' ){
-              vm.mensajePreguntaSeguridad   = "Debes ingresar un valido para este campo";
+          }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '1' ){
+              vm.mensajePreguntaSeguridad   = "Debes seleccionar una opción valida";
               return;
           }else if(vm.respuesta == undefined || vm.respuesta == '' ){
-              vm.mensajeRespuesta   = "Debes ingresar un valido para este campo";
+              vm.mensajeRespuesta   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.contrasena == undefined || vm.contrasena == '' ){
-              vm.mensajeContrasena   = "Debes ingresar un valido para este campo";
+              vm.mensajeContrasena   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.confirmarContrasena == undefined || vm.confirmarContrasena == '' ){
-              vm.mensajeConfirmarContrasena   = "Debes ingresar un valido para este campo";
+              vm.mensajeConfirmarContrasena   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.confirmarContrasena !=  vm.confirmarContrasena  ){
               vm.mensajeConfirmarContrasena   = "La confirmación no coincide con la contraseña";
@@ -181,8 +195,7 @@
                     "email" : vm.email,
                     "pregunta":  vm.preguntaSeguridad,
                     "respuesta" :  vm.respuesta,
-                    "contrasena" :vm.contrasena,
-                    "confirmarContrasena" : vm.confirmarContrasena  
+                    "contrasena" :vm.contrasena         
                     }        
              vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
@@ -197,7 +210,7 @@
                vm.telefonoFijo =  '',
                vm.telefonoMovil = '', 
                vm.email = '',
-               vm.preguntaSeguridad = '',
+               vm.preguntaSeguridad = '1',
                vm.respuesta = '',
                vm.contrasena = '',
                vm.confirmarContrasena = '',
@@ -218,8 +231,8 @@
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
                      .title('Registrar usuario')
-                     .textContent('Usuario no registrado, faltan datos por llenar')
-                     .ariaLabel('Usuario no registrado')
+                     .textContent('El usuario no ha sido registrado, Usuario existente')
+                     .ariaLabel('Usuario existente')
                      .ok('Cerrar')
                      
                );
