@@ -9,17 +9,27 @@
 
     function fundacionController($scope, $mdDialog,fundacionServices) {
         //debugger;
+
+        localStorage.setItem('userID', 'Mario');
+        var user = localStorage.getItem('userID');
+
         var vm = this;
         
         
         vm.registrarFundacion = registrarFundacion;
         vm.actualizarFundacion = actualizarFundacion;
         vm.consultarFundacion = consultarFundacion;
-        vm.eliminarFundacion = eliminarFundacion;
-        //vm.registrarDisabled = false;
-        //vm.consultarDisabled = false; 
-        //vm.actualizarDisabled = true;
-        //vm.eliminarDisabled = true;
+        vm.eliminarFundacion = confirmar;
+        vm.registrarDisabled = false;
+        vm.consultarDisabled = false; 
+        vm.actualizarDisabled = true;
+        vm.eliminarDisabled = true;
+        
+        //obtener usuario del local storage
+        vm.usuarioDisabled = true;
+        vm.usuario = user;
+        
+
 
 
         vm.fnIdentificacion = fnIdentificacion;
@@ -36,8 +46,15 @@
         vm.msjDireccion = "";
         vm.fnUsuario = fnUsuario;
         vm.msjUsuario = "";
-        vm.funtionIdentificacion2 = funtionIdentificacion2;
+        vm.fnTipoEntidad = fnTipoEntidad;
+        vm.msjTipoEntidad = "";
+
+
+        vm.fnIdentificacion2 = fnIdentificacion2;
         vm.DisabledIdentificacion = false;
+        vm.camposObligatorios = false;
+
+
 
 
 
@@ -89,43 +106,96 @@
 
 
         
+      function camposObligatorios(){
+
+        //validaciones campos obligatorios
+        if(vm.identificacion == undefined || vm.identificacion == '' ){
+               vm.msjIdentificacion   = "Debes ingresar un valido para este campo";
+               return false;
+           }else if(vm.razonSocial == undefined || vm.razonSocial == '' ){
+              vm.msjRazonSocial   = "Debes ingresar un valido para este campo";
+              return false;
+          }else if(vm.telefono == undefined || vm.telefono == ''){
+              if (vm.telefonoMovil == undefined || vm.telefonoMovil == '') {
+              vm.msjTelFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              vm.msjTelMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
+              return false;
+            }
+          }
+          if(vm.email == undefined || vm.email == '' ){
+              vm.msjEmail   = "Debes ingresar un valido para este campo";
+              return false;
+          }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
+              vm.msjEmail   = "El correo no es valido";
+              return false;
+          }else if(vm.direccion == undefined || vm.direccion == '' ){
+              vm.msjDireccion   = "Debes ingresar un valido para este campo";
+              return false;
+          }
+          else if(vm.usuario == undefined || vm.usuario == '' ){
+              vm.msjUsuario  = "Debes ingresar un valido para este campo";
+              return false;
+          }else if(vm.tipoEntidad == undefined || vm.tipoEntidad == '' || vm.tipoEntidad == '1' ){
+              vm.msjTipoEntidad  = "Debes ingresar un valido para este campo";
+              return false;
+          }
+          return true;
+      }
+
+      function limpiarCampos(){
+
+          vm.identificacion = "";
+          vm.razonSocial = "";
+          vm.telefono = "";
+          vm.telefonoMovil = ""; 
+          vm.email = "";
+          vm.direccion = "";
+          vm.usuario = localStorage.getItem('userID');
+          vm.tipoEntidad = "";
+      }
+
+      function confirmar (){
+
+        if (confirm('¿Estas seguro de eliminar esta Fundación?')){ 
+           
+            eliminarFundacion();
+
+            limpiarCampos();
+            vm.identificacion2 = "";
+
+            vm.DisabledIdentificacion2  = false;
+            vm.DisabledIdentificacion  = false;
+            vm.registrarDisabled = false;
+            vm.consultarDisabled = false; 
+            vm.actualizarDisabled = true;
+            vm.eliminarDisabled = true;
+
+        } 
+        else{
+
+          limpiarCampos();
+          vm.identificacion2 = "";
+          vm.DisabledIdentificacion2  = false;
+          vm.DisabledIdentificacion  = false;
+          vm.registrarDisabled = false;
+          vm.consultarDisabled = false; 
+          vm.actualizarDisabled = true;
+          vm.eliminarDisabled = true; 
+
+          return;
+        }
+      }
+
 
 
      function registrarFundacion() { 
 
       //debugger;
-      //validaciones campos obligatorios
-        if(vm.identificacion == undefined || vm.identificacion == '' ){
-               vm.msjIdentificacion   = "Debes ingresar un valido para este campo";
-               return;
-           }else if(vm.razonSocial == undefined || vm.razonSocial == '' ){
-              vm.msjRazonSocial   = "Debes ingresar un valido para este campo";
-              return;
-          }else if(vm.telefono == undefined || vm.telefono == ''){
-              if (vm.telefonoMovil == undefined || vm.telefonoMovil == '') {
-              vm.msjTelFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
-              vm.msjTelMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
-              return;
-            }
-          }
-          if(vm.email == undefined || vm.email == '' ){
-              vm.msjEmail   = "Debes ingresar un valido para este campo";
-              return;
-          }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
-              vm.msjEmail   = "El correo no es valido";
-              return;
-          }else if(vm.direccion == undefined || vm.direccion == '' ){
-              vm.msjDireccion   = "Debes ingresar un valido para este campo";
-              return;
-          }
-          else if(vm.usuario == undefined || vm.usuario == '' ){
-              vm.msjUsuario  = "Debes ingresar un valido para este campo";
-              return;
-          }
 
-
-
-
+        vm.camposObligatorios = camposObligatorios();
+        if(vm.camposObligatorios == false){
+          return;
+        }
 
                  var requestJson = {
                     "identificacion" : vm.identificacion,
@@ -142,55 +212,61 @@
              vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
 
-              fundacionServices.registrarFundacion(requestJson).then(function(data){
+
+            fundacionServices.consultarFundacion(requestJson).then(function(data){
+
+              if(data.resultado[0].codRespuesta == "200") {
+                $mdDialog.show(
+                   $mdDialog.alert()
+                   .parent(angular.element(document.querySelector('#dialogContainer')))
+                   .clickOutsideToClose(true)
+                   .title('Error al registrar Fundación')
+                   .textContent('La Fundación ya existe')
+                   .ariaLabel('La Fundación ya existe')
+                   .ok('Cerrar')                     
+                  );
+
+                vm.actualizarDisabled = false;
+
+              }
+              else{
+
+                fundacionServices.registrarFundacion(requestJson).then(function(data){
                 //debugger;
 
-            if(data.resultado[0].codRespuesta == "200") {                
-                $mdDialog.show(
-                  $mdDialog.alert()
-                     .parent(angular.element(document.querySelector('#dialogContainer')))
-                     .clickOutsideToClose(true)
-                     .title('Registrar Fundacion')
-                     .textContent(' !  Se registró la Fundación exitósamente  ¡ ')
-                     .ariaLabel(' !  Se registró la Fundación exitósamente  ¡ ')
-                     .ok('Cerrar')
-                      );
-                      
-                    
-<<<<<<< HEAD
-                     vm.identificacion = "";
-                     vm.razonSocial = "";
-                     vm.telefono = "";
-                     vm.telefonoMovil = "", 
-                     vm.email = "",
-                     vm.direccion = "",
-                     vm.usuario = "",
-                     vm.tipoEntidad = ""
-=======
-                 vm.identificacion = "",
-                 vm.razonSocial = "",
-                 vm.telefono =  "",
-                 vm.telefonoMovil = "", 
-                 vm.email = "",
-                 vm.direccion = "",
-                 vm.usuario = "",
-                 vm.tipoEntidad = ""
-                 vm.identificacion2 = "";
->>>>>>> developt
-                    	 
-            }else{
-                $mdDialog.show(
-                  $mdDialog.alert()
-                     .parent(angular.element(document.querySelector('#dialogContainer')))
-                     .clickOutsideToClose(true)
-                     .title('Registrar Fundación')
-                     .textContent('Fundación no registrada')
-                     .ariaLabel('Fundación no registrada')
-                     .ok('Cerrar')
-                     
-               );
-            }  
-       });
+                if(data.resultado[0].codRespuesta == "200") {                
+                    $mdDialog.show(
+                      $mdDialog.alert()
+                         .parent(angular.element(document.querySelector('#dialogContainer')))
+                         .clickOutsideToClose(true)
+                         .title('Registrar Fundacion')
+                         .textContent(' ¡  Se registró la Fundación exitósamente  ! ')
+                         .ariaLabel(' ¡  Se registró la Fundación exitósamente  ! ')
+                         .ok('Cerrar')
+                          );
+
+                    limpiarCampos();
+                    vm.identificacion2 = "";
+                    vm.actualizarDisabled = true;
+
+                           
+                }else{
+                    $mdDialog.show(
+                      $mdDialog.alert()
+                         .parent(angular.element(document.querySelector('#dialogContainer')))
+                         .clickOutsideToClose(true)
+                         .title('Registrar Fundación')
+                         .textContent('Fundación no registrada')
+                         .ariaLabel('Fundación no registrada')
+                         .ok('Cerrar')
+                         
+                   );
+                }  
+              }); //fin fundacionServices.registrarFundacion
+
+        }
+      }); //fin fundacionServices.consultarFundacion
+
    }
      
      
@@ -199,34 +275,10 @@
      
     function actualizarFundacion(){ 
 
-      //validaciones campos obligatorios
-        if(vm.identificacion == undefined || vm.identificacion == '' ){
-               vm.msjIdentificacion   = "Debes ingresar un valido para este campo";
-               return;
-           }else if(vm.razonSocial == undefined || vm.razonSocial == '' ){
-              vm.msjRazonSocial   = "Debes ingresar un valido para este campo";
-              return;
-          }else if(vm.telefono == undefined || vm.telefono == ''){
-              if (vm.telefonoMovil == undefined || vm.telefonoMovil == '') {
-              vm.msjTelFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
-              vm.msjTelMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
-              return;
-            }
-          }
-          if(vm.email == undefined || vm.email == '' ){
-              vm.msjEmail   = "Debes ingresar un valido para este campo";
-              return;
-          }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
-              vm.msjEmail   = "El correo no es valido";
-              return;
-          }else if(vm.direccion == undefined || vm.direccion == '' ){
-              vm.msjDireccion   = "Debes ingresar un valido para este campo";
-              return;
-          }
-          else if(vm.usuario == undefined || vm.usuario == '' ){
-              vm.msjUsuario  = "Debes ingresar un valido para este campo";
-              return;
-          }
+        vm.camposObligatorios = camposObligatorios();
+        if(vm.camposObligatorios == false){
+          return;
+        }
 
 
     	         var requestJson = {
@@ -249,36 +301,14 @@
                   .parent(angular.element(document.querySelector('#dialogContainer')))
                   .clickOutsideToClose(true)
                   .title('Actualizar Fundación')
-                  .textContent('! Se actualizó la Fundación exitósamente ¡')
-                  .ariaLabel('! Se actualizó la Fundación exitósamente ¡')
+                  .textContent('¡ Se actualizó la Fundación exitósamente !')
+                  .ariaLabel('¡ Se actualizó la Fundación exitósamente !')
                   .ok('Cerrar')                     
                  );
 
-<<<<<<< HEAD
               
-                  vm.identificacion = "",
-                  vm.razonSocial = "",
-                  vm.telefono = "",
-                  vm.telefonoMovil = "", 
-                  vm.email = "",
-                  vm.direccion = "",
-                  vm.usuario = ""
-
-    
-                //vm.registrarDisabled = false;
-                //vm.consultarDisabled = false; 
-                //vm.actualizarDisabled = true;
-                //vm.eliminarDisabled = true;
-=======
-                 vm.identificacion = "",
-                 vm.razonSocial = "",
-                 vm.telefono =  "",
-                 vm.telefonoMovil = "", 
-                 vm.email = "",
-                 vm.direccion = "",
-                 vm.usuario = "",
-                 vm.tipoEntidad = ""
-                 vm.identificacion2 = "";
+                limpiarCampos();
+                vm.identificacion2 = "";
 
                 vm.DisabledIdentificacion2  = false;
                 vm.DisabledIdentificacion  = false;
@@ -286,7 +316,6 @@
                 vm.consultarDisabled = false; 
                 vm.actualizarDisabled = true;
                 vm.eliminarDisabled = true;
->>>>>>> developt
                 
                 
            }else{
@@ -308,23 +337,16 @@
 
     function consultarFundacion(){
 
-<<<<<<< HEAD
-        if(vm.identificacion == undefined || vm.identificacion == '' ){
-           vm.msjIdentificacion   = "Debes ingresar una identificación";
-=======
+
         if(vm.identificacion2 == undefined || vm.identificacion2 == '' ){
            vm.msjIdentificacion2   = "Debes ingresar una identificación";
->>>>>>> developt
            return;
         }
    
 
        var requestJson = {
-<<<<<<< HEAD
-                    "identificacion" : vm.identificacion,
-=======
+
                     "identificacion" : vm.identificacion2,
->>>>>>> developt
                     "razonSocial" : vm.razonSocial,                    
                     "telefonoFijo" : vm.telefono,
                     "telefonoMovil" : vm.telefonoMovil,
@@ -348,11 +370,8 @@
                    .ok('Cerrar')                     
                   );
 
-<<<<<<< HEAD
-                 vm.identificacion = data.resultado[0].identificacion,
-=======
+                 
                  vm.identificacion = vm.identificacion2,
->>>>>>> developt
                  vm.razonSocial = data.resultado[0].razonSocial,
                  vm.telefono =  data.resultado[0].telefonoFijo,
                  vm.telefonoMovil = data.resultado[0].telefonoMovil, 
@@ -360,15 +379,6 @@
                  vm.direccion = data.resultado[0].direccion,
                  vm.usuario = data.resultado[0].usuario,
                  vm.tipoEntidad = data.resultado[0].tipoEntidad
-<<<<<<< HEAD
-
-
-                 //vm.actualizarDisabled = false;
-                 //vm.eliminarDisabled = false;
-                 //vm.registrarDisabled = true;
-                 //vm.consultarDisabled = true; 
-=======
-               
 
                  vm.DisabledIdentificacion2  = true;
                  vm.DisabledIdentificacion  = true;
@@ -376,7 +386,7 @@
                  vm.eliminarDisabled = false;
                  vm.registrarDisabled = true;
                  vm.consultarDisabled = true; 
->>>>>>> developt
+
 
             }else {
 
@@ -418,43 +428,10 @@
                    .parent(angular.element(document.querySelector('#dialogContainer')))
                    .clickOutsideToClose(true)
                    .title('Eliminar Fundación')
-                   .textContent('! Fundación eliminada exitósamente ¡')
-                   .ariaLabel('! Fundación eliminada exitósamente ¡')
+                   .textContent('¡ Fundación eliminada exitósamente !')
+                   .ariaLabel('¡ Fundación eliminada exitósamente !')
                    .ok('Cerrar')                     
-                  );
-
-<<<<<<< HEAD
-                 vm.identificacion = data.resultado[0].identificacion,
-                 vm.razonSocial = data.resultado[0].razonSocial,
-                 vm.telefono =  data.resultado[0].telefonoFijo,
-                 vm.telefonoMovil = data.resultado[0].telefonoMovil, 
-                 vm.email = data.resultado[0].email,
-                 vm.direccion = data.resultado[0].direccion,
-                 vm.usuario = data.resultado[0].usuario,
-                 vm.tipoEntidad = data.resultado[0].tipoEntidad  
-                 
-                 //vm.registrarDisabled = false;
-                 //vm.consultarDisabled = false; 
-                 //vm.actualizarDisabled = true;
-                 //vm.eliminarDisabled = true; 
-=======
-                 vm.identificacion = "",
-                 vm.razonSocial = "",
-                 vm.telefono =  "",
-                 vm.telefonoMovil = "", 
-                 vm.email = "",
-                 vm.direccion = "",
-                 vm.usuario = "",
-                 vm.tipoEntidad = ""
-                 vm.identificacion2 = "";
-
-                 vm.DisabledIdentificacion2  = false;
-                 vm.DisabledIdentificacion  = false;
-                 vm.registrarDisabled = false;
-                 vm.consultarDisabled = false; 
-                 vm.actualizarDisabled = true;
-                 vm.eliminarDisabled = true; 
->>>>>>> developt
+                  ); 
 
             }else {
                   $mdDialog.show(
