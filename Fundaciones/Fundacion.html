@@ -144,15 +144,33 @@
 	         <div class="form-group col-xs-6 col-sm-6"">
 
 	           <label for="usr">Tipo Entidad*</label>
-	           <select class="form-control" ng-model="vm.tipoEntidad" >
+	           <select class="form-control" ng-model="vm.tipoEntidad" ng-change="vm.fnTipoEntidad()" >
                   <option value="1" ng-selected="true">Seleccione una Entidad.</option>
                   <option value="Fundacion">Fundación</option>
                   <option value="Hogar de paso">Hogar de paso</option>
                   <option value="Tienda">Tienda</option>
                 </select>
+               	<p class="mensajeError"  ng-bind="vm.msjTipoEntidad" ></p>
 
 	         </div>
    	    </div>
+
+   	    <div class="row">
+   	    	<div class="form-group col-xs-12 col-sm-6">
+
+   	    		<label for="usr">Estado de la Fundación*</label>
+   	    		<md-radio-group class="" ng-model="vm.estado" ng-change="vm.fnEstado($event)">
+			      <md-radio-button value="Activa" class="md-primary">Activa</md-radio-button>
+			      <md-radio-button value="Inactiva" > Inactiva </md-radio-button>
+			    </md-radio-group>
+
+	         </div>
+   	    </div>
+
+
+
+
+   	    
 
         <br>
 
@@ -182,7 +200,7 @@
    	    <div class="row botones">
 
    	    	<div class="form-group col-xs-3 col-sm-3">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminarFundacion()">Eliminar</button>
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="showConfirm($event)">Eliminar</button>
 	         </div>   	    	
    	    </div> 	 
 
