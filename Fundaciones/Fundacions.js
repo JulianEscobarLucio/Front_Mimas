@@ -31,7 +31,8 @@
         vm.usuarioDisabled = true;
         vm.usuario = user;
         vm.estado = 'Activa';
-        vm.fnEstado = fnEstado;        
+        vm.fnEstado = fnEstado;  
+        vm.showConfirm = showConfirm;      
         
 
 
@@ -430,7 +431,7 @@
 
 
 
-    $scope.showConfirm = function(ev) {
+    function showConfirm (ev) {
           // Appending dialog to document.body to cover sidenav in docs app
           var confirm = $mdDialog.confirm()
                 .title('Eliminar Fundación')
@@ -454,7 +455,7 @@
               vm.eliminarDisabled = true;
             return;
           });
-        };
+        }
 
 
 
