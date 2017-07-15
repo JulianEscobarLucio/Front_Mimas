@@ -10,8 +10,8 @@
     function fundacionController($scope, $mdDialog,fundacionServices) {
         
 
-        localStorage.setItem('userID', 'Mario');
-        var user = localStorage.getItem('userID');
+        localStorage.setItem('user', 'Mario');
+        var user = localStorage.getItem('user');
         
 
 
