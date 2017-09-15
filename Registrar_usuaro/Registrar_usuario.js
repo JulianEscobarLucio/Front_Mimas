@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('starter',['ngMaterial','ngMask'])
+    .module('starter',['ngMaterial','ngRoute','ngMask','ngMdIcons'])
     .controller('registrarUsuarioController', registrarUsuarioController);
  //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
@@ -122,11 +122,10 @@
         }
 
 
-
        function funcitonContrasena(){
-          if(vm.contrasena.length > 0){
+           if(vm.contrasena.length > 0){
               vm.mensajeContrasena= "";
-           }      
+            }  
 
         }
 
@@ -146,8 +145,7 @@
 
 
      function registrarUsuario() { 
-          
-
+         var expreg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_°¬|+\-=?;:'",.<>\{\}\[\]\\\/])[A-Za-z\d`~!@#$%^&*()_°¬|+\-=?;:'",.<>\{\}\[\]\\\/]{8,12}$/;
           if(vm.nombre1 == undefined || vm.nombre1 == '' ){
                vm.mensajeNombre1   = "Debes ingresar un válido para este campo";
                return;
@@ -166,7 +164,7 @@
               vm.mensajeEmail   = "El correo no es válido";
               return;
           }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '1' ){
-              vm.mensajePreguntaSeguridad   = "Debes seleccionar una opción valida";
+              vm.mensajePreguntaSeguridad   = "Debes seleccionar una pregunta ";
               return;
           }else if(vm.respuesta == undefined || vm.respuesta == '' ){
               vm.mensajeRespuesta   = "Debes ingresar un válido para este campo";
@@ -174,16 +172,19 @@
           }else if(vm.contrasena == undefined || vm.contrasena == '' ){
               vm.mensajeContrasena   = "Debes ingresar un válido para este campo";
               return;
+          }else if(!expreg.test(vm.contrasena)){
+               vm.mensajeContrasena   = "La contraseña no cumple con las póliticas";
+              return;
           }else if(vm.confirmarContrasena == undefined || vm.confirmarContrasena == '' ){
               vm.mensajeConfirmarContrasena   = "Debes ingresar un válido para este campo";
               return;
           }else if(vm.confirmarContrasena !=  vm.confirmarContrasena  ){
               vm.mensajeConfirmarContrasena   = "La confirmación no coincide con la contraseña";
               return;
+          }else if(!expreg.test(vm.confirmarContrasena)){
+              vm.mensajeConfirmarContrasena   = "La contraseña no cumple con las póliticas";
+              return;
           }
-
-
-
 
           var requestJson = {
                     "nombre1" : vm.nombre1,

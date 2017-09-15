@@ -12,7 +12,8 @@
         vm.mensajeContrasena = '';
         vm.functionUsuario = functionUsuario ;
         vm.functionContrasena = functionContrasena;
-
+        debugger;
+        localStorage.setItem("user", '');
 
 
       function functionUsuario(){
@@ -54,8 +55,10 @@
                       
             loginServices.login(requestJson).then(function(data){
             debugger;
-            if(data.resultado[0].codRespuesta == "200") {  
-               localStorage.setItem("user", vm.usuario);              
+            if(data.resultado[0].codRespuesta == "200") { 
+                      
+                 debugger;
+                localStorage.setItem("user", data.resultado[0].nombre1 + " " + data.resultado[0].apellido1);             
                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
@@ -65,9 +68,9 @@
                      .ariaLabel('Usuario registrado')
                      .ok('Cerrar')                     
                );
-               document.getElementById("redirect").click();
+                     
                
-                
+               document.getElementById("redirect").click();            
 
             }else{
                 $mdDialog.show(

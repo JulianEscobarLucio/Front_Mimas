@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-    .module('starter',['ngMaterial','ngRoute','ngMask'])
+    .module('starter',['ngMaterial','ngRoute','ngMask','ngMdIcons'])
     .controller('UsuarioController', UsuarioController);
  //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
@@ -175,10 +175,17 @@
 
 
 
+
        function funcitonContrasena(){
-          if(vm.contrasena.length > 0){
+          var expreg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_°¬|+\-=?;:'",.<>\{\}\[\]\\\/])[A-Za-z\d`~!@#$%^&*()_°¬|+\-=?;:'",.<>\{\}\[\]\\\/]{8,12}$/;
+           if(vm.contrasena.length > 0){
               vm.mensajeContrasena= "";
-           }      
+            if(!expreg.test(vm.contrasena)){
+              vm.mensajeContrasena= "La contraseña no cumple con las políticas";
+            }else{
+              vm.mensajeContrasena= "";
+            }
+           }  
 
         }
 
@@ -281,7 +288,7 @@
           }else if(vm.contrasena == undefined || vm.contrasena == '' ){
               vm.mensajeContrasena   = "Debes ingresar un válido para este campo";
               return;
-          }else if(expreg.test(vm.contrasena)){
+          }else if(!expreg.test(vm.contrasena)){
                vm.mensajeContrasena   = "La contraseña no cumple con las póliticas";
               return;
           }else if(vm.confirmarContrasena == undefined || vm.confirmarContrasena == '' ){
@@ -290,7 +297,7 @@
           }else if(vm.confirmarContrasena !=  vm.confirmarContrasena  ){
               vm.mensajeConfirmarContrasena   = "La confirmación no coincide con la contraseña";
               return;
-          }else if(expreg.test(vm.confirmarContrasena)){
+          }else if(!expreg.test(vm.confirmarContrasena)){
               vm.mensajeConfirmarContrasena   = "La contraseña no cumple con las póliticas";
               return;
           }else if(vm.rol == undefined || vm.rol == '0' ){

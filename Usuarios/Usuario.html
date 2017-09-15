@@ -17,6 +17,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
 <script src="../librerias/ngMask.js"></script>
 <link rel="stylesheet" href="../Menu.css">
 <link rel="stylesheet" href="Usuario.css">
@@ -144,23 +145,21 @@
    	    </div>
    	    <div class="row">
    	       <md-button class="md-fab">
-            <md-tooltip
-              md-direction="top">
-              <p>Tu contraseña debe tener entre 8 y 12 caracteres. Debe contener al menos una letra en mayúscula y una en minúscula.</p><br>
-              <p> Debe tener al menos un número del 0 al 9 y caracteres especiales.<br>
-            </md-tooltip>
-            <md-icon md-font-icon="face"></md-icon>
+   	         <ng-md-icon icon="info_outline" size="42" class="iconinfo" ></ng-md-icon>
+            <md-tooltip  md-direction="top">            
+               <p>Tu contraseña debe tener entre 8 y 12 caracteres. Debe contener al menos una letra en mayúscula y una minuscula. Debe tener al menos un número del 0 al 9 y caracteres especiales.<br>
+            </md-tooltip>            
           </md-button>   	    	
    	    </div>
    	     <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Contraseña*</label>
-	           <input type="password" class="form-control" ng-model="vm.contrasena" maxlength="10" ng-keyup="vm.functionContrasena()">
+	           <input type="password" class="form-control" ng-model="vm.contrasena" maxlength="20" ng-keyup="vm.functionContrasena()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeContrasena"></p>	       
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Confirmar Contraseña*</label>
-	           <input type="password" class="form-control" ng-model="vm.confirmarContrasena" maxlength="10" ng-keyup="vm.functionConfirmarContrasena()">
+	           <input type="password" class="form-control" ng-model="vm.confirmarContrasena" maxlength="20" ng-keyup="vm.functionConfirmarContrasena()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeConfirmarContrasena"></p>	          
 	         </div>
    	    </div>
