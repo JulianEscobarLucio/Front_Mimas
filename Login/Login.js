@@ -12,6 +12,7 @@
         vm.mensajeContrasena = '';
         vm.functionUsuario = functionUsuario ;
         vm.functionContrasena = functionContrasena;
+        vm.login = login;
         debugger;
         localStorage.setItem("user", '');
 
@@ -30,7 +31,6 @@
 
       }
 
-
       function ingresar() {
 
             if(vm.usuario == undefined || vm.usuario == ''){
@@ -44,9 +44,19 @@
                return;
             }
 
+            grecaptcha.execute();
+            
+   }
 
 
-                 var requestJson = {
+   function cancelar(){
+     vm.usuario = "";
+     vm.contrasena = "";
+   }
+} 
+
+function login(){
+       var requestJson = {
                     "email" : vm.usuario,
                     "contrasena" : vm.contrasena
                     }        
@@ -85,13 +95,6 @@
                );
             }  
        });
-   }
-
-
-   function cancelar(){
-     vm.usuario = "";
-     vm.contrasena = "";
-   }
-}        
+}       
     
 })();
