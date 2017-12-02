@@ -14,6 +14,7 @@
 <!-- Latest compiled and minified JavaScript -->
 <script src="../jquery-3.2.1.min.js" ></script>
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
@@ -30,7 +31,7 @@
                 <ul>
 				  <li><a href="#">Adoptar</a></li>
 				  <li><a href="#">Apadrinar</a></li>
-				  <li><a href="#">Estado y revisión del proceso</a></li>				  
+				  <li><a href="#">Estado y revisión del proceso</a></li>  
 				</ul>
 			</li>
 
@@ -63,28 +64,30 @@
 		</ul>
 		</div>		
    	  </div>
-   </header>   
+   </header> 
  
    <div class="body"  ng-controller="registrarMascotaController as vm" id="dialogContainer" >
          <h1 class="titulo">Mascota</h1>
+         <div class="row">
+          <div class="form-group col-xs-6 col-sm-6"">
+         	 <img ng-src="{{ vm.thumbnail.dataUrl }}" width="150" height="150" style="border" /> 
+           </div>
+         </div>
+         <br>
+         <br>
    	    <div class="row">   	    	
-	   	     <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Identificador*</label>
-	           <input type="text" class="form-control" ng-model="vm.Id" ng-Disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionId()">
-	           <p class="mensajeError"  ng-bind="vm.mensajeId"></p>
-	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Nombre*</label>
-	           <input type="text" class="form-control" ng-model="vm.nombre" ng-keyup="vm.functionNombre()">
+	           <input type="text" class="form-control" ng-model="vm.nombre" ng-keyup="vm.functionNombre()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');" >
 	           <p class="mensajeError"  ng-bind="vm.mensajeNombre"></p>
 	         </div>
-   	    </div>
-   	    <div class="row">
-   	         <div class="form-group col-xs-6 col-sm-6"">
+	          <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Responsable*</label>
 	           <input type="text" class="form-control" ng-model="vm.IdResponsable" ng-keyup="vm.functionResponsable()" >
 	           <p class="mensajeError"  ng-bind="vm.mensajeResponsable"></p>
 	         </div>
+   	    </div>
+   	    <div class="row">   	        
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Especie*</label>
 	            <select class="form-control" ng-model="vm.Especie"  ng-change="vm.functionEspecie()" >
@@ -93,28 +96,32 @@
                   <option value="2">Gato</option>                              
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajeEspecie"></p>	           
-	         </div>	
+	         </div>
+	         <div  class="form-group col-xs-6 col-sm-6"  flex-gt-xs>    
+                    <div flex-gt-xs>
+				       <label for="usr">Fecha de nacimiento*</label>  
+				     <md-datepicker ng-model="vm.fechaN" md-placeholder="Enter date"></md-datepicker> 
+				     <p class="mensajeError"  ng-bind="vm.mensajeFecha"></p>
+				   </div>    
+		    </div>	
    	    </div>
    	     <div class="row">
-		  	<div  class="form-group col-xs-6 col-sm-6"  flex-gt-xs>
-		      <label for="usr">Fecha de nacimiento*</label>
-		      <md-datepicker ng-model="vm.FechaN" md-current-view="year" md-placeholder="Enter date"></md-datepicker>
-		    </div>
-	         <div class="form-group col-xs-6 col-sm-6">
-	           <label for="usr">Edad</label>
-	           <input type="text" class="form-control" ng-model="vm.Edad">
-	         </div>
-   	    </div>
-   	    <div class="row">
-   	          <div class="form-group col-xs-6 col-sm-6">
+             <div class="form-group col-xs-6 col-sm-6"  flex-gt-xs  ng-app="test"> 
+                   <label for="usr">Imagen</label>      
+                   <input type="file" name="file"  onchange="angular.element(this).scope().photoChanged(this.files)" ng-model="vm.imagen"/>                         
+             </div>
+             <div class="form-group col-xs-6 col-sm-6">
 	            <label for="usr">Género*</label>
                 <select class="form-control" ng-model="vm.Genero"  ng-change="vm.functionGenero()" >
                   <option value="0" ng-selected="true">Seleccione un genero...</option>
-                  <option value="1">Masculino</option>
-                  <option value="2">Femenino</option>                              
+                  <option value="1">Macho</option>
+                  <option value="2">Hembra</option>                              
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajeGenero"></p>
-	         </div>
+	      </div>
+         </div>
+
+   	    <div class="row">
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Tamaño*</label>
 	            <select class="form-control" ng-model="vm.Tamano"  ng-change="vm.functionTamano()" >
@@ -123,11 +130,10 @@
                   <option value="2">Mediano</option>
                   <option value="3">Grande</option>                                                
                 </select>	
-                 <p class="mensajeError"  ng-bind="vm.mensajeTamano"></p>       
-	         </div>	         
-   	    </div>
-   	    <div class="row">
-   	    	 <div class="form-group col-xs-6 col-sm-6">
+                 <p class="mensajeError"  ng-bind="vm.mensajeTamano"></p>    
+
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Estado*</label>
 	            <select class="form-control" ng-model="vm.Estado"  ng-change="vm.functionEstado()" >
                   <option value="0" ng-selected="true">Seleccione un estado...</option>
@@ -137,46 +143,51 @@
                   <option value="4">Recuperado</option>                              
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajeEstado"></p>	          
-	         </div>
+	        </div>	         
+   	    </div>
+
+   	    <div class="row">   
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Caracteristicas*</label>
 	           <input type="text" class="form-control" ng-model="vm.Caracteristicas" ng-keyup="vm.functionCaracteristicas()">
 	               <p class="mensajeError"  ng-bind="vm.mensajeCaracteristicas"></p>
 	         </div>
-   	    </div>
-   	     <div class="row">
-   	         <div class="form-group col-xs-6 col-sm-6"">
+	           <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Raza*</label>
-	           <input type="text" class="form-control" ng-model="vm.Raza" ng-keyup="vm.functionRaza()">
+	           <input type="text" class="form-control" ng-model="vm.Raza" ng-keyup="vm.functionRaza()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	            <p class="mensajeError"  ng-bind="vm.mensajeRaza"></p>	
 	         </div>
+   	    </div>
+   	     <div class="row">   	       
 	          <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Señales*</label>
 	           <input type="text" class="form-control" ng-model="vm.Senales"  ng-keyup="vm.functionSenales()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeSenales"></p>	
 	         </div>
-   	    </div>
-   	    <div class="row">   	    	
 	         <div class="form-group col-xs-6 col-sm-6"">
 	           <label for="usr">Color*</label>
-	           <input type="text" class="form-control" ng-model="vm.Color" ng-keyup="vm.functionColor()">
+	           <input type="text" class="form-control" ng-model="vm.Color" ng-keyup="vm.functionColor()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	               <p class="mensajeError"  ng-bind="vm.mensajeColor"></p>
 	         </div>
+   	    </div>
+   	    <div class="row">  	    	
+	 
 	          <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Color ojos*</label>
-	           <input type="text" class="form-control" ng-model="vm.Colorojos" ng-keyup="vm.functionColorojos()">
+	           <input type="text" class="form-control" ng-model="vm.Colorojos" ng-keyup="vm.functionColorojos()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	           <p class="mensajeError"  ng-bind="vm.mensajeColorojos"></p>
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Personalidad*</label>
+	           <input type="text" class="form-control" ng-model="vm.Personalidad" ng-keyup="vm.functionPersonalidad()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
+	           <p class="mensajeError"  ng-bind="vm.mensajepersonalidad"></p>
 	         </div>
    	    </div>
    	    <div class="row">   	    	
-	         <div class="form-group col-xs-6 col-sm-6"">
-	           <label for="usr">Personalidad*</label>
-	           <input type="text" class="form-control" ng-model="vm.Personalidad" ng-keyup="vm.functionPersonalidad()">
-	           <p class="mensajeError"  ng-bind="vm.mensajepersonalidad"></p>
-	         </div>
+	     
 	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Estado de Salud*</label>
-	           <input type="text" class="form-control" ng-model="vm.EstadoSalud" ng-keyup="vm.functionEstadoSalud()">
+	           <input type="text" class="form-control" ng-model="vm.EstadoSalud" ng-keyup="vm.functionEstadoSalud()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	           <p class="mensajeError"  ng-bind="vm.mensajeEstadoSalud"></p>
 	         </div>
    	    </div>		 
@@ -198,15 +209,17 @@
    	    </div>
    	    <div class="row botones">
    	       	  <div class="form-group col-xs-3 col-sm-3"">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminar()">Eliminar</button>
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.showConfirm($event)">Eliminar</button>
+	         </div> 
+	          <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledCancelar" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>   	    	
-   	    </div>
-   	 
+   	    </div>   	 
         <md-content>       
           
             <div ng-if="status">
-               <br/>
-              
+               <br/>  
+
             </div>
          </md-content>   
        </div>
@@ -221,6 +234,5 @@
 	<script src="Registrar_mascota.service.js"></script>
 	<!--
 	<script src="prueba.js"></script>-->
-
 </body>
 </html>

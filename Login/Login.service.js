@@ -11,6 +11,7 @@
         var self = this;
         var ipserver = 'http://localhost:8091'; 
         self.login = login;
+        self.consultarUsuario = consultarUsuario;
 
         function login(auditJson){                
             var promesa = $q.defer();
@@ -27,11 +28,27 @@
                         resultado:err
                     })
                 })
-                return promesa.promise      
+                return promesa.promise   
             
         }
+    }
 
-
+    function consultarUsuario(auditJson){
+            debugger;                
+            var promesa = $q.defer();
+            $http.post(ipserver+"/mimas/rest/usuarioServices/consultarUsuario",auditJson)
+                .success(function(data){
+                    promesa.resolve({
+                        resultado:data
+                    })
+                })
+                .error(function(err){
+                    promesa.resolve({
+                        resultado:err
+                    })
+                })
+                return promesa.promise     
+            
     }
 
 })();

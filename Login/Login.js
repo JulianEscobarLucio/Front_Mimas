@@ -1,6 +1,5 @@
 (function() {
     'use strict';
-
     angular
     .module('starter',['ngMaterial'])
     .controller('loginController', loginController);
@@ -13,7 +12,9 @@
         vm.mensajeContrasena = '';
         vm.functionUsuario = functionUsuario ;
         vm.functionContrasena = functionContrasena;
-
+        vm.login = login;
+        debugger;
+        localStorage.setItem("user", '');
 
 
       function functionUsuario(){
@@ -30,7 +31,6 @@
 
       }
 
-
       function ingresar() {
 
             if(vm.usuario == undefined || vm.usuario == ''){
@@ -42,11 +42,21 @@
             if(vm.contrasena == undefined || vm.contrasena == ''){
                vm.mensajeContrasena = 'Ingrese un valor válido';
                return;
-            }  
+            }
+
+            grecaptcha.execute();
+            
+   }
 
 
+   function cancelar(){
+     vm.usuario = "";
+     vm.contrasena = "";
+   }
+} 
 
-                 var requestJson = {
+function login(){
+       var requestJson = {
                     "email" : vm.usuario,
                     "contrasena" : vm.contrasena
                     }        
@@ -55,7 +65,10 @@
                       
             loginServices.login(requestJson).then(function(data){
             debugger;
-            if(data.resultado[0].codRespuesta == "200") {                
+            if(data.resultado[0].codRespuesta == "200") { 
+                      
+                 debugger;
+                localStorage.setItem("user", data.resultado[0].nombre1 + " " + data.resultado[0].apellido1);             
                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
@@ -65,9 +78,9 @@
                      .ariaLabel('Usuario registrado')
                      .ok('Cerrar')                     
                );
-               document.getElementById("redirect").click();
+                     
                
-                
+               document.getElementById("redirect").click();            
 
             }else{
                 $mdDialog.show(
@@ -82,13 +95,6 @@
                );
             }  
        });
-   }
-
-
-   function cancelar(){
-     vm.usuario = "";
-     vm.contrasena = "";
-   }
-}        
+}       
     
 })();

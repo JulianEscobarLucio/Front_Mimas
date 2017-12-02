@@ -1,5 +1,3 @@
-
-
     (function() {
     'use strict';
 
@@ -8,10 +6,11 @@
     .controller('registrarMascotaController', registrarMascotaController);
  //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
-    function registrarMascotaController($scope, $mdDialog,registarMascotaServices) {
+    function registrarMascotaController($scope, $mdDialog,registarMascotaServices, $timeout) {
         var vm = this;
         vm.FechaN = "";
         vm.isOpen = false;
+
 
              
         vm.registrar = registrar;
@@ -40,7 +39,7 @@
         vm.mensajeColorojos = "";
         vm.mensajepersonalidad = "";
         vm.mensajeEstadoSalud = "";
-        vm.functionId = functionId;
+        vm.mensajeFecha = "";
          vm.functionId2 = functionId2;
         vm.functionNombre = functionNombre;
         vm.functionResponsable = functionResponsable;
@@ -57,10 +56,86 @@
         vm.functionColorojos = functionColorojos;
         vm.functionPersonalidad = functionPersonalidad;
         vm.functionEstadoSalud = functionEstadoSalud;
+        vm.showConfirm = showConfirm;
+        vm.cancelar = cancelar;
+        vm.DisabledCancelar = true;
+        vm.IdResponsable = localStorage.getItem("user"); 
+        vm.imagen = "";
+        vm.fechaN = new Date();
+   
+
+
+       vm.thumbnail = {
+         dataUrl: ''
+       };
+       vm.fileReaderSupported = window.FileReader != null;
+
+       $scope.photoChanged = function(files){
+          if (files != null) {
+              debugger;
+              var file = files[0];
+              vm.imagen = file.name 
+            if (vm.fileReaderSupported && file.type.indexOf('image') > -1) {
+                $timeout(function() {
+                    var fileReader = new FileReader();
+                    fileReader.readAsDataURL(file);
+                    fileReader.onload = function(e) {
+                        $timeout(function(){
+                           vm.thumbnail.dataUrl = e.target.result;
+                        });
+                    }
+                });
+            }
+          }
+        };
+
+
+
+      function cancelar(){
+        vm.consultarDisabled = false; 
+        vm.actualizarDisabled = true;
+        vm.DisabledCancelar = true;
+        vm.eliminarDisabled = true;
+        vm.idDisabled = false;
+        vm.registrarDisabled = false;
+        
+        vm.Id2 = "";
+        vm.nombre = "";
+        vm.IdResponsable  = "";
+        vm.Especie = "";
+        vm.Raza = "";
+        vm.Genero = "";   
+        vm.Tamano = "";
+        vm.Estado = "",
+        vm.Caracteristicas = "";
+        vm.Vacunas = "";
+        vm.FechaN = "";
+        vm.Senales = "";
+        vm.Color = "";
+        vm.Colorojos = "";
+        vm.Personalidad = "";
+        vm.EstadoSalud   = "" 
+
+       } 
 
         
 
+     function showConfirm (ev) {
+          // Appending dialog to document.body to cover sidenav in docs app
+          var confirm = $mdDialog.confirm()
+                .title('Vas a eliminar una mascota')
+                .textContent('Estás seguro que vas a eliminar esta mascota.')
+                .ariaLabel('Lucky day')
+                .targetEvent(ev)
+                .ok('Aceptar')
+                .cancel('Cancelar');
 
+          $mdDialog.show(confirm).then(function() {
+            vm.eliminar();
+          }, function() {
+            //$scope.status = 'You decided to keep your debt.';
+          });
+        };
 
 
  
@@ -72,12 +147,6 @@
 
         
 
-
-        function functionId(){
-             if(vm.Id.length > 0){
-               vm.mensajeId ="";
-             }
-        }
 
         function functionNombre(){
              if(vm.nombre.length > 0){
@@ -175,11 +244,14 @@
 
 
 
-        function registrar(){ 
-              if(vm.Id == undefined  || vm.Id  == ''){
-                   vm.mensajeId = "Debes ingresar un dato válido para este campo";
-                   return;
-              }
+        function registrar(){           
+              console.log(vm.thumbnail.dataUrl);
+
+             if(vm.fechaN > new Date()){
+               vm.mensajeFecha = "La fecha debe ser menor o igual a la fecha actual";
+               return;
+             }
+
 
              if(vm.nombre == undefined  || vm.nombre  == ''){
                    vm.mensajeNombre = "Debes ingresar un dato válido para este campo";
@@ -260,25 +332,26 @@
               if(vm.EstadoSalud == undefined  || vm.EstadoSalud == ''){
                    vm.mensajeEstadoSalud = "Debes ingresar un dato válido para este campo";
                     return;
-              }    
-  
+              }   
+
+          var mes = vm.fechaN.getMonth()+1;  
           var requestJson = {
                     "id" : vm.Id,
                     "nombre" : vm.nombre,
                     "idResponsable": vm.IdResponsable ,
                     "especie" : vm.Especie,
                     "raza" : vm.Raza,
-                    "genero" : vm.Genero,
-                    "edad" : vm.Edad,
+                    "genero" : vm.Genero,                 
                     "tamano" : vm.Tamano,
                     "estado" : vm.Estado,
                     "caracteristicas" : vm.Caracteristicas,
-                    "fechaN" : vm.FechaN,
+                    "fechaN" : vm.fechaN.getDate() + "/" + mes + "/" + vm.fechaN.getFullYear(),
                     "senales" : vm.Senales,
                     "color" : vm.Color,
                     "colorojos" : vm.Colorojos,
                     "personalidad" : vm.Personalidad,
-                    "estadoSalud" : vm.EstadoSalud                  
+                    "estadoSalud" : vm.EstadoSalud ,
+                     "imagen" : vm.thumbnail.dataUrl                
                     }
              console.log(JSON.stringify(requestJson));       
              registarMascotaServices.registrarMascota(requestJson).then(function(data){
@@ -289,8 +362,8 @@
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Registrar Mascota')
-                       .textContent('!Se registró la mascota exitósamente¡')
-                       .ariaLabel('!Se registró la mascota exitósamente¡')
+                       .textContent('!Se registró la mascota exitósamente¡, se registró con la identificación ' + data.resultado[0].id)
+                       .ariaLabel('!Se registró la mascota exitósamente¡, se registró con la identificación')
                        .ok('Cerrar')                     
                       );
                       
@@ -299,8 +372,7 @@
                      vm.IdResponsable  = "",
                      vm.Especie = "",
                      vm.Raza = "",
-                     vm.Genero = "",
-                     vm.Edad = "",
+                     vm.Genero = "",                  
                      vm.Tamano = "",
                      vm.Estado = "",
                      vm.Caracteristicas = "",
@@ -310,9 +382,12 @@
                      vm.Color = "",
                      vm.Colorojos = "",
                      vm.Personalidad = "",
-                     vm.EstadoSalud   = ""                
+                     vm.EstadoSalud   = "",
+                     vm.thumbnail = {
+                    dataUrl: ''
+                    };               
 
-                }else{
+                }else if(data.resultado[0].codRespuesta == "201"){
                        $mdDialog.show(
                        $mdDialog.alert()
                        .parent(angular.element(document.querySelector('#dialogContainer')))
@@ -322,12 +397,27 @@
                        .ariaLabel('Mascota no registrada')
                        .ok('Cerrar')                     
                       );
+                }else if(data.resultado[0].codRespuesta == "202"){
+                       $mdDialog.show(
+                       $mdDialog.alert()
+                       .parent(angular.element(document.querySelector('#dialogContainer')))
+                       .clickOutsideToClose(true)
+                       .title('Registrar Mascota')
+                       .textContent('La mascota ya se encuentra registrada')
+                       .ariaLabel('La mascota ya se enuentra registrada')
+                       .ok('Cerrar')                     
+                      );
                 }           
              });
         } 
 
 
         function actualizar(){ 
+            if(vm.fechaN > new Date()){
+               vm.mensajeFecha = "La fecha debe ser menor o igual a la fecha actual";
+               return;
+             }
+
              if(vm.Id == undefined  || vm.Id  == ''){
                    vm.mensajeId = "Debes ingresar un dato válido para este campo";
                    return;
@@ -415,25 +505,25 @@
               }    
           
   
-
+           var mes = vm.fechaN.getMonth()+1; 
           var requestJson = {
                     "id" : vm.Id,
                     "nombre" : vm.nombre,
                     "idResponsable": vm.IdResponsable ,
                     "especie" : vm.Especie,
                     "raza" : vm.Raza,
-                    "genero" : vm.Genero,
-                    "edad" : vm.Edad,
+                    "genero" : vm.Genero,                    
                     "tamano" : vm.Tamano,
                     "estado" : vm.Estado,
                     "caracteristicas" : vm.Caracteristicas,
-                    "fechaN" : vm.FechaN,
+                    "fechaN" : vm.fechaN.getDate() + "/" + mes + "/" + vm.fechaN.getFullYear(),
                     "senales" : vm.Senales,
                     "color" : vm.Color,
                     "colorojos" : vm.Colorojos,
                     "personalidad" : vm.Personalidad,
-                    "estadoSalud" : vm.EstadoSalud                  
-                    }
+                    "estadoSalud" : vm.EstadoSalud,
+                    "imagen" : vm.imagen                   
+                    }         
 
           
                console.log(JSON.stringify(requestJson));       
@@ -455,8 +545,7 @@
                     vm.IdResponsable  = "";
                     vm.Especie = "";
                     vm.Raza = "";
-                    vm.Genero = "";
-                    vm.Edad = "";
+                    vm.Genero = "";            
                     vm.Tamano = "";
                     vm.Estado = "";
                     vm.Caracteristicas = "";
@@ -502,8 +591,7 @@
                     "idResponsable": vm.IdResponsable ,
                     "especie" : vm.Especie,
                     "raza" : vm.Raza,
-                    "genero" : vm.Genero,
-                    "edad" : vm.Edad,
+                    "genero" : vm.Genero,                  
                     "tamano" : vm.Tamano,
                     "estado" : vm.Estado,
                     "caracteristicas" : vm.Caracteristicas,
@@ -512,7 +600,8 @@
                     "color" : vm.Color,
                     "colorojos" : vm.Colorojos,
                     "personalidad" : vm.Personalidad,
-                    "estadoSalud" : vm.EstadoSalud                                        
+                    "estadoSalud" : vm.EstadoSalud ,
+                    "imagen" : vm.imagen                                        
                     }
              registarMascotaServices.consultarMascotaServices(requestJson).then(function(data){
                 debugger;
@@ -531,22 +620,23 @@
                     vm.IdResponsable  = data.resultado[0].idResponsable,
                     vm.Especie = data.resultado[0].especie,
                     vm.Raza = data.resultado[0].raza,
-                    vm.Genero = data.resultado[0].genero,
-                    vm.Edad = data.resultado[0].edad,
+                    vm.Genero = data.resultado[0].genero,                
                     vm.Tamano = data.resultado[0].tamano,
                     vm.Estado = data.resultado[0].estado,
                     vm.Caracteristicas = data.resultado[0].caracteristicas,
-                    vm.FechaN = data.resultado[0].fechaN,
+                    vm.FechaN = new Date(data.resultado[0].fechaN),
                     vm.Senales = data.resultado[0].senales,
                     vm.Color = data.resultado[0].color,
                     vm.Colorojos = data.resultado[0].colorOjos,
                     vm.Personalidad = data.resultado[0].personalidad,
-                    vm.EstadoSalud   = data.resultado[0].estadoSalud,  
+                    vm.EstadoSalud   = data.resultado[0].estadoSalud, 
+                    vm.thumbnail.dataUrl =  data.resultado[0].imagen,
 
                     vm.Id2 = ""; 
                      vm.idDisabled = true;
                      vm.actualizarDisabled = false;
                      vm.eliminarDisabled = false;
+                      vm.DisabledCancelar = false;
 
                      vm.registrarDisabled = true;
                      vm.consultarDisabled = true; 
@@ -578,8 +668,7 @@
                     "idResponsable": vm.IdResponsable ,
                     "especie" : vm.Especie,
                     "raza" : vm.Raza,
-                    "genero" : vm.Genero,
-                    "edad" : vm.Edad,
+                    "genero" : vm.Genero,                
                     "tamano" : vm.Tamano,
                     "estado" : vm.Estado,
                     "caracteristicas" : vm.Caracteristicas,
@@ -588,7 +677,8 @@
                     "color" : vm.Color,
                     "colorojos" : vm.Colorojos,
                     "personalidad" : vm.Personalidad,
-                    "estadoSalud" : vm.EstadoSalud                                        
+                    "estadoSalud" : vm.EstadoSalud,
+                    "imagen" : vm.imagen                                         
                     }
              registarMascotaServices.eliminarMascota(requestJson).then(function(data){
                 debugger;
@@ -608,8 +698,7 @@
                     vm.IdResponsable  = "",
                     vm.Especie = "",
                     vm.Raza = "",
-                    vm.Genero = "",
-                    vm.Edad = "",
+                    vm.Genero = "",              
                     vm.Tamano = "",
                     vm.Estado = "",
                     vm.Caracteristicas = "",
@@ -639,8 +728,8 @@
 
                 }            
              });
-        } 
-   
+        }    
+
 }        
     
 })();

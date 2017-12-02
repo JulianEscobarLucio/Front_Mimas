@@ -84,9 +84,6 @@ function consultarMascotaServices(auditJson){
             
         }
 
-
-
-
     }
 
 })();
