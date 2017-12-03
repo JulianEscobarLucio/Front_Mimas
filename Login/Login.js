@@ -53,7 +53,7 @@
      vm.usuario = "";
      vm.contrasena = "";
    }
-} 
+
 
 function login(){
        var requestJson = {
@@ -95,6 +95,6 @@ function login(){
                );
             }  
        });
-}       
-    
+  }       
+ }    
 })();
