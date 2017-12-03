@@ -69,10 +69,10 @@
 
 
         function functionNombre2(){
-            if(vm.nombre1.length > 0){
+            if(vm.nombre2.length > 0){
                vm.mensajeNombre1 = "";
             } 
-            if(expreg.test(vm.nombre1)){
+            if(expreg.test(vm.nombre2)){
               vm.mensajeNombre1 = "No debe llevar espacios";
             } 
 
@@ -83,6 +83,9 @@
             if(vm.apellido1.length > 0){
               vm.mensajeApellido1 = "";
             } 
+            if(expreg.test(vm.apellido1)){
+              vm.mensajeApellido1 = "No debe llevar espacios";
+            }
         } 
 
 
@@ -90,6 +93,9 @@
         function functionApellido2(){
             if(vm.apellido2.length > 0){
               vm.mensajeApellido2 = "";
+            }
+            if(expreg.test(vm.apellido2)){
+              vm.mensajeApellido2 = "No debe llevar espacios";
             }     
 
         } 

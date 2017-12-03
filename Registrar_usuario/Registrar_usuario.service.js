@@ -9,12 +9,12 @@
 
 	function registarUsuarioServices($http,$q){
          var self = this;
-        var ipserver = 'http://localhost:8091'; 
+        var ipserver = 'http://localhost:8092'; 
         self.registrarUsuario = registrarUsuario;
 
         function registrarUsuario(auditJson){                
             var promesa = $q.defer();
-            $http.post(ipserver+"/mimas/rest/Contactoservices/registrarContacto",auditJson)
+            $http.post(ipserver+"/mimas/rest/usuarioServices/registrarUsuario",auditJson)
 
                 .success(function(data){
                     promesa.resolve({
