@@ -17,6 +17,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <link rel="stylesheet" href="../Menu.css">
 <link rel="stylesheet" href="Login.css">
 </head>
@@ -53,7 +54,7 @@
 					<li><a href="#">Cuidados de animales</a></li>
 				</ul>
 			</li>
-			<li ><button class="inicio" href="Login.html">Iniciar sesión</button></li>
+			<li ><a class="inicio" href="Login.html">Iniciar sesión</a><a id="redirect" style="display: none;" href="../Home_Transaccional/Home_transaccional.html"></a></li>
 		</ul>
 		</div>		
    	  </div>
@@ -63,18 +64,24 @@
    	    <div class="row">   	    	
 	   	     <div class="form-group col-xs-12 col-sm-12">
 	           <label for="usr">Usuario*</label>
-	           <input type="text" class="form-control" ng-model="vm.usuario">
+	           <input type="text" class="form-control" ng-model="vm.usuario"  ng-keyup="vm.functionUsuario()">
+	             <p class="mensajeError"  ng-bind="vm.mensajeUsuario" ></p>
 	         </div>
    	    </div>
    	    <div class="row">
    	    	 <div class="form-group col-xs-12 col-sm-12">
 	           <label for="usr">Contraseña*</label>
-	           <input type="text" class="form-control" ng-model="vm.contrasena">
+	           <input type="password" class="form-control" ng-model="vm.contrasena"  ng-keyup="vm.functionContrasena()">
+	            <p class="mensajeError"  ng-bind="vm.mensajeContrasena" ></p>
 	         </div>
-   	    </div>   	  
+   	    </div>
+   	    <div id='recaptcha' class="g-recaptcha"
+          data-sitekey="6LeDsDIUAAAAAOTgmn8pB__pcQClFbSno2zA7nvX"
+          data-callback="login"
+          data-size="invisible"></div>   	  
    	    <div class="row botones">
    	    	 <div class="form-group col-xs-6 col-sm-6">
-	           <button type="button" class="btn btn-success">Cancelar</button>
+	           <button type="button" class="btn btn-success" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6"">
 	            <button type="button" class="btn btn-success" ng-click="vm.ingresar()">Aceptar</button>
@@ -93,8 +100,6 @@
         <md-content>          
             <div ng-if="status">
                <br/>
-               <b layout="row" layout-align="center center" class="md-padding">               
-               </b>
             </div>
          </md-content>   
    </div>  

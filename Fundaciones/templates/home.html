@@ -1,0 +1,19 @@
+<a ng-click="openModal('sm')">Abrir modal</a>
+ 
+<!--template para las modales-->
+<script type="text/ng-template" id="myModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Mi ventana modal</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            {{ items }}
+        </div>
+    </div>
+    <div class="modal-footer">
+    	<button class="btn btn-success form-control" ng-click="save('hey')">Salvar</button>
+    	<div class="divider-lg"></div><br>
+        <button class="btn btn-warning form-control" ng-click="cancel()">Cerrar modal</button>
+    </div>
+</script>
+<!--./template para las modales-->

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="starter">
+<head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
+<meta charset="utf-8">
+<link rel="stylesheet" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="../jquery-3.2.1.min.js" ></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<link rel="stylesheet" href="../Menu.css">
+<link rel="stylesheet" href="Home_controller.css">
+</head>
+<body >
+   <header>
+   	  <div class="header">   
+   	    <div class="nav">	     
+   	 	 <ul id="nav">
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
+                <ul>
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>				  
+				</ul>
+			</li>
+
+			</li>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
+			</li>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
+			<ul>
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
+			</ul>
+			</li>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
+				<ul>
+					<li><a href="#">Adopciones</a></li>
+					<li><a href="#">Eventos</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
+				</ul>
+			</li>
+			 <li class="subs"><a href="#s2">Administración</a>
+			  <ul>
+			    <li><a href="../Roles/Rol.html">Roles</a></li>
+			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+			  </ul>
+			</li>
+			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
+		</ul>
+		</div>		
+   	  </div>
+   </header>   
+   <div class="body"  ng-controller="homeController as vm" id="dialogContainer" >
+        
+      
+       </div>
+    
+</div>
+   <footer>
+   	<div class="footer"></div>
+   </footer> 
+ <!--  <script src="../angular.min.js"></script>-->
+	<script src="../angular-route.min.js"></script>
+	<script src="Home_transaccional.js"></script>	
+	<!--
+	<script src="prueba.js"></script>-->
+</body>
+</html>

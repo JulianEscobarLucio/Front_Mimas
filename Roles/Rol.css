@@ -1,16 +1,15 @@
 
 
 .body{
-	width: 25%;
-    margin-left: auto;
-    margin-right: auto;
+	width: 50%;
+    margin-left: 25%;
     margin-top: 5%;
-    height: 61%
 }
 
 
 .botones{
 	margin-left: 13%;
+    margin-top: 5%;
 }
 
 .btn{
@@ -34,14 +33,21 @@
 	color: #66af96;
 }
 
-a{
-  cursor: pointer;
 
-}
 
 .mensajeError {
     font-family: sourcesanspro;
     font-size: 14px;
-    color: #f93a0e;
+    color: #f93a0e;  
 
 }
+
+footer{
+     margin-top: 6.4%;
+   }  
+
+   .identificacion{
+    margin-left: -60px;
+    width: 202px;
+}
+

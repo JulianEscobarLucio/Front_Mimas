@@ -7,20 +7,9 @@
 }
 
 
-.botones{
-	margin-left: 13%;
-}
-
 .btn{
 	width: 65%;
 }
-
- .md-fab{
-  	    margin-left: 45% !important;
-  	    background-color: #66af96 !important;
-        width: 40px !important;
-        height: 40px !important;
-  }
 
 
 .header{
@@ -44,9 +33,20 @@
 .mensajeError {
     font-family: sourcesanspro;
     font-size: 14px;
-    color: #f93a0e;  
-
+    color: #f93a0e; 
 }
+
+
+.email{
+	margin-left: -4%;
+    width: 202px;
+}
+
+.btn{
+    width: 100%;
+}
+
+
 
 
 .dialogdemoBasicUsage #popupContainer {
@@ -71,8 +71,8 @@
   margin-bottom: 0; }
 
  .md-fab{
-        margin-left: 45% !important;
-        background-color: #66af96 !important;
+  	    margin-left: 45% !important;
+  	    background-color: #66af96 !important;
         width: 40px !important;
         height: 40px !important;
   }

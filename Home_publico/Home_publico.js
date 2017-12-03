@@ -2,11 +2,11 @@
     'use strict';
 
     angular
-    .module('starter',['ngMaterial','ngRoute','ngMask','ngMdIcons'])
-    .controller('registrarUsuarioController', registrarUsuarioController);
+    .module('starter',['ngMaterial'])
+    .controller('hotmepublicoController', hotmepublicoController);
  //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
-    function registrarUsuarioController($scope, $mdDialog,registarUsuarioServices) {
+    function hotmepublicoController($scope, $mdDialog,registarUsuarioServices) {
         var vm = this;
         vm.registrarUsuario = registrarUsuario;
         vm.mensajeNombre1 = "";
@@ -30,29 +30,7 @@
         vm.functionPreguntaSeguridad = functionPreguntaSeguridad;
         vm.functionRespuesta = functionRespuesta;
         vm.functionContrasena = funcitonContrasena;
-        vm.functionConfirmarContrasena = functionConfirmarContrasena; 
-     
-        vm.nombre1 = '';
-        vm.nombre2 ='';
-        vm.apellido1 = '';
-        vm.apellido2 = '';
-        vm.telefonoFijo =  '';
-        vm.telefonoMovil = '';
-        vm.email = ''; 
-        vm.respuesta = '';
-        vm.contrasena = '';
-        vm.confirmarContrasena = '';    
-
-
-        function functionPreguntaSeguridad(){
-            if(vm.preguntaSeguridad != undefined || vm.preguntaSeguridad != '1' ){
-              vm.mensajePreguntaSeguridad   = "";
-              return;
-            }
-
-        } 
-
-
+        vm.functionConfirmarContrasena = functionConfirmarContrasena;         
                 
             
         function functionNombre1(){
@@ -114,6 +92,14 @@
         }
 
 
+        function functionPreguntaSeguridad(){
+            if(vm.preguntaSeguridad.length > 0){
+              vm.mensajePreguntaSeguridad= "";
+            }     
+
+        }
+
+
         function functionRespuesta(){
             if(vm.respuesta.length > 0){
               vm.mensajeRespuesta= "";
@@ -122,10 +108,11 @@
         }
 
 
+
        function funcitonContrasena(){
-           if(vm.contrasena.length > 0){
+          if(vm.contrasena.length > 0){
               vm.mensajeContrasena= "";
-            }  
+           }      
 
         }
 
@@ -145,46 +132,44 @@
 
 
      function registrarUsuario() { 
-         var expreg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[`~!@#$%^&*()_°¬|+\-=?;:'",.<>\{\}\[\]\\\/])[A-Za-z\d`~!@#$%^&*()_°¬|+\-=?;:'",.<>\{\}\[\]\\\/]{8,12}$/;
+          
+
           if(vm.nombre1 == undefined || vm.nombre1 == '' ){
-               vm.mensajeNombre1   = "Debes ingresar un válido para este campo";
+               vm.mensajeNombre1   = "Debes ingresar un valido para este campo";
                return;
 
            }else if(vm.apellido1 == undefined || vm.apellido1 == '' ){
-              vm.mensajeApellido1   = "Debes ingresar un válido para este campo";
+              vm.mensajeApellido1   = "Debes ingresar un valido para este campo";
               return;
           }else if(vm.telefonoFijo == undefined || vm.telefonoFijo == ''  && (vm.telefonoMovil == undefined || vm.telefonoMovil == '') ){
               vm.mensajeTelefonoFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
               vm.mensajeTelefonoMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";
               return;
           }else if(vm.email == undefined || vm.email == '' ){
-              vm.mensajeEmail   = "Debes ingresar un válido para este campo";
+              vm.mensajeEmail   = "Debes ingresar un valido para este campo";
               return;
           }else if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.email)){
-              vm.mensajeEmail   = "El correo no es válido";
+              vm.mensajeEmail   = "El correo no es valido";
               return;
-          }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '1' ){
-              vm.mensajePreguntaSeguridad   = "Debes seleccionar una pregunta ";
+          }else if(vm.preguntaSeguridad == undefined || vm.preguntaSeguridad == '' ){
+              vm.mensajePreguntaSeguridad   = "Debes ingresar un valido para este campo";
               return;
           }else if(vm.respuesta == undefined || vm.respuesta == '' ){
-              vm.mensajeRespuesta   = "Debes ingresar un válido para este campo";
+              vm.mensajeRespuesta   = "Debes ingresar un valido para este campo";
               return;
           }else if(vm.contrasena == undefined || vm.contrasena == '' ){
-              vm.mensajeContrasena   = "Debes ingresar un válido para este campo";
-              return;
-          }else if(!expreg.test(vm.contrasena)){
-               vm.mensajeContrasena   = "La contraseña no cumple con las póliticas";
+              vm.mensajeContrasena   = "Debes ingresar un valido para este campo";
               return;
           }else if(vm.confirmarContrasena == undefined || vm.confirmarContrasena == '' ){
-              vm.mensajeConfirmarContrasena   = "Debes ingresar un válido para este campo";
+              vm.mensajeConfirmarContrasena   = "Debes ingresar un valido para este campo";
               return;
           }else if(vm.confirmarContrasena !=  vm.confirmarContrasena  ){
               vm.mensajeConfirmarContrasena   = "La confirmación no coincide con la contraseña";
               return;
-          }else if(!expreg.test(vm.confirmarContrasena)){
-              vm.mensajeConfirmarContrasena   = "La contraseña no cumple con las póliticas";
-              return;
           }
+
+
+
 
           var requestJson = {
                     "nombre1" : vm.nombre1,
@@ -196,7 +181,8 @@
                     "email" : vm.email,
                     "pregunta":  vm.preguntaSeguridad,
                     "respuesta" :  vm.respuesta,
-                    "contrasena" :vm.contrasena         
+                    "contrasena" :vm.contrasena,
+                    "confirmarContrasena" : vm.confirmarContrasena  
                     }        
              vm.modalShown2 = true;
                console.log(JSON.stringify(requestJson));
@@ -211,7 +197,7 @@
                vm.telefonoFijo =  '',
                vm.telefonoMovil = '', 
                vm.email = '',
-               vm.preguntaSeguridad = '1',
+               vm.preguntaSeguridad = '',
                vm.respuesta = '',
                vm.contrasena = '',
                vm.confirmarContrasena = '',
@@ -232,8 +218,8 @@
                      .parent(angular.element(document.querySelector('#dialogContainer')))
                      .clickOutsideToClose(true)
                      .title('Registrar usuario')
-                     .textContent('El usuario no ha sido registrado, Usuario existente')
-                     .ariaLabel('Usuario existente')
+                     .textContent('Usuario no registrado, faltan datos por llenar')
+                     .ariaLabel('Usuario no registrado')
                      .ok('Cerrar')
                      
                );

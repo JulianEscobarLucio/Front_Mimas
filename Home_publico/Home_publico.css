@@ -1,11 +1,9 @@
 
 
 .body{
-	width: 25%;
-    margin-left: auto;
-    margin-right: auto;
+	width: 50%;
+    margin-left: 25%;
     margin-top: 5%;
-    height: 61%
 }
 
 
@@ -24,6 +22,7 @@
 }
 
 .footer{
+	margin-top: 34%;
 	height: 150px;
     background-color: rgb(197, 195, 195);
 }
@@ -34,14 +33,11 @@
 	color: #66af96;
 }
 
-a{
-  cursor: pointer;
 
-}
 
 .mensajeError {
     font-family: sourcesanspro;
     font-size: 14px;
-    color: #f93a0e;
+    color: #f93a0e;  
 
 }
