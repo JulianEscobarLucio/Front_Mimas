@@ -4,16 +4,15 @@
     .module('starter',['ngMaterial'])
     .controller('loginController', loginController);
 
-  function loginController($scope, $mdDialog,loginServices, $location) {
+  function loginController($scope, $mdDialog,loginServices, $location, $window) {
         var vm = this;
         vm.ingresar = ingresar;
         vm.cancelar = cancelar;
         vm.mensajeUsuario = '';
         vm.mensajeContrasena = '';
         vm.functionUsuario = functionUsuario ;
-        vm.functionContrasena = functionContrasena;
-        vm.login = login;
-        debugger;
+        vm.functionContrasena = functionContrasena;        
+        $window.login = login; 
         localStorage.setItem("user", '');
 
 
@@ -55,7 +54,7 @@
    }
 
 
-function login(){
+    function login(){
        var requestJson = {
                     "email" : vm.usuario,
                     "contrasena" : vm.contrasena
@@ -91,6 +90,7 @@ function login(){
                );
             }  
        });
-  }       
+  } 
+    
  }
 })();

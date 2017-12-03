@@ -9,7 +9,7 @@
 
 	function loginServices($http,$q){
         var self = this;
-        var ipserver = 'http://localhost:8091'; 
+        var ipserver = 'http://localhost:8092'; 
         self.login = login;
         self.consultarUsuario = consultarUsuario;
 
