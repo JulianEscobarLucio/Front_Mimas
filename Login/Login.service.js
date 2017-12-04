@@ -13,7 +13,7 @@
         self.login = login;
         self.consultarUsuario = consultarUsuario;
 
-        function login(auditJson){                
+    function login(auditJson){                
             var promesa = $q.defer();
             debugger;
             $http.post(ipserver+"/mimas/rest/securityServices/login"
@@ -29,7 +29,7 @@
                     })
                 })
                 return promesa.promise             
-        }
+    }
     
 
     function consultarUsuario(auditJson){
