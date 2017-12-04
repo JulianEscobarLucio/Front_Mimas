@@ -4,7 +4,6 @@
 	<title></title>
 	<!-- Latest compiled and minified CSS -->
 <meta charset="utf-8">
-<link rel="stylesheet" >
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
@@ -17,54 +16,125 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-<link rel="stylesheet" href="../Menu.css">
+
 <link rel="stylesheet" href="Home_publico.css">
+<link rel="stylesheet" href="../Imagenes/iconos-redes/style.css">
+<link rel="stylesheet" type="text/css" href="../estilo-menu.css">
 </head>
+
+
+
 <body >
    <header>
-   	  <div class="header">   
-   	    <div class="nav">	     
-   	 	 <ul id="nav">
-			<li class="subs"><a href="#">Mascotas</a>
-                <ul>
-				  <li><a href="#">Perdidos</a></li>
-				  <li><a href="#">Encontrados</a></li>
-				  <li><a href="#">En adopción</a></li>				  
-				</ul>
-			</li>
+	   	<div class="header">
+	   		<div class="nav">
+	   			<ul id="nav">
+	   				<li class="subs"><a href="#"><span class="primero"><i class="menu">Mascotas</i></span>Mascotas</a>
+	   					<ul>
+	   						<li><a href="#">Perdidos</a></li>
+	   						<li><a href="#">Encontrados</a></li>
+	   						<li><a href="#">En adopción</a></li>
+	   					</ul>
+	   				</li>
 
-			</li>
-			<li class="subs"><a href="#s1">Fundaciones</a>
-				<ul>
-					<li><a href="#">Información</a></li>
-					<li><a href="#">Miembros</a></li>
-					<li><a href="#">Donaciones</a></li>
-			    </ul>
-			</li>
-			<li class="subs"><a href="#s2">Información de adopciones</a>
-			<ul>
-				<li><a href="#">Proceso y requisito</a></li>			
-			</ul>
-			</li>
-			<li class="subs"><a href="#s2">Interes</a>
-				<ul>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Cuidados de animales</a></li>
-				</ul>
-			</li>
-			<li ><a class="inicio" href="../Login/Login.html">Iniciar sesión</a></li>
-		</ul>
-		</div>		
-   	  </div>
-   </header>  
+	   				<li class="subs"><a href="#"><span class="segundo"><i class="menu">Fundaciones</i></span>Fundaciones</a>
+	   					<ul>
+	   						<li><a href="#">Información</a></li>
+	   						<li><a href="#">Miembros</a></li>
+	   						<li><a href="#">Donaciones</a></li>
+	   					</ul>
+	   				</li>
+
+	   				<li class="subs"><a href="#"><span class="tercero"><i class="menu">Información de Adopciones</i></span>Información de Adopciones</a>
+	   					<ul>
+	   						<li><a href="#">Proceso y requisito</a></li>
+	   					</ul>
+	   				</li>
+
+	   				<li class="subs"><a href="#"><span class="cuarto"><i class="menu">Interés</i></span>Interés</a>
+	   					<ul>
+	   						<li><a href="#">Blog</a></li>
+	   						<li><a href="#">Eventos</a></li>
+	   						<li><a href="#">Cuidados de animales</a></li>
+	   					</ul>
+	   				</li>
+
+	   				<li class="subs"><a class="inicio" href="../Login/Login.html"><span class="quinto"><i class="menu">Iniciar sesión</i></span>Iniciar sesión</a></li>
+	   			</ul>
+	   		</div>
+	   </div>
+   </header>
+
+
+
    <div class="body"  ng-controller="hotmepublicoController as vm" id="dialogContainer" >
          
    	   
-   	    
+   	   <div class="container-fluid">
+   	   		
+   	   		<div class="row">
+   	   			<div class="col-xs-12">
+   	   				<h1 class="bienvenida">BIENVENIDOS</h1>
+   	   			</div>
+
+   	   			<div class="col-xs-12 centered logo ">
+   	   				
+   	   			</div>	
+   	   				
+   	   		</div> <!-- fin row-->
+
+
+   	   </div> <!-- fin container -->
+
+   	   <div class="container-fluid">
+   	   		
+   	   		<div class="row">
+   	   			<div class="col-xs-12">
+   	   				<h1 class="titulo">¿QUIENES SOMOS?</h1>
+   	   			</div>
+   	   		</div>
+
+   	   		<div class="row quienes"> 	   			
+   	   			<div class="col-xs-12 col-md-6">
+   	   				<h3 class="titulo">SOBRE NOSOTROS</h3>
+   	   				<p>
+   	   					MIMAS es una red social para fundaciones protectoras de animales impulsada por la fundación FPA, dicha fundación se encarga de la adopción, apadrinamiento y recuperación de animales; todo con la misión de que cada animal tenga la oportunidad de encontrar un hogar.
+   	   				</p>
+   	   				<p>
+   	   					La fundación también planea el poder permitir a los usuarios gestionar sus procesos de forma interactiva (apoyo al sostenimiento de la fundación con donaciones en especie, publicar animales extraviados y encontrados, búsqueda de animales y solicitudes de adopción). Ampliando así la cobertura del servicio y permitiendo la recepción de más solicitudes.
+   	   				</p>
+   	   				<p>
+   	   					La fundación requiere que, dentro de los casos de adopción, se puedan registrar los avances y resultados de seguimientos post adopción, teniendo la trazabilidad completa del proceso.
+   	   				</p>
+   	   			</div>
+
+   	   			<div class="col-xs-12 col-md-6 ">
+   	   				<h3 class="titulo">CONTACTO</h3>
+   	   				<p>TELÉFONO</p>
+   	   				<p>(+57) 300 274 3671</p>
+   	   				<p>DIRECCIÓN</p>
+   	   				<p>Cll 39 Sur # 37 - 10 (fundación FPA)</p>
+   	   				<span>Estamos ubicados en la ciudad de Envigado</span>
+
+   	   			</div>
+   	   		</div>
+
+   	   </div>
    	    
 
-</div>
+	</div>
+
+
+<!-- inicio  barra social -->
+	<div class="social">
+		<ul>
+			<li><a href="http://www.facebook.com/" target="_blank" class="icon-facebook2"></a></li>
+			<li><a href="http://www.twitter.com/" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://plus.google.com/" target="_blank" class="icon-google-plus2"></a></li>
+			<li><a href="#" class="icon-mail"></a></li>
+		</ul>
+	</div> <!-- fin  barra social -->
+
    <footer>
    	<div class="footer"></div>
    </footer> 

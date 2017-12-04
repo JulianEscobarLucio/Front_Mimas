@@ -1,0 +1,144 @@
+* {
+margin: 0;
+padding: 0;
+}
+
+html {
+background-color: #E9EAED;
+height: 100%;
+padding-top: 5px;
+}
+
+body {
+color: #333333;
+font-family: 'Helvetica Neue',Helvetica,Arial,'lucida grande',tahoma,verdana,arial,sans-serif;
+}
+
+
+/*estilos al menu*/
+header {
+    width: 100%;
+    height: 60px;
+    overflow: visible;
+    position: relative;
+}
+ 
+div.nav {
+    top:-20px;
+    position: absolute;
+    left:0;
+    right:0;
+	margin:0 auto;
+	width:100%;
+}
+ 
+div.nav ul {
+	max-width: 100%;
+	list-style:none;
+	padding-top: 5px;
+	padding-left: 0px;
+}
+ 
+div.nav > ul {
+	display:table;
+	width:100%;
+	background:#0e0e0e;
+	padding-top: 5px;
+	font-size: 1.2em;
+	position:relative;
+}
+ 
+div.nav > ul li {
+	display:table-cell;
+}
+ 
+/*Sub-menu*/
+div.nav > ul > li:hover > ul {
+	display:block;
+	height:100%;
+	width: auto;
+}
+ 
+div.nav > ul > li > ul {
+	display:block;
+	position:absolute;
+	background:#0e0e0e;
+	left:0;
+	right:0;
+	overflow:hidden;
+	height:0%;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+ 
+div.nav > ul li a {
+	color:#fff;
+	display:block;
+	line-height:20px;
+	padding:20px;
+	position: relative;
+	text-align:center;
+	text-decoration:none;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+ 
+div.nav > ul > li > ul > li a:hover {
+	background:#5da5a2;
+}
+ 
+div.nav > ul > li > a span {
+	background:#174459;
+	display:block;
+	height:100%;
+	width:100%;
+	left:0;
+	position:absolute;
+	top:-55px;
+	-webkit-transition: all .3s ease;
+	-moz-transition: all .3s ease;
+	-ms-transition: all .3s ease;
+	-o-transition: all .3s ease;
+	transition: all .3s ease;
+}
+ 
+.subs a span .menu {
+	display:block;
+	line-height:60px;
+}
+ 
+.subs a:hover > span, a.inicio:hover >span {
+	top:0;
+}
+ 
+/*Colores*/
+div.nav ul li a .primero {
+	background:#0e5061;
+}
+ 
+div.nav ul li a .segundo {
+	background:#5da5a2;
+}
+ 
+div.nav ul li a .tercero {
+	background:#f25724;
+}
+ 
+div.nav ul li a .cuarto {
+	background:#174459;
+}
+ 
+div.nav ul li a .quinto {
+	background:#37a4d9;
+}
+
+i.menu {
+	text-decoration: none;
+	font-style: normal;
+}
