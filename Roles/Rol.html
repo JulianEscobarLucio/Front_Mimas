@@ -1,400 +1,143 @@
-<%@ page session="false" language="java" contentType="text/html" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet"%>
-<portlet:resourceURL var="tomadorDecisionesSimularResourceURL">
-    <portlet:param name="destino" value="SIMULAR" />
-</portlet:resourceURL>
 <!DOCTYPE html>
-<html>
+<html ng-app="starter">
 <head>
+	<title></title>
+	<!-- Latest compiled and minified CSS -->
 <meta charset="utf-8">
-<title>Tomador de Deciciones</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" >
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="../bootstrap-3.3.7-dist/css/bootstrap.min.css">
+<!-- Latest compiled and minified JavaScript -->
+<script src="../jquery-3.2.1.min.js" ></script>
+<script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+<link rel="stylesheet" href="../Menu.css">
+<link rel="stylesheet" href="Rol.css">
 </head>
-<body>
-    <script type="text/javascript">
-        var paramsDecisionMaker = {
-            url : {
-                doSimulation : "${tomadorDecisionesSimularResourceURL}",
-            },
-        };
-    </script>
-    <input type="hidden" name="simularResourceURL" id="simularResourceURL" value="SIMULAR" />
-    <input type="hidden" name="login" id="login" value="${login}" />
-    <a id="login-simulador" target="_self" title="" href="/wps/portal/proteccion/simulador-ahorro/login-tomador-decisiones?tranCod=001" class="hidden" onclick="showLightbox('810px', '580px', __jquery(this), 'no'); return false;">Ingresar</a>
-    <section class="cntnd-ntrn">
-        <div class="header-tmdr-dccns">
-            <div class="cnt-mx-wds">
-                <div class="logoProteccion"></div>
-                <div class="chtbt">Chatbot</div>
-            </div>
-        </div>
+<body >
+  <header>
+   	  <div class="header">   
+   	    <div class="nav">	     
+   	 	 <ul id="nav">
+			<li class="subs"><a href="#">Adoptar o apadrinar</a>
+                <ul>
+				  <li><a href="#">Adoptar</a></li>
+				  <li><a href="#">Apadrinar</a></li>
+				  <li><a href="#">Estado y revisión del proceso</a></li>				  
+				</ul>
+			</li>
 
-        <div class="initial-tmdr-dccns">
-            <div class="cnt-mx-wds">
-                <div class="cnt-comienza-tu-historia-aqui">
-                    <div class="cnt-img-bnvnd"></div>
-                    <div class="cnt-btn">
-                        <div class="txt-bnvnd">Bienvenido al tomador de decisiones</div>
-                        <div class="button-bnvnd" id="comienza">Comienza tu historia aqu&iacute;</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contenido-tmdr-dccns" style="display: none">
-            <div class="cnt-mx-wds">
-                <div class="cnt-gnrc cnt-right">
-                    <div class="cnt-vd">
-                        <div class="txt-vd">
-                            <span>&nbsp;Hola soy Daniel Tirado y decid&iacute; hacer de mi&nbsp; &nbsp;vida un viaje por el mundo, las
-                                decisiones&nbsp;</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="cnt-gnrc cnt-lft" id="formulario">
-                    <form id="formComoTeLlamas" class="vldcn-frmlr" name="formComoTeLlamas" autocomplete="off" novalidate="novalidate"
-                        enctype="multipart/form-data">
-                        <div class="cnt-formularios como-te-llamas">
-                            <div class="txt">&iquest;C&oacute;mo te llamas?</div>
-                            <div class="cnt-input">
-                                <input type="text" name="name" id="nombre" class="gnrc-npt required" placeholder="Introduce tu nombre aqu&iacute;" value="${afiliado.nombre}">
-                            </div>
-                            <div class="button-nxt" id="continuar1">Continuar</div>
-                            <a href="/wps/wcm/connect/proteccion/c1df103a-d94b-463d-893f-342a441cbcab/acta4.pdf?MOD=AJPERES">Imprimir PDF</a>
-                        </div>
-                    </form>
-                    <div class="cnt-formularios quieres-ahorrar-para" style="display: none;">
-                        <form id="fomrQuieresAhorrarPara" class="vldcn-frmlr" name="formComoTeLlamas" autocomplete="off"
-                            novalidate="novalidate" enctype="multipart/form-data">
-                            <div class="txt">
-                                <div class="icon"></div>
-                                Quieres ahorrar para...
-                            </div>
-                            <div class="cnt-lst-inputs" id="ahorroPara">
-                                <div class="cnt-input Estudiar">
-                                    <input type="button" name="name" id="Estudiar" class="gnrc-npt gnrc-btn" value="Estudiar">
-                                </div>
-                                <div class="cnt-input Casa">
-                                    <input type="button" name="name" id="Casa" class="gnrc-npt gnrc-btn" value="Casa">
-                                </div>
-                                <div class="cnt-input Viajar">
-                                    <input type="button" name="name" id="Viajar" class="gnrc-npt gnrc-btn" value="Viajar">
-                                </div>
-                                <div class="cnt-input Carro">
-                                    <input type="button" name="name" id="Carro" class="gnrc-npt gnrc-btn" value="Carro">
-                                </div>
-                                <div class="cnt-input Emprender">
-                                    <input type="button" name="name" id="Emprender" class="gnrc-npt gnrc-btn" value="Emprender">
-                                </div>
-                                <div class="cnt-input Inversi&oacute;n">
-                                    <input type="button" name="name" id="Inversion" class="gnrc-npt gnrc-btn" value="Inversi&oacute;n">
-                                </div>
-                                <div class="cnt-input Turetiro">
-                                    <input type="button" name="name" id="Turetiro" class="gnrc-npt gnrc-btn" value="Tu retiro">
-                                </div>
-                            </div>
-                            <div class="cnt-input-rdbtn" style="display: none;">
-                                &iquest;Eres afiliado? <b>Si</b> <input type="radio" name="checkAfiliado" value="Si"> <b class="cn">No</b>
-                                <input type="radio" name="checkAfiliado" value="No"> <label class="error"></label>
-                            </div>
-                            <p class="mensajeError" id="mensajeObjetivo" style="display:none;">Debes seleccionar un objetivo.</p>
-                            <div class="button-nxt" id="continuar2">Continuar</div>
-                        </form>
-                    </div>
-                    <div class="cnt-formularios descuento" style="display: none;">
-                        <div class="cnt-mg-txt">
-                            <div class="img"></div>
-                            <div class="txt">
-                                <h3>PURO CUERO</h3>
-                                <p>15% de productos disponibles y para producir</p>
-                                <span>*Este bono lo obtendr&aacute;s<br> una vez termines la simulaci&oacute;n
-                                </span>
-                            </div>
-                        </div>
-                        <div class="cnt-input">
-                            <input type="email" name="email" id="correo" class="gnrc-npt" placeholder="D&eacute;janos tu correo y recibe tu bono" >
-                            <p class="mensajeError"  id="mensajeCorreo" style="display:none;">Ingresa un correo válido</p>
-                        </div>
-                        <div class="cnt-input">
-                                <input type="radio" name="msjCorreo" value="msjCorreo">Autorizo el env&iacute;o de informaci&oacute;n v&iacute;a correo electr&oacute;nico<br>
-                        </div>
-                        <div class="button-nxt" id="continuar3">Continuar</div>
-                    </div>
-                    <div class="cnt-formularios en-cuanto-tiempo-quieres-alcanzarla" style="display: none;">
-                      <form id="fomrObjetivo" class="vldcn-frmlr" name="fomrObjetivo" autocomplete="off"
-                            novalidate="novalidate" enctype="multipart/form-data">
-                        <div class="txt">
-                            <div class="icon"></div>
-                            &iquest;En cu&aacute;nto tiempo quieres alcanzarla?
-                        </div>
-                        <div class="cnt-input">
-                            <select id="plazoObjetivo">
-                                <option value="">Selecciona un plazo</option>
-                                <option value="1">1 a&ntilde;o</option>
-                                <option value="2">2 a&ntilde;os</option>
-                                <option value="3">3 a&ntilde;os</option>
-                                <option value="4">4 a&ntilde;os</option>
-                                <option value="5">5 a&ntilde;os</option>
-                                <option value="6">6 a&ntilde;os</option>
-                                <option value="7">7 a&ntilde;os</option>
-                                <option value="8">8 a&ntilde;os</option>
-                            </select>
-                            <p class="mensajeError"  id="plazoObjetivoMensaje" style="display:none;">Selecciona un plazo.</p>
-                        </div>
-
-                        <div class="cnt-input">
-                            <div class="sbtxt">Cu&aacute;nto dinero necesitas</div>
-                            <input type="text" name="dinero" id="dinero" class="gnrc-npt required" placeholder="Ingresa el valor" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="button-nxt" id="continuar4">Continuar</div>
-                       </form> 
-                    </div>
-                    <div class="cnt-formularios tus-ingresos" style="display: none;">
-                      <form id="fomrAhorros" class="vldcn-frmlr" name="fomrAhorros" autocomplete="off"
-                            novalidate="novalidate" enctype="multipart/form-data">
-                        <div class="txt">
-                            <div class="icon"></div>
-                            &iquest;Cu&aacute;nto ganas y cu&aacute;nto ahorras?
-                        </div>
-                        <div class="cnt-input nnpt">
-                            <div class="sbtxt">Salario</div>
-                            <input type="text" name="salario" id="salario" class="gnrc-npt" placeholder="Ingresa tu salario" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="cnt-input nnpt">
-                            <div class="sbtxt">Ahorro pensiones voluntarias</div>
-                            <input type="text" name="pensionesVoluntarias" id="pensionesVoluntarias" class="gnrc-npt"
-                                placeholder="Ingresa tu saldo"  oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="cnt-input nnpt">
-                            <div class="sbtxt">Ahorro pensiones voluntarias mensual</div>
-                            <input type="text" name="pensionesVoluntariasMensual" id="pensionesVoluntariasMensual" class="gnrc-npt" placeholder="Ingresa el aporte mensual" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="cnt-input nnpt">
-                            <div class="sbtxt">Cesantias al d&iacute;a de hoy</div>
-                            <input type="text" name="ahorroEnCesantias" id="ahorroEnCesantias" class="gnrc-npt" placeholder="Ingresa tus cesantias actuales" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="cnt-input nnpt">
-                            <div class="sbtxt">Otros ahorros</div>
-                            <input type="text" name="otrosAhorros" id="otrosAhorros" class="gnrc-npt" placeholder="Ingresa tu saldo" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="cnt-input nnpt">
-                            <div class="sbtxt">Otros ahorros mensual</div>
-                            <input type="text" name="otrosAhorrosMensual" id="otrosAhorrosMensual" class="gnrc-npt" placeholder="Ingresa el aporte mensual" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="button-nxt" id="continuar5">Continuar</div>
-                       </form> 
-                    </div>
-                    <div class="cnt-formularios tu-frecuencia" style="display: none;">
-                     <form id="fomrGastos" class="vldcn-frmlr" name="fomrGastos" autocomplete="off"
-                            novalidate="novalidate" enctype="multipart/form-data">
-                        <div class="txt">
-                            <div class="icon"></div>
-                            Todo queda entre nosotros (no te preocupes)
-                        </div>
-                        <div class="cnt-input dsnpts">
-                            <div class="sbtxt">&iquest;Sales de compras?</div>
-                            <select id="frecuenciaShopping">
-                                <option value="">Frecuencia</option>
-                                <option value="1">1 al mes</option>
-                                <option value="2">2 al mes</option>
-                                <option value="3">3 al mes</option>
-                                <option value="4">4 al mes</option>
-                            </select> <input type="text" name="shopping" id="shopping" class="gnrc-npt" placeholder="Gasto por c/u" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                            <p class="mensajeError" id="frecuenciaShoppingMensaje" style="display:none;">Debes elegir la frecuencia.</p>
-                        </div>
-                        <div class="cnt-input dsnpts">
-                            <div class="sbtxt">&iquest;Sales de rumba?</div>
-                            <select id="frecuenciaRumba">
-                                <option value="">Frecuencia</option>
-                                <option value="1">1 al mes</option>
-                                <option value="2">2 al mes</option>
-                                <option value="3">3 al mes</option>
-                                <option value="4">4 al mes</option>
-                            </select> <input type="text" name="rumba" id="rumba" class="gnrc-npt" placeholder="Gasto por c/u" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                            <p class="mensajeError" id="frecuenciaRumbaMensaje" style="display:none;">Debes elegir la frecuencia.</p>
-                        </div>
-                        <div class="cnt-input dsnpts">
-                            <div class="sbtxt">&iquest;Sales a comer?</div>
-                            <select id="frecuenciaSalidasAComer">
-                                <option value="frecuenciaSalidasAComer">Frecuencia</option>
-                                <option value="1">1 al mes</option>
-                                <option value="2">2 al mes</option>
-                                <option value="3">3 al mes</option>
-                                <option value="4">4 al mes</option>
-                            </select> <input type="text" name="comer" id="comer" class="gnrc-npt" placeholder="Gasto por c/u" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                            <p class="mensajeError" id="frecuenciaSalidasAComerMensaje" style="display:none;">Debes elegir la frecuencia.</p>
-                        </div>
-                        <div class="cnt-input nnpt">
-                            <div class="sbtxt">&iquest;Cu&aacute;nto son tus otros egresos mensuales?</div>
-                            <input type="text" name="otrosEgresos" id="otrosEgresos" class="gnrc-npt" placeholder="Ingresa el valor" oninput="this.value=this.value.replace(/[^0-9]/g,'');">
-                        </div>
-                        <div class="button-nxt" id="simular">Simular</div>
-                       </form> 
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contenido-rsltd" style="display: none">
-            <div class="rsltd-nmbr">Andrea,</div>
-            <div class="rsltd-txt">
-                para construir tu retiro<br><b>desde hoy estas a...</b>
-            </div>
-            <div class="rsltd-txt">
-                para alcanzar <span class="rsltd-ptns" id="meta"></span>
-            </div>
-            <div class="cnt-slcptns">
-                en <span class="rsltd-mg rsltd-estudio"></span> <br> <span class="rsltd-tmp-lcnzrl" id="plazoMeta"></span> a&ntilde;os
-            </div>
-            <div class="txt-sts">estas a....</div>
-            <div class="cnt-lst-frcnc">
-                <div class="cnt-gnrc-frcnc shopping">
-                    <div class="nm-frcnc">
-                        <span class="rsltd-ptns" id="shopping1"></span>
-                    </div>
-                    <div class="txt-frcnc">
-                        <p class="txt-frcnc-ln txt-frcnc-ln1">
-                            Salidas de <span class="cnt-img-gnr"></span>
-                        </p>
-                        <p class="txt-frcnc-ln txt-frcnc-ln2">COMPRAS</p>
-                        <p class="txt-frcnc-ln txt-frcnc-ln3" id="costoShopping"></p>
-                    </div>
-                </div>
-
-                <div class="cnt-ms">+</div>
-
-                <div class="cnt-gnrc-frcnc rumbiar">
-                    <div class="nm-frcnc">
-                        <span class="rsltd-ptns" id="rumbiar1"></span>
-                    </div>
-                    <div class="txt-frcnc">
-                        <p class="txt-frcnc-ln txt-frcnc-ln1">
-                            Salidas a <span class="cnt-img-gnr"></span>
-                        </p>
-                        <p class="txt-frcnc-ln txt-frcnc-ln2">RUMBEAR</p>
-                        <p class="txt-frcnc-ln txt-frcnc-ln3" id="costoRumba"></p>
-                    </div>
-                </div>
-
-                <div class="cnt-ms">+</div>
-
-                <div class="cnt-gnrc-frcnc comer">
-                    <div class="nm-frcnc">
-                        <span class="rsltd-ptns" id="comer1"></span>
-                    </div>
-                    <div class="txt-frcnc">
-                        <p class="txt-frcnc-ln txt-frcnc-ln1">
-                            Salidas a <span class="cnt-img-gnr"></span>
-                        </p>
-                        <p class="txt-frcnc-ln txt-frcnc-ln2">COMER</p>
-                        <p class="txt-frcnc-ln txt-frcnc-ln3" id="costoComer"></p>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="cnt-rsltd-sm-frcnc">
-                <div class="content-rsltd">
-                    <p class="txt-rsltd1">Si sumas tus h&aacute;bitos</p>
-                    <p class="txt-rsltd2">
-                        durante <span class="rsltd-tmp-lcnzrl" id="plazoMeta"></span> a&ntilde;os
-                    </p>
-                    <p class="txt-rsltd3">te da un total de</p>
-                </div>
-                <p class="rsltd-ptns txt-rsltd4" id="totalGastos">$444444</p>
-
-            </div>
-            <div class="txt-nf-dsmnr">
-                deber&iacute;as comenzar a pensar c&oacute;mo disminuirlos<br>para que se conviertan en ahorro para tu <span id="meta">casa</span>.
-            </div>
-            <div class="cnt-rsltd-brds"></div>
-
-            <div class="cnt-consejos">
-                <div class="txt-consejos txt-consejos-ahorros">
-                    <div class="icon"></div>
-                    <div class="txt">
-                        <p class="p1txt">
-                            &iexcl;Adem&aacute;s!
-                        </p>
-                    </div>
-                    <p class="p2txt">En esos mismos <b>2 a&ntilde;os</b><br>tendr&aacute;s ahorrados</p>
-                    <span class="rsltd-vlr-hrr" id="">$31.200.000</span><br>
-                    <span>entre pensiones voluntarias, primas<br>y oros ahorros.</span>
-                </div>
-                <div class="txt-consejos txt-consejos-totalahorro">
-                    <div class="txt">
-                        <p class="p1txt">
-                            As&iacute; en <b>2 a&ntilde;os</b>
-                        </p>
-                        <p class="p2txt">
-                            tendr&aacute;s
-                        </p>
-                    </div>
-                    <div class="icon"></div>
-                    <span class="rsltd-vlr-hrr" id="">$31.200.000</span><br>
-                </div>
-                <div class="cnt-rsltd-brds"></div>
-                <div class="txt-consejos txt-consejos-vivir">
-                    <div class="txt">
-                        <p class="p1txt" id="consejosVivirTipo1">
-                            para que <b id="tipo1Prop">inviertas</b> <span id="tipo1PropComp">en tu futuro</span><br>y comiences <b>a vivir la vida<br>desde hoy.</b>
-                        </p>
-                        <p class="p1txt" id="consejosVivirTipo2">
-                            para que <b id="tipo2Prop">tengas el carro</b> que tanto<br><b>has so&ntilde;ado</b> y comiences<br>a vivir <b>la vida desde hoy.</b>
-                        </p>
-                    </div>
-                </div>
-                <div class="cnt-rsltd-brds"></div>
-                <div class="txt-consejos txt-consejos1">
-                    <div class="txt1">
-                        <p class="p1txt">
-                            As&iacute; solo te faltan
-                        </p>
-                    </div>
-                    <div class="icon"></div>
-                    <span class="rsltd-vlr-hrr" id="valorahorro4">$130.000.000</span>
-                    <div class="txt2">
-                        <span>para tu estudio,<br>es decir</span>
-                    </div>
-                    <!-- <span class="rsltd-vlr-hrr" id="valorahorro4">$130.000.000</span> -->
-                    <div class="txt3">
-                        <span class="p2txt">
-                            $1.406.250 mensuales
-                        </span>
-                    </div>
-                </div>
-                <div class="cnt-rsltd-brds"></div>
-                <div class="txt-consejos txt-consejos2">
-                    <div class="txt">
-                        <p class="p1txt">
-                            pero si te comprometes<br>con tus h&aacute;bitos y reduces<br>tus gastos a la mitad
-                        </p>
-                    </div>
-                    <div class="icon"></div>
-                </div>
-                <div class="txt-consejos txt-consejos3">
-                    Tendr&aacute;s a tu favor <span class="rsltd-vlr-hrr"><span id="valorahorro6">$325.000</span> mensuales</span> <br>que
-                    durante 8 a&ntilde;os son: <br> <span class="rsltd-vlr-hrr" id="valorahorro7">$31.200.000</span>
-                </div>
-                <div class="txt-consejos txt-consejos-reducir">
-                    <div class="icon"></div>
-                    <div class="txt">
-                        <p class="p1txt">
-                            reduciendo tus cuotas<br>mensuales a
-                        </p>
-                        <span class="rsltd-vlr-hrr" id="">$31.200.000</span>
-                    </div>
-                </div>
-                <div class="txt-consejos txt-consejos4">
-                    Este ahorro har&aacute; que<br> comiences a vivir<br> <span class="clrthr">tus sue&ntilde;os desde hoy</span>
-                </div>
-                <div class="button-cita">Agenda tu cita con un asesor</div>
-                <div class="button-descarga">Descarga tu simulaci&oacute;n</div>
-                <a id="#descargarBono"><div class="button-bono">Descarga tu bono</div></a>
-            </div>
-        </div>
-        <script type="text/javascript" src="/wps/contenthandler/dav/fs-type1/themes/TemaProteccion/js/angular/angular.min.js"></script>
-        <script type="text/javascript" src="/wps/contenthandler/dav/fs-type1/themes/TemaProteccion/js/jquery.priceformat.min.js"></script>
-    </section>
+			</li>
+			<li class="subs"><a href="#s1">Mi Perfil</a>
+				
+			</li>
+			<li class="subs"><a href="#s2">Mis mascotas</a>
+			<ul>
+				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
+			</ul>
+			</li>
+			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
+				<ul>
+					<li><a href="#">Adopciones</a></li>
+					<li><a href="#">Eventos</a></li>
+					<li><a href="#">Colaboradores</a></li>
+					<li><a href="#">Contacto</a></li>
+					<li><a href="#">Donaciones</a></li>
+					<li><a href="#">Reportes y estadisticas</a></li>
+				</ul>
+			</li>
+			 <li class="subs"><a href="#s2">Administración</a>
+			  <ul>
+			    <li><a href="../Roles/Rol.html">Roles</a></li>
+			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+			  </ul>
+			</li>
+			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
+		</ul>
+		</div>		
+   	  </div>
+   </header>    
+   <div class="body"  ng-controller="rolController as vm" id="dialogContainer" >
+         <h1 class="titulo">Rol</h1>
+   	    <div class="row">   	    	
+	   	     <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Id Rol*</label>
+	           <input type="text" class="form-control" ng-model="vm.idRol" maxlength="2" ng-disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionRol()">
+	           <p class="mensajeError"   ng-bind="vm.mensajeRol" ></p>
+	         </div>	
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Nombre*</label>
+	           <input type="text" class="form-control" ng-model="vm.nombre" maxlength="20" ng-keyup="vm.functionNombre()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeNombre" ></p>
+	         </div>
+   	    </div>
+   	    <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Descripción*</label>
+	           <input type="text" class="form-control" ng-model="vm.descripcion" maxlength="50" ng-keyup="vm.functionDescripcion()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeDescripcion" ></p>
+	         </div>
+	         <div class="form-group col-xs-6 col-sm-6"">
+	           <label for="usr">Formularios de acceso*</label>
+	           <input type="text" class="form-control" ng-model="vm.formularios" maxlength="50" ng-keyup="vm.functionFormularios()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeFormularios"></p>
+	         </div>
+   	    </div>
+   	     <div class="row">
+   	    	 <div class="form-group col-xs-6 col-sm-6">
+	           <label for="usr">Funcionalidades*</label>
+	           <input type="text" class="form-control" ng-model="vm.funcionalidades" maxlength="50" ng-keyup="vm.funtionFuncionalidades()">
+	           <p class="mensajeError"  ng-bind="vm.mensajeFuncionalidades"></p>
+	         </div>	      
+   	    </div>
+   	  
+   	    <div class="row botones">
+   	    	 <div class="form-group col-xs-3 col-sm-3">
+	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrar()">Registrar</button>
+	         </div>
+	         <div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
+	         </div>
+	          <div class="form-group col-xs-3 col-sm-3 identificacion" >
+	         	 <input type="text" class="form-control" ng-model="vm.idRol2" maxlength="2" ng-disabled="vm.idDisabled2" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionRol2()" placeholder="Id Rol">
+	           <p class="mensajeError"   ng-bind="vm.mensajeRol2" ></p>	         	
+	         </div> 
+	         <div class="form-group col-xs-3 col-sm-3">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
+	         </div>		             
+   	    </div>
+   	     <div class="row botones">
+   	       	  <div class="form-group col-xs-3 col-sm-3"">
+	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.eliminar()">Eliminar</button>
+	         </div>   	    	
+   	    </div>
+   	 
+        <md-content>       
+          
+            <div ng-if="status">
+               <br/>
+          <!--     <b layout="row" layout-align="center center" class="md-padding">
+                  {{status}}
+               </b>
+            </div> -->
+         </md-content>   
+       </div>
+    
+</div>
+   <footer>
+   	<div class="footer"></div>
+   </footer> 
+ <!--  <script src="../angular.min.js"></script>-->
+	<script src="../angular-route.min.js"></script>
+	<script src="Rol.js"></script>
+	<script src="Rol.service.js"></script>
+	<!--
+	<script src="prueba.js"></script>-->
 </body>
 </html>

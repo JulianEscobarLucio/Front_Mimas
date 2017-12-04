@@ -10,7 +10,7 @@
 	function fundacionServices($http,$q){
         
         var self = this;
-        var ipserver = 'http://localhost:8091'; 
+        var ipserver = 'http://localhost:8092'; 
         self.registrarFundacion = registrarFundacion;
         self.consultarFundacion = consultarFundacion;
         self.actualizarFundacion = actualizarFundacion;

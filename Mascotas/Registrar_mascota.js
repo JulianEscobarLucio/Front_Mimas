@@ -383,6 +383,7 @@
                      vm.Colorojos = "",
                      vm.Personalidad = "",
                      vm.EstadoSalud   = "",
+                     vm.thumbnail.dataUrl = "";
                      vm.thumbnail = {
                     dataUrl: ''
                     };               
@@ -522,7 +523,7 @@
                     "colorojos" : vm.Colorojos,
                     "personalidad" : vm.Personalidad,
                     "estadoSalud" : vm.EstadoSalud,
-                    "imagen" : vm.imagen                   
+                    "imagen" : vm.thumbnail.dataUrl                   
                     }         
 
           
@@ -541,8 +542,7 @@
                       );
                     vm.Id2 = "";
                     vm.Id = "";
-                    vm.nombre = "";
-                    vm.IdResponsable  = "";
+                    vm.nombre = "";                   
                     vm.Especie = "";
                     vm.Raza = "";
                     vm.Genero = "";            
@@ -556,7 +556,8 @@
                     vm.Colorojos = "";
                     vm.Personalidad = "";
                     vm.EstadoSalud   = ""; 
- 
+                    vm.thumbnail.dataUrl = vm.imagen;
+                    vm.imagen = "";
          
                      vm.idDisabled = false;
                      vm.registrarDisabled = false;
@@ -635,7 +636,7 @@
                     vm.Id2 = ""; 
                      vm.idDisabled = true;
                      vm.actualizarDisabled = false;
-                     vm.eliminarDisabled = false;
+                     vm.eliminarDisabled = false; 
                       vm.DisabledCancelar = false;
 
                      vm.registrarDisabled = true;
@@ -694,8 +695,7 @@
                       );
                     
                     vm.Id = "";
-                    vm.nombre = "",
-                    vm.IdResponsable  = "",
+                    vm.nombre = "",                   
                     vm.Especie = "",
                     vm.Raza = "",
                     vm.Genero = "",              
