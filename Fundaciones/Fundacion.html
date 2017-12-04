@@ -19,7 +19,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
 
-<link rel="stylesheet" href="../Menu.css">
+<link rel="stylesheet" href="../Imagenes/iconos-redes/style.css">
+<link rel="stylesheet" href="../estilo-menu.css">
 <link rel="stylesheet" href="./Fundacion.css">
 </head>
 
@@ -30,7 +31,10 @@
    	  <div class="header">   
    	    <div class="nav">	     
    	 	 <ul id="nav">
-			<li class="subs"><a href="#">Adoptar o apadrinar</a>
+
+			<li class="subs">
+				<a href="#"><span class="primero"><i class="menu">Adoptar o apadrinar</i></span>Adoptar o apadrinar</a>
+
                 <ul>
 				  <li><a href="#">Adoptar</a></li>
 				  <li><a href="#">Apadrinar</a></li>
@@ -38,16 +42,18 @@
 				</ul>
 			</li>
 
+			<li class="subs">
+				<a href="#s1"><span class="segundo"><i class="menu">Mi Perfil</i></span>Mi Perfil</a></li>
+
+			<li class="subs">
+				<a href="#s2"><span class="tercero"><i class="menu">Mis mascotas</i></span>Mis mascotas</a>
+				<ul>
+					<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
+				</ul>
 			</li>
-			<li class="subs"><a href="#s1">Mi Perfil</a>
-				
-			</li>
-			<li class="subs"><a href="#s2">Mis mascotas</a>
-			<ul>
-				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
-			</ul>
-			</li>
-			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
+
+			<li class="subs">
+				<a href="../Fundaciones/Fundacion.html"><span class="cuarto"><i class="menu">Fundaciones</i></span>Fundaciones</a>
 				<ul>
 					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
@@ -57,13 +63,18 @@
 					<li><a href="#">Reportes y estadisticas</a></li>
 				</ul>
 			</li>
-			 <li class="subs"><a href="#s2">Administración</a>
-			  <ul>
-			    <li><a href="../Roles/Rol.html">Roles</a></li>
-			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
-			  </ul>
+
+			 <li class="subs">
+			 	<a href="#s2"><span class="quinto"><i class="menu">Administración</i></span>Administración</a>
+
+				  <ul>
+				    <li><a href="../Roles/Rol.html">Roles</a></li>
+				    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+				  </ul>
 			</li>
-			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
+
+			<li class="subs">
+				<a class="inicio" href="../Home_publico/Home_publico.html"><span class="tercero"><i class="menu">Cerrar sesión</i></span>Cerrar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
@@ -213,6 +224,15 @@
          </md-content>   
     </div>
 
+<!-- inicio  barra social -->
+	<div class="social">
+		<ul>
+			<li><a href="http://www.facebook.com/" target="_blank" class="icon-facebook2"></a></li>
+			<li><a href="http://www.twitter.com/" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://plus.google.com/" target="_blank" class="icon-google-plus2"></a></li>
+			<li><a href="#" class="icon-mail"></a></li>
+		</ul>
+	</div> <!-- fin  barra social -->
 
   <footer>
    	<div class="footer"></div>

@@ -17,15 +17,20 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-<link rel="stylesheet" href="../Menu.css">
-<link rel="stylesheet" href="Home_controller.css">
+
+<link rel="stylesheet" href="../Home_publico/Home_publico.css">
+<link rel="stylesheet" href="../Imagenes/iconos-redes/style.css">
+<link rel="stylesheet" href="../estilo-menu.css">
 </head>
 <body >
    <header>
    	  <div class="header">   
    	    <div class="nav">	     
    	 	 <ul id="nav">
-			<li class="subs"><a href="#">Adoptar o apadrinar</a>
+
+			<li class="subs">
+				<a href="#"><span class="primero"><i class="menu">Adoptar o apadrinar</i></span>Adoptar o apadrinar</a>
+
                 <ul>
 				  <li><a href="#">Adoptar</a></li>
 				  <li><a href="#">Apadrinar</a></li>
@@ -33,16 +38,18 @@
 				</ul>
 			</li>
 
+			<li class="subs">
+				<a href="#s1"><span class="segundo"><i class="menu">Mi Perfil</i></span>Mi Perfil</a></li>
+
+			<li class="subs">
+				<a href="#s2"><span class="tercero"><i class="menu">Mis mascotas</i></span>Mis mascotas</a>
+				<ul>
+					<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
+				</ul>
 			</li>
-			<li class="subs"><a href="#s1">Mi Perfil</a>
-				
-			</li>
-			<li class="subs"><a href="#s2">Mis mascotas</a>
-			<ul>
-				<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
-			</ul>
-			</li>
-			<li class="subs"><a href="../Fundaciones/Fundacion.html">Fundaciones</a>
+
+			<li class="subs">
+				<a href="../Fundaciones/Fundacion.html"><span class="cuarto"><i class="menu">Fundaciones</i></span>Fundaciones</a>
 				<ul>
 					<li><a href="#">Adopciones</a></li>
 					<li><a href="#">Eventos</a></li>
@@ -52,23 +59,92 @@
 					<li><a href="#">Reportes y estadisticas</a></li>
 				</ul>
 			</li>
-			 <li class="subs"><a href="#s2">Administración</a>
-			  <ul>
-			    <li><a href="../Roles/Rol.html">Roles</a></li>
-			    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
-			  </ul>
+
+			 <li class="subs">
+			 	<a href="#s2"><span class="quinto"><i class="menu">Administración</i></span>Administración</a>
+
+				  <ul>
+				    <li><a href="../Roles/Rol.html">Roles</a></li>
+				    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
+				  </ul>
 			</li>
-			<li ><a class="inicio" href="../Home_publico/Home_publico.html">Cerrar sesión</a></li>
+
+			<li class="subs">
+				<a class="inicio" href="../Home_publico/Home_publico.html"><span class="tercero"><i class="menu">Cerrar sesión</i></span>Cerrar sesión</a></li>
 		</ul>
 		</div>		
    	  </div>
-   </header>   
+   </header>
+
+
+
    <div class="body"  ng-controller="homeController as vm" id="dialogContainer" >
         
+        	<div class="container-fluid">
+   	   		
+   	   		<div class="row">
+   	   			<div class="col-xs-12">
+   	   				<h1 class="bienvenida">RED DE FUNDACIONES</h1>
+   	   			</div>
+
+   	   			<div class="col-xs-12 centered logo ">
+   	   				
+   	   			</div>	
+   	   				
+   	   		</div> <!-- fin row-->
+
+
+   	   </div> <!-- fin container -->
+
+   	   <div class="container-fluid">
+   	   		
+   	   		<div class="row">
+   	   			<div class="col-xs-12">
+   	   				<h1 class="titulo">¿QUIENES SOMOS?</h1>
+   	   			</div>
+   	   		</div>
+
+   	   		<div class="row quienes"> 	   			
+   	   			<div class="col-xs-12 col-md-6 col-md-offset-1">
+   	   				<h3 class="titulo">SOBRE NOSOTROS</h3>
+   	   				<p>
+   	   					MIMAS es una red social para fundaciones protectoras de animales impulsada por la fundación FPA, dicha fundación se encarga de la adopción, apadrinamiento y recuperación de animales; todo con la misión de que cada animal tenga la oportunidad de encontrar un hogar.
+   	   				</p>
+   	   				<p>
+   	   					La fundación también planea el poder permitir a los usuarios gestionar sus procesos de forma interactiva (apoyo al sostenimiento de la fundación con donaciones en especie, publicar animales extraviados y encontrados, búsqueda de animales y solicitudes de adopción). Ampliando así la cobertura del servicio y permitiendo la recepción de más solicitudes.
+   	   				</p>
+   	   				<p>
+   	   					La fundación requiere que, dentro de los casos de adopción, se puedan registrar los avances y resultados de seguimientos post adopción, teniendo la trazabilidad completa del proceso.
+   	   				</p>
+   	   			</div>
+
+   	   			<div class="col-xs-12 col-md-5 ">
+   	   				<h3 class="titulo">CONTACTO</h3>
+   	   				<p>TELÉFONO</p>
+   	   				<p>(+57) 300 274 3671</p>
+   	   				<p>DIRECCIÓN</p>
+   	   				<p>Cll 39 Sur # 37 - 10 (fundación FPA)</p>
+   	   				<span>Estamos ubicados en la ciudad de Envigado</span>
+
+   	   			</div>
+   	   		</div>
       
        </div>
+    </div>
     
-</div>
+
+
+<!-- inicio  barra social -->
+	<div class="social">
+		<ul>
+			<li><a href="http://www.facebook.com/" target="_blank" class="icon-facebook2"></a></li>
+			<li><a href="http://www.twitter.com/" target="_blank" class="icon-twitter"></a></li>
+			<li><a href="https://plus.google.com/" target="_blank" class="icon-google-plus2"></a></li>
+			<li><a href="#" class="icon-mail"></a></li>
+		</ul>
+	</div> <!-- fin  barra social -->
+
+
    <footer>
    	<div class="footer"></div>
    </footer> 
