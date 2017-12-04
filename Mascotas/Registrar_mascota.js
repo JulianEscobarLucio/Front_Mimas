@@ -351,7 +351,7 @@
                     "colorojos" : vm.Colorojos,
                     "personalidad" : vm.Personalidad,
                     "estadoSalud" : vm.EstadoSalud ,
-                     "imagen" : vm.thumbnail.dataUrl                
+                    /* "imagen" : vm.thumbnail.dataUrl*/                
                     }
              console.log(JSON.stringify(requestJson));       
              registarMascotaServices.registrarMascota(requestJson).then(function(data){
