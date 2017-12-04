@@ -9,7 +9,7 @@
 
 	function UsuarioServices($http,$q){
          var self = this;
-        var ipserver = 'http://localhost:8091'; 
+        var ipserver = 'http://localhost:8092'; 
         self.registrarUsuario = registrarUsuario;
         self.consultarUsuario = consultarUsuario;
         self.actualizarUsuario = actualizarUsuario;

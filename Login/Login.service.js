@@ -9,7 +9,7 @@
 
 	function loginServices($http,$q){
         var self = this;
-        var ipserver = 'http://localhost:8091'; 
+        var ipserver = 'http://localhost:8092'; 
         self.login = login;
         self.consultarUsuario = consultarUsuario;
 
@@ -28,10 +28,9 @@
                         resultado:err
                     })
                 })
-                return promesa.promise   
-            
+                return promesa.promise             
         }
-    }
+    
 
     function consultarUsuario(auditJson){
             debugger;                
@@ -47,8 +46,8 @@
                         resultado:err
                     })
                 })
-                return promesa.promise     
-            
+                return promesa.promise
     }
+   } 
 
 })();

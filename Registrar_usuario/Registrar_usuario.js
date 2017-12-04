@@ -56,15 +56,25 @@
                 
             
         function functionNombre1(){
+             var  expreg = /\s/;
             if(vm.nombre1.length > 0){
                vm.mensajeNombre1 = "";
-            }        
+            } 
 
+            if(expreg.test(vm.nombre1)){
+              vm.mensajeNombre1 = "No debe llevar espacios";
+            }       
+   
         }  
 
 
         function functionNombre2(){
-
+            if(vm.nombre2.length > 0){
+               vm.mensajeNombre1 = "";
+            } 
+            if(expreg.test(vm.nombre2)){
+              vm.mensajeNombre1 = "No debe llevar espacios";
+            } 
 
         } 
 
@@ -73,6 +83,9 @@
             if(vm.apellido1.length > 0){
               vm.mensajeApellido1 = "";
             } 
+            if(expreg.test(vm.apellido1)){
+              vm.mensajeApellido1 = "No debe llevar espacios";
+            }
         } 
 
 
@@ -80,6 +93,9 @@
         function functionApellido2(){
             if(vm.apellido2.length > 0){
               vm.mensajeApellido2 = "";
+            }
+            if(expreg.test(vm.apellido2)){
+              vm.mensajeApellido2 = "No debe llevar espacios";
             }     
 
         } 
@@ -149,10 +165,21 @@
           if(vm.nombre1 == undefined || vm.nombre1 == '' ){
                vm.mensajeNombre1   = "Debes ingresar un válido para este campo";
                return;
-
+           }else if(/\s/.test(vm.nombre1)){
+               vm.mensajeNombre1   = "No debe llevar espacios";
+               return;
+           }else if(/\s/.test(vm.nombre2)){
+               vm.mensajeNombre2   = "No debe llevar espacios";
+               return;
            }else if(vm.apellido1 == undefined || vm.apellido1 == '' ){
               vm.mensajeApellido1   = "Debes ingresar un válido para este campo";
               return;
+          }else if(/\s/.test(vm.apellido1)){
+               vm.mensajeApellido1   = "No debe llevar espacios";
+               return;
+          }else if(/\s/.test(vm.apellido2)){
+               vm.mensajeApellido2   = "No debe llevar espacios";
+               return;
           }else if(vm.telefonoFijo == undefined || vm.telefonoFijo == ''  && (vm.telefonoMovil == undefined || vm.telefonoMovil == '') ){
               vm.mensajeTelefonoFijo   = "Debes ingresar un número de teléfono para fijo o para móvil";
               vm.mensajeTelefonoMovil   = "Debes ingresar un número de teléfono para fijo o para móvil";

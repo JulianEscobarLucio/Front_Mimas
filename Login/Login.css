@@ -35,12 +35,13 @@
 }
 
 a{
-	cursor: pointer;
+  cursor: pointer;
+
 }
 
 .mensajeError {
     font-family: sourcesanspro;
     font-size: 14px;
-    color: #f93a0e;  
+    color: #f93a0e;
 
 }
