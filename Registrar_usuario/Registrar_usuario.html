@@ -21,51 +21,49 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.1/angular-material-icons.min.js"></script>
 
 
-<link rel="stylesheet" href="../estilo-menu.css">
+<link rel="stylesheet" type="text/css" href="../menu.css">		
+<link rel="stylesheet" type="text/css" href="../spinner.css">		
 <link rel="stylesheet" href="Registrar_usuario.css">
 <link rel="stylesheet" href="../Imagenes/iconos-redes/style.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 </head>
-<body >
+<body>
    
    <header>
-	   	<div class="header">
-	   		<div class="nav">
-	   			<ul id="nav">
-	   				<li class="subs"><a href="#"><span class="primero"><i class="menu">Mascotas</i></span>Mascotas</a>
-	   					<ul>
-	   						<li><a href="#">Perdidos</a></li>
-	   						<li><a href="#">Encontrados</a></li>
-	   						<li><a href="#">En adopción</a></li>
-	   					</ul>
-	   				</li>
-
-	   				<li class="subs"><a href="#"><span class="segundo"><i class="menu">Fundaciones</i></span>Fundaciones</a>
-	   					<ul>
-	   						<li><a href="#">Información</a></li>
-	   						<li><a href="#">Miembros</a></li>
-	   						<li><a href="#">Donaciones</a></li>
-	   					</ul>
-	   				</li>
-
-	   				<li class="subs"><a href="#"><span class="tercero"><i class="menu">Información de Adopciones</i></span>Información de Adopciones</a>
-	   					<ul>
-	   						<li><a href="#">Proceso y requisito</a></li>
-	   					</ul>
-	   				</li>
-
-	   				<li class="subs"><a href="#"><span class="cuarto"><i class="menu">Interés</i></span>Interés</a>
-	   					<ul>
-	   						<li><a href="#">Blog</a></li>
-	   						<li><a href="#">Eventos</a></li>
-	   						<li><a href="#">Cuidados de animales</a></li>
-	   					</ul>
-	   				</li>
-
-	   				<li class="subs"><a class="inicio" href="../Login/Login.html"><span class="quinto"><i class="menu">Iniciar sesión</i></span>Iniciar sesión</a></li>
-	   			</ul>
-	   		</div>
+		<div class="header">
+			<div id='cssmenu'>
+				<ul>
+				   <li><a href='../Home_publico/Home_publico.html'><span>Home</span></a></li>
+				   <li class='active has-sub'><a href='#'><span>Mascotas</span></a>
+					  <ul>
+						 <li class='has-sub'><a href='#'><span>Perdidos</span></a></li>
+						 <li class='has-sub'><a href='#'><span>Encontrados</span></a></li>
+						 <li class='has-sub'><a href='#'><span>En adopción</span></a></li>
+					  </ul>
+				   </li>
+				   <li class='active has-sub'><a href='#'><span>Fundaciones</span></a>
+					<ul>
+						<li class='has-sub'><a href='#'><span>Información</span></a></li>
+						<li class='has-sub'><a href='#'><span>Miembros</span></a></li>
+						<li class='has-sub'><a href='#'><span>Donaciones</span></a></li>
+					 </ul>
+				   </li>
+				   <li class='active has-sub'><a href='#'><span>Adopciones</span></a>
+					<ul>
+						<li class='has-sub'><a href='#'><span>Proceso y requisito</span></a></li>
+					 </ul>
+				   </li>
+				   <li class='active has-sub'><a href='#'><span>Interés</span></a>
+					<ul>
+						<li><a href="#">Blog</a></li>
+						<li><a href="#">Eventos</a></li>
+						<li><a href="#">Cuidados de animales</a></li>
+					</ul>
+				   </li>
+				   <li class='last'><a href='../Login/Login.html'><span>Iniciar sesión</span></a></li>
+				</ul>
+				</div>
 	   </div>
    </header>
 
@@ -79,7 +77,7 @@
 	           <input type="text" class="form-control" ng-model="vm.nombre1" maxlength="20" ng-keyup="vm.functionNombre1()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeNombre1" ></p>
 	         </div>	
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Segundo nombre</label>
 	           <input type="text" class="form-control" ng-model="vm.nombre2" maxlength="20" ng-keyup="vm.functionNombre2()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeNombre2" ></p>
@@ -91,7 +89,7 @@
 	           <input type="text" class="form-control" ng-model="vm.apellido1" maxlength="20" ng-keyup="vm.functionApellido1()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeApellido1" ></p>
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Segundo apellido</label>
 	           <input type="text" class="form-control" ng-model="vm.apellido2" maxlength="20" ng-keyup="vm.functionApellido2()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeApellido2"></p>
@@ -103,7 +101,7 @@
 	           <input type="text" class="form-control" ng-model="vm.telefonoFijo" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="9" ng-keyup="vm.functionTelefonoFijo()" mask="999 99 99">
 	           <p class="mensajeError"  ng-bind="vm.mensajeTelefonoFijo"></p>
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Télefono movil</label>
 	           <input type="text"  ng-keyup="vm.functionTelefonoMovil()" class="form-control" ng-model="vm.telefonoMovil" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  maxlength="13"  mask="999 999 99 99">
 	             <p class="mensajeError"  ng-bind="vm.mensajeTelefonoMovil"></p>
@@ -128,7 +126,7 @@
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajePreguntaSeguridad"></p>	         
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Respuesta*</label>
 	           <input type="text" class="form-control" ng-model="vm.respuesta" maxlength="30" ng-keyup="vm.functionRespuesta()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeRespuesta"></p>         
@@ -148,7 +146,7 @@
 	           <input type="password" class="form-control" ng-model="vm.contrasena" maxlength="20" ng-keyup="vm.functionContrasena()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeContrasena"></p>	       
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Confirmar Contraseña*</label>
 	           <input type="password" class="form-control" ng-model="vm.confirmarContrasena" maxlength="20" ng-keyup="vm.functionConfirmarContrasena()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeConfirmarContrasena"></p>	          
@@ -158,11 +156,16 @@
    	    	 <div class="form-group col-xs-6 col-sm-6">
 	           <button type="button" class="btn btn-success">Cancelar</button>
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
 	         </div>
-   	    </div>
-   	 
+				 </div>
+				 <div ng-class="vm.loader" class="spinner">
+					 <span>Esperando respuesta...</span>
+					 <br>
+					 <br>
+				   <div  class="loader" ng-class="vm.loader"></div>
+				</div>
         <md-content>       
           
             <div ng-if="status">

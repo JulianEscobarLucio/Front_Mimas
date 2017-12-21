@@ -71,10 +71,14 @@
   margin-bottom: 0; }
 
  .md-fab{
-        margin-left: 45% !important;
+        margin-left: 47% !important;
         background-color: #66af96 !important;
         width: 40px !important;
         height: 40px !important;
+  }
+
+  .md-fab svg{
+    margin-top: -1px;
   }
 
 @font-face {
@@ -93,8 +97,13 @@
   fill: white;
   margin-left: -7px !important
 }
-
-
+.spinner{
+  margin-left: 319px;
+}
+.spinner span{ 
+    margin-left: -54px;
+    color: darkslateblue;
+  }
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
