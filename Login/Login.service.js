@@ -1,12 +1,8 @@
 (function(){
-	'use strict';
 	angular
 		.module('starter')
 		.service('loginServices',loginServices);
-
-
 	loginServices.$inject = ['$http','$q'];
-
 	function loginServices($http,$q){
         var self = this;
         var ipserver = 'http://localhost:8092'; 

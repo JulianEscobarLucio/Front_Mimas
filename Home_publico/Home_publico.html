@@ -16,7 +16,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-
+<script src="../angular.min.js"></script>
 <link rel="stylesheet" href="Home_publico.css">
 <link rel="stylesheet" href="../Imagenes/iconos-redes/style.css">
 <link rel="stylesheet" type="text/css" href="../menu.css">	
@@ -25,104 +25,71 @@
 
 
 <body >
-   <header>
-	   	<div class="header">
-			<div id='cssmenu'>
-				<ul>
-				   <li><a href='../Home_publico/Home_publico.html'><span>Home</span></a></li>
-				   <li class='active has-sub'><a href='#'><span>Mascotas</span></a>
-					  <ul>
-						 <li class='has-sub'><a href='#'><span>Perdidos</span></a></li>
-						 <li class='has-sub'><a href='#'><span>Encontrados</span></a></li>
-						 <li class='has-sub'><a href='#'><span>En adopción</span></a></li>
-					  </ul>
-				   </li>
-				   <li class='active has-sub'><a href='#'><span>Fundaciones</span></a>
-					<ul>
-						<li class='has-sub'><a href='#'><span>Información</span></a></li>
-						<li class='has-sub'><a href='#'><span>Miembros</span></a></li>
-						<li class='has-sub'><a href='#'><span>Donaciones</span></a></li>
-					 </ul>
-				   </li>
-				   <li class='active has-sub'><a href='#'><span>Adopciones</span></a>
-					<ul>
-						<li class='has-sub'><a href='#'><span>Proceso y requisito</span></a></li>
-					 </ul>
-				   </li>
-				   <li class='active has-sub'><a href='#'><span>Interés</span></a>
-					<ul>
-						<li><a href="#">Blog</a></li>
-						<li><a href="#">Eventos</a></li>
-						<li><a href="#">Cuidados de animales</a></li>
-					</ul>
-				   </li>
-				   <li class='last'><a href='../Login/Login.html'><span>Iniciar sesión</span></a></li>
-				</ul>
+	<header>
+	  <menu-publico></menu-publico>
+	</header>
+	
+	
+	
+	<div class="body"  ng-controller="hotmepublicoController as vm" id="dialogContainer" >
+		
+		
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 class="bienvenida">BIENVENIDOS</h1>
 				</div>
-	   </div>
-   </header>
-
-
-
-   <div class="body"  ng-controller="hotmepublicoController as vm" id="dialogContainer" >
-         
-   	   
-   	   <div class="container-fluid">
-   	   		
-   	   		<div class="row">
-   	   			<div class="col-xs-12">
-   	   				<h1 class="bienvenida">BIENVENIDOS</h1>
-   	   			</div>
-
-   	   			<div class="col-xs-12 centered logo ">
-   	   				
-   	   			</div>	
-   	   				
-   	   		</div> <!-- fin row-->
-
-
-   	   </div> <!-- fin container -->
-
-   	   <div class="container-fluid">
-   	   		
-   	   		<div class="row">
-   	   			<div class="col-xs-12">
-   	   				<h1 class="titulo">¿QUIENES SOMOS?</h1>
-   	   			</div>
-   	   		</div>
-
-   	   		<div class="row quienes"> 	   			
-   	   			<div class="col-xs-12 col-md-6 col-md-offset-1">
-   	   				<h3 class="titulo">SOBRE NOSOTROS</h3>
-   	   				<p>
-   	   					MIMAS es una red social para fundaciones protectoras de animales impulsada por la fundación FPA, dicha fundación se encarga de la adopción, apadrinamiento y recuperación de animales; todo con la misión de que cada animal tenga la oportunidad de encontrar un hogar.
-   	   				</p>
-   	   				<p>
-   	   					La fundación también planea el poder permitir a los usuarios gestionar sus procesos de forma interactiva (apoyo al sostenimiento de la fundación con donaciones en especie, publicar animales extraviados y encontrados, búsqueda de animales y solicitudes de adopción). Ampliando así la cobertura del servicio y permitiendo la recepción de más solicitudes.
-   	   				</p>
-   	   				<p>
-   	   					La fundación requiere que, dentro de los casos de adopción, se puedan registrar los avances y resultados de seguimientos post adopción, teniendo la trazabilidad completa del proceso.
-   	   				</p>
-   	   			</div>
-
-   	   			<div class="col-xs-12 col-md-5 ">
-   	   				<h3 class="titulo">CONTACTO</h3>
-   	   				<p>TELÉFONO</p>
-   	   				<p>(+57) 300 274 3671</p>
-   	   				<p>DIRECCIÓN</p>
-   	   				<p>Cll 39 Sur # 37 - 10 (fundación FPA)</p>
-   	   				<span>Estamos ubicados en la ciudad de Envigado</span>
-
-   	   			</div>
-   	   		</div>
-
-   	   </div>
-   	    
-
+				
+				<div class="col-xs-12 centered logo ">
+					
+				</div>	
+				
+			</div> <!-- fin row-->
+			
+			
+		</div> <!-- fin container -->
+		
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="col-xs-12">
+					<h1 class="titulo">¿QUIENES SOMOS?</h1>
+				</div>
+			</div>
+			
+			<div class="row quienes"> 	   			
+				<div class="col-xs-12 col-md-6 col-md-offset-1">
+					<h3 class="titulo">SOBRE NOSOTROS</h3>
+					<p>
+						MIMAS es una red social para fundaciones protectoras de animales impulsada por la fundación FPA, dicha fundación se encarga de la adopción, apadrinamiento y recuperación de animales; todo con la misión de que cada animal tenga la oportunidad de encontrar un hogar.
+					</p>
+					<p>
+						La fundación también planea el poder permitir a los usuarios gestionar sus procesos de forma interactiva (apoyo al sostenimiento de la fundación con donaciones en especie, publicar animales extraviados y encontrados, búsqueda de animales y solicitudes de adopción). Ampliando así la cobertura del servicio y permitiendo la recepción de más solicitudes.
+					</p>
+					<p>
+						La fundación requiere que, dentro de los casos de adopción, se puedan registrar los avances y resultados de seguimientos post adopción, teniendo la trazabilidad completa del proceso.
+					</p>
+				</div>
+				
+				<div class="col-xs-12 col-md-5 ">
+					<h3 class="titulo">CONTACTO</h3>
+					<p>TELÉFONO</p>
+					<p>(+57) 300 274 3671</p>
+					<p>DIRECCIÓN</p>
+					<p>Cll 39 Sur # 37 - 10 (fundación FPA)</p>
+					<span>Estamos ubicados en la ciudad de Envigado</span>
+					
+				</div>
+			</div>
+			
+		</div>
+		
+		
 	</div>
-
-
-<!-- inicio  barra social -->
+	
+	
+	<!-- inicio  barra social -->
 	<div class="social">
 		<ul>
 			<li><a href="http://www.facebook.com/" target="_blank" class="icon-facebook2"></a></li>
@@ -131,14 +98,13 @@
 			<li><a href="#" class="icon-mail"></a></li>
 		</ul>
 	</div> <!-- fin  barra social -->
-
-   <footer>
-   	<div class="footer"></div>
-   </footer> 
- <!--  <script src="../angular.min.js"></script>-->
+	
+	<footer>
+		<div class="footer"></div>
+	</footer> 
+	
 	<script src="../angular-route.min.js"></script>
 	<script src="Home_publico.js"></script>
-	<!--
-	<script src="prueba.js"></script>-->
-</body>
-</html>
+	<script src="../menu_publico/menu_publico.js"></script>
+	</body>
+	</html>
