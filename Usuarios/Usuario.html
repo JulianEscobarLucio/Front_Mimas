@@ -24,68 +24,14 @@
 <link rel="stylesheet" href="../estilo-menu.css">
 <link rel="stylesheet" href="Usuario.css">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+<link rel="stylesheet" type="text/css" href="../menu.css">
 
 </head>
 <body >
    
 	<header>
-   	  <div class="header">   
-   	    <div class="nav">	     
-   	 	 <ul id="nav">
-
-			<li class="subs">
-				<a href="#"><span class="primero"><i class="menu">Adoptar o apadrinar</i></span>Adoptar o apadrinar</a>
-
-                <ul>
-				  <li><a href="#">Adoptar</a></li>
-				  <li><a href="#">Apadrinar</a></li>
-				  <li><a href="#">Estado y revisión del proceso</a></li>				  
-				</ul>
-			</li>
-
-			<li class="subs">
-				<a href="#s1"><span class="segundo"><i class="menu">Mi Perfil</i></span>Mi Perfil</a></li>
-
-			<li class="subs">
-				<a href="#s2"><span class="tercero"><i class="menu">Mis mascotas</i></span>Mis mascotas</a>
-				<ul>
-					<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
-				</ul>
-			</li>
-
-			<li class="subs">
-				<a href="../Fundaciones/Fundacion.html"><span class="cuarto"><i class="menu">Fundaciones</i></span>Fundaciones</a>
-				<ul>
-					<li><a href="#">Adopciones</a></li>
-					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Colaboradores</a></li>
-					<li><a href="#">Contacto</a></li>
-					<li><a href="#">Donaciones</a></li>
-					<li><a href="#">Reportes y estadisticas</a></li>
-				</ul>
-			</li>
-
-			 <li class="subs">
-			 	<a href="#s2"><span class="quinto"><i class="menu">Administración</i></span>Administración</a>
-
-				  <ul>
-				    <li><a href="../Roles/Rol.html">Roles</a></li>
-				    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
-				  </ul>
-			</li>
-
-			<li class="subs">
-				<a class="inicio" href="../Home_publico/Home_publico.html"><span class="tercero"><i class="menu">Cerrar sesión</i></span>Cerrar sesión</a></li>
-		</ul>
-		</div>		
-   	  </div>
+			<menu-transaccional></menu-transaccional>
    </header>
-
-
-
-
-
    <div class="body"  ng-controller="UsuarioController as vm" id="dialogContainer" >
          <h1 class="titulo">Usuario</h1>
    	    <div class="row">   	    	
@@ -94,7 +40,7 @@
 	           <input type="text" class="form-control" ng-model="vm.nombre1" maxlength="20" ng-keyup="vm.functionNombre1()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeNombre1" ></p>
 	         </div>	
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Segundo nombre</label>
 	           <input type="text" class="form-control" ng-model="vm.nombre2" maxlength="20" ng-keyup="vm.functionNombre2()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeNombre2" ></p>
@@ -106,7 +52,7 @@
 	           <input type="text" class="form-control" ng-model="vm.apellido1" maxlength="20" ng-keyup="vm.functionApellido1()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeApellido1" ></p>
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Segundo apellido</label>
 	           <input type="text" class="form-control" ng-model="vm.apellido2" maxlength="20" ng-keyup="vm.functionApellido2()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeApellido2"></p>
@@ -118,7 +64,7 @@
 	           <input type="text" class="form-control" ng-model="vm.telefonoFijo" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="9" ng-keyup="vm.functionTelefonoFijo()" mask="999 99 99">
 	           <p class="mensajeError"  ng-bind="vm.mensajeTelefonoFijo"></p>
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Télefono movil</label>
 	           <input type="text"  ng-keyup="vm.functionTelefonoMovil()" class="form-control" ng-model="vm.telefonoMovil" oninput="this.value=this.value.replace(/[^0-9]/g,'');"  mask="999 999 99 99">
 	             <p class="mensajeError"  ng-bind="vm.mensajeTelefonoMovil"></p>
@@ -156,7 +102,7 @@
                 </select>	         
 	            <p class="mensajeError"  ng-bind="vm.mensajePreguntaSeguridad"></p>	         
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Respuesta*</label>
 	           <input type="text" class="form-control" ng-model="vm.respuesta" maxlength="30" ng-keyup="vm.functionRespuesta()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeRespuesta"></p>         
@@ -177,7 +123,7 @@
 	           <input type="password" class="form-control" ng-model="vm.contrasena" maxlength="20" ng-keyup="vm.functionContrasena()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeContrasena"></p>	       
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Confirmar Contraseña*</label>
 	           <input type="password" class="form-control" ng-model="vm.confirmarContrasena" maxlength="20" ng-keyup="vm.functionConfirmarContrasena()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeConfirmarContrasena"></p>	          
@@ -226,11 +172,10 @@
    <footer>
    	<div class="footer"></div>
    </footer> 
- <!--  <script src="../angular.min.js"></script>-->
+  <script src="../angular.min.js"></script>
 	<script src="../angular-route.min.js"></script>
 	<script src="Usuario.js"></script>
 	<script src="Usuario.service.js"></script>
-	<!--
-	<script src="prueba.js"></script>-->
+	<script src="../menu_transaccional/menu_transaccional.js"></script>
 </body>
 </html>

@@ -20,60 +20,11 @@
 
 <link rel="stylesheet" href="../Home_publico/Home_publico.css">
 <link rel="stylesheet" href="../Imagenes/iconos-redes/style.css">
-<link rel="stylesheet" href="../estilo-menu.css">
+<link rel="stylesheet" type="text/css" href="../menu.css">	
 </head>
 <body >
    <header>
-   	  <div class="header">   
-   	    <div class="nav">	     
-   	 	 <ul id="nav">
-
-			<li class="subs">
-				<a href="#"><span class="primero"><i class="menu">Adoptar o apadrinar</i></span>Adoptar o apadrinar</a>
-
-                <ul>
-				  <li><a href="#">Adoptar</a></li>
-				  <li><a href="#">Apadrinar</a></li>
-				  <li><a href="#">Estado y revisión del proceso</a></li>				  
-				</ul>
-			</li>
-
-			<li class="subs">
-				<a href="#s1"><span class="segundo"><i class="menu">Mi Perfil</i></span>Mi Perfil</a></li>
-
-			<li class="subs">
-				<a href="#s2"><span class="tercero"><i class="menu">Mis mascotas</i></span>Mis mascotas</a>
-				<ul>
-					<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
-				</ul>
-			</li>
-
-			<li class="subs">
-				<a href="../Fundaciones/Fundacion.html"><span class="cuarto"><i class="menu">Fundaciones</i></span>Fundaciones</a>
-				<ul>
-					<li><a href="#">Adopciones</a></li>
-					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Colaboradores</a></li>
-					<li><a href="#">Contacto</a></li>
-					<li><a href="#">Donaciones</a></li>
-					<li><a href="#">Reportes y estadisticas</a></li>
-				</ul>
-			</li>
-
-			 <li class="subs">
-			 	<a href="#s2"><span class="quinto"><i class="menu">Administración</i></span>Administración</a>
-
-				  <ul>
-				    <li><a href="../Roles/Rol.html">Roles</a></li>
-				    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
-				  </ul>
-			</li>
-
-			<li class="subs">
-				<a class="inicio" href="../Home_publico/Home_publico.html"><span class="tercero"><i class="menu">Cerrar sesión</i></span>Cerrar sesión</a></li>
-		</ul>
-		</div>		
-   	  </div>
+	 <menu-transaccional></menu-transaccional>
    </header>
 
 
@@ -172,10 +123,9 @@
    <footer>
    	<div class="footer"></div>
    </footer> 
- <!--  <script src="../angular.min.js"></script>-->
+    <script src="../angular.min.js"></script>
 	<script src="../angular-route.min.js"></script>
 	<script src="Home_transaccional.js"></script>	
-	<!--
-	<script src="prueba.js"></script>-->
+	<script src="../menu_transaccional/menu_transaccional.js"></script>
 </body>
 </html>

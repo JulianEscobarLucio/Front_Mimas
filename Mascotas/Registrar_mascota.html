@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="Mascota.css">
 <link rel="stylesheet" href="../Imagenes/iconos-redes/style.css">
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+<link rel="stylesheet" type="text/css" href="../menu.css">
 <!-- Latest compiled and minified JavaScript -->
 <script src="../jquery-3.2.1.min.js" ></script>
 <script src="../bootstrap-3.3.7-dist/js/bootstrap.min.js" ></script>
@@ -21,79 +22,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
-
 </head>
-<body >
-  
+<body>
   <header>
-   	  <div class="header">   
-   	    <div class="nav">	     
-   	 	 <ul id="nav">
-
-			<li class="subs">
-				<a href="#"><span class="primero"><i class="menu">Adoptar o apadrinar</i></span>Adoptar o apadrinar</a>
-
-                <ul>
-				  <li><a href="#">Adoptar</a></li>
-				  <li><a href="#">Apadrinar</a></li>
-				  <li><a href="#">Estado y revisión del proceso</a></li>				  
-				</ul>
-			</li>
-
-			<li class="subs">
-				<a href="#s1"><span class="segundo"><i class="menu">Mi Perfil</i></span>Mi Perfil</a></li>
-
-			<li class="subs">
-				<a href="#s2"><span class="tercero"><i class="menu">Mis mascotas</i></span>Mis mascotas</a>
-				<ul>
-					<li><a href="../Mascotas/Registrar_mascota.html">Registro de mascotas</a></li>			
-				</ul>
-			</li>
-
-			<li class="subs">
-				<a href="../Fundaciones/Fundacion.html"><span class="cuarto"><i class="menu">Fundaciones</i></span>Fundaciones</a>
-				<ul>
-					<li><a href="#">Adopciones</a></li>
-					<li><a href="#">Eventos</a></li>
-					<li><a href="#">Colaboradores</a></li>
-					<li><a href="#">Contacto</a></li>
-					<li><a href="#">Donaciones</a></li>
-					<li><a href="#">Reportes y estadisticas</a></li>
-				</ul>
-			</li>
-
-			 <li class="subs">
-			 	<a href="#s2"><span class="quinto"><i class="menu">Administración</i></span>Administración</a>
-
-				  <ul>
-				    <li><a href="../Roles/Rol.html">Roles</a></li>
-				    <li><a href="../Usuarios/Usuario.html">Usuarios</a></li>
-				  </ul>
-			</li>
-
-			<li class="subs">
-				<a class="inicio" href="../Home_publico/Home_publico.html"><span class="tercero"><i class="menu">Cerrar sesión</i></span>Cerrar sesión</a></li>
-		</ul>
-		</div>		
-   	  </div>
-   </header>
- 
+   	 <menu-transaccional></menu-transaccional>
+  </header>
    <div class="body"  ng-controller="registrarMascotaController as vm" id="dialogContainer" >
          <h1 class="titulo">Mascota</h1>
          <div class="row">
-          <div class="form-group col-xs-6 col-sm-6"">
+          <div class="form-group col-xs-6 col-sm-6">
          	 <img ng-src="{{ vm.thumbnail.dataUrl }}" width="150" height="150" style="border" /> 
            </div>
          </div>
          <br>
          <br>
    	    <div class="row">   	    	
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Nombre*</label>
 	           <input type="text" class="form-control" ng-model="vm.nombre" ng-keyup="vm.functionNombre()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');" >
 	           <p class="mensajeError"  ng-bind="vm.mensajeNombre"></p>
 	         </div>
-	          <div class="form-group col-xs-6 col-sm-6"">
+	          <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Responsable*</label>
 	           <input type="text" class="form-control" ng-model="vm.IdResponsable" ng-keyup="vm.functionResponsable()">
 	           <p class="mensajeError"  ng-bind="vm.mensajeResponsable"></p>
@@ -159,12 +108,12 @@
    	    </div>
 
    	    <div class="row">   
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Caracteristicas*</label>
 	           <input type="text" class="form-control" ng-model="vm.Caracteristicas" ng-keyup="vm.functionCaracteristicas()">
 	               <p class="mensajeError"  ng-bind="vm.mensajeCaracteristicas"></p>
 	         </div>
-	           <div class="form-group col-xs-6 col-sm-6"">
+	           <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Raza*</label>
 	           <input type="text" class="form-control" ng-model="vm.Raza" ng-keyup="vm.functionRaza()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	            <p class="mensajeError"  ng-bind="vm.mensajeRaza"></p>	
@@ -176,7 +125,7 @@
 	           <input type="text" class="form-control" ng-model="vm.Senales"  ng-keyup="vm.functionSenales()">
 	            <p class="mensajeError"  ng-bind="vm.mensajeSenales"></p>	
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Color*</label>
 	           <input type="text" class="form-control" ng-model="vm.Color" ng-keyup="vm.functionColor()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	               <p class="mensajeError"  ng-bind="vm.mensajeColor"></p>
@@ -189,7 +138,7 @@
 	           <input type="text" class="form-control" ng-model="vm.Colorojos" ng-keyup="vm.functionColorojos()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	           <p class="mensajeError"  ng-bind="vm.mensajeColorojos"></p>
 	         </div>
-	         <div class="form-group col-xs-6 col-sm-6"">
+	         <div class="form-group col-xs-6 col-sm-6">
 	           <label for="usr">Personalidad*</label>
 	           <input type="text" class="form-control" ng-model="vm.Personalidad" ng-keyup="vm.functionPersonalidad()" oninput="this.value=this.value.replace(/[^a-zA-Z]/g,'');">
 	           <p class="mensajeError"  ng-bind="vm.mensajepersonalidad"></p>
@@ -208,34 +157,31 @@
    	    	 <div class="form-group col-xs-3 col-sm-3">
 	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrar()">Registrar</button>
 	         </div>
-	         <div class="form-group col-xs-3 col-sm-3"">
+	         <div class="form-group col-xs-3 col-sm-3">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3  identificacion">	       
 	              <input type="text" class="form-control" ng-model="vm.Id2" ng-Disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionId2()" placeholder="Identificador">
 	           <p class="mensajeError"  ng-bind="vm.mensajeId2"></p>	
 	         </div>
-	         <div class="form-group col-xs-3 col-sm-3"">
+	         <div class="form-group col-xs-3 col-sm-3">
 		            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
 	         </div>
    	    </div>
    	    <div class="row botones">
-   	       	  <div class="form-group col-xs-3 col-sm-3"">
+   	       	  <div class="form-group col-xs-3 col-sm-3">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.showConfirm($event)">Eliminar</button>
 	         </div> 
-	          <div class="form-group col-xs-3 col-sm-3"">
+	          <div class="form-group col-xs-3 col-sm-3">
 	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledCancelar" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>   	    	
    	    </div>   	 
         <md-content>       
-          
             <div ng-if="status">
                <br/>  
-
             </div>
          </md-content>   
        </div>
-
 
 <!-- inicio  barra social -->
 	<div class="social">
@@ -249,11 +195,10 @@
    <footer>
    	<div class="footer"></div>
    </footer> 
- <!--  <script src="../angular.min.js"></script>-->
+  <script src="../angular.min.js"></script>
 	<script src="../angular-route.min.js"></script>
 	<script src="Registrar_mascota.js"></script>
 	<script src="Registrar_mascota.service.js"></script>
-	<!--
-	<script src="prueba.js"></script>-->
+	<script src="../menu_transaccional/menu_transaccional.js"></script>
 </body>
 </html>

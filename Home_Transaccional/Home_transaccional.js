@@ -6,14 +6,8 @@
     .controller('homeController', homeController);
  //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
 
-    function homeController($scope, $mdDialog,registarUsuarioServices) {
+    function homeController($scope) {
         var vm = this;
-    
-
-
-
-
-
     }        
     
 })();
