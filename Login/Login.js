@@ -31,7 +31,7 @@
       }
 
       function ingresar() {
-
+        // jQuery(window).spin();
             if(vm.usuario == undefined || vm.usuario == ''){
                vm.mensajeUsuario = 'Ingrese un valor válido';
                return;
@@ -43,8 +43,7 @@
                return;
             }
 
-            grecaptcha.execute();
-            
+           grecaptcha.execute();
    }
 
 
@@ -55,18 +54,17 @@
 
 
     function login(){
-       var requestJson = {
+           jQuery(window).spin();
+            var requestJson = {
                     "email" : vm.usuario,
                     "contrasena" : vm.contrasena
                     }        
             vm.modalShown2 = true;
             console.log(JSON.stringify(requestJson));                      
             loginServices.login(requestJson).then(function(data){
-            debugger;
+              jQuery(window).spin();  
             if(data.resultado[0].codRespuesta == "200") {                       
-                 debugger;
                 localStorage.setItem("user", data.resultado[0].nombre1 + " " + data.resultado[0].apellido1);             
-
                 $mdDialog.show(
                   $mdDialog.alert()
                      .parent(angular.element(document.querySelector('#dialogContainer')))
@@ -75,7 +73,7 @@
                      .textContent('Usuario valido')
                      .ariaLabel('Usuario registrado')
                      .ok('Cerrar')                     
-               );       
+               ); 
                document.getElementById("redirect").click();
             }else{
                 $mdDialog.show(

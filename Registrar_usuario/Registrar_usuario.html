@@ -29,9 +29,9 @@
 
 </head>
 <body>
-   
+	
    <header>
-		  <menu-publico></menu-publico>
+		<div  ng-include="'../menu_publico/menu_publico.html'"></div>
    </header>
    <div class="body"  ng-controller="registrarUsuarioController as vm" id="dialogContainer" >
          <h1 class="titulo">Registrar usuario</h1>
@@ -124,12 +124,6 @@
 	            <button type="button" class="btn btn-success" ng-click="vm.registrarUsuario()">Aceptar</button>
 	         </div>
 				 </div>
-				 <div ng-class="vm.loader" class="spinner">
-					 <span>Esperando respuesta...</span>
-					 <br>
-					 <br>
-				   <div  class="loader" ng-class="vm.loader"></div>
-				</div>
         <md-content>       
           
             <div ng-if="status">
@@ -155,10 +149,8 @@
    <footer>
    	<div class="footer"></div>
    </footer> 
-		<script src="../angular.min.js"></script>
 		<script src="../angular-route.min.js"></script>
 		<script src="Registrar_usuario.js"></script>
 		<script src="Registrar_usuario.service.js"></script>
-		<script src="../menu_publico/menu_publico.js"></script>
 </body>
 </html>

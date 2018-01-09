@@ -3,10 +3,7 @@
 
     angular
     .module('starter',['ngMaterial','ngRoute','ngMask','ngMdIcons'])
-    .controller('registrarUsuarioController', registrarUsuarioController);
- //    registrarUsuarioController.$inject = ['registarUsuarioServices'];
-
-    function registrarUsuarioController($scope, $mdDialog,registarUsuarioServices) {
+    .controller('registrarUsuarioController',   function($scope, $mdDialog, registarUsuarioServices) {
         var vm = this;
         vm.registrarUsuario = registrarUsuario;
         vm.mensajeNombre1 = "";
@@ -300,6 +297,8 @@
         }
        });
    }
-}        
+} );
+
+         
     
 })();

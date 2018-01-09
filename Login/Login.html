@@ -24,11 +24,9 @@
 <link rel="stylesheet" href="Login.css">
 
 </head>
-
-
 <body>   
    <header>
-		<menu-publico></menu-publico>
+	<div  ng-include="'../menu_publico/menu_publico.html'"></div>
    </header>
    <div class="body"  ng-controller="loginController as vm" id="dialogContainer" >
          <h1 class="titulo">Iniciar sesión</h1>
@@ -55,7 +53,7 @@
 	           <button type="button" class="btn btn-success" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>
 	         <div class="form-group col-xs-6 col-sm-6">
-	            <button type="button" class="btn btn-success" ng-click="vm.ingresar()">Aceptar</button>
+	            <button type="button" id="button1" class="btn btn-success" ng-click="vm.ingresar()">Aceptar</button>
 	         </div>
    	    </div>
    	    <div class="row">
@@ -74,10 +72,7 @@
             </div>
          </md-content>   
    </div>  
-
-
-
-
+   <div id='spinner' class='spinner'></div>
 <!-- inicio  barra social -->
 	<div class="social">
 		<ul>
@@ -87,8 +82,6 @@
 			<li><a href="#" class="icon-mail"></a></li>
 		</ul>
 	</div> <!-- fin  barra social -->
-
-
    <footer>
    	<div class="footer"></div>
    </footer> 
@@ -96,6 +89,6 @@
 	<script src="../angular-route.min.js"></script>	
 	<script src="Login.js"></script>
 	<script src="Login.service.js"></script>
-	<script src="../menu_publico/menu_publico.js"></script>
+	<script src="../jQuery.Spin.js"></script>
 </body>
 </html>
