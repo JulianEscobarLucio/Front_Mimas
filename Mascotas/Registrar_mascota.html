@@ -25,7 +25,7 @@
 </head>
 <body>
   <header>
-   	 <menu-transaccional></menu-transaccional>
+		<div  ng-include="'../menu_transaccional/menu_transaccional.html'"></div>
   </header>
    <div class="body"  ng-controller="registrarMascotaController as vm" id="dialogContainer" >
          <h1 class="titulo">Mascota</h1>
@@ -199,6 +199,5 @@
 	<script src="../angular-route.min.js"></script>
 	<script src="Registrar_mascota.js"></script>
 	<script src="Registrar_mascota.service.js"></script>
-	<script src="../menu_transaccional/menu_transaccional.js"></script>
 </body>
 </html>

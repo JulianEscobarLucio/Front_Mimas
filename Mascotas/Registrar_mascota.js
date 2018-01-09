@@ -57,6 +57,7 @@
         vm.functionPersonalidad = functionPersonalidad;
         vm.functionEstadoSalud = functionEstadoSalud;
         vm.showConfirm = showConfirm;
+        vm.imagenInicial = imagenInicial;
         vm.cancelar = cancelar;
         vm.DisabledCancelar = true;
         vm.IdResponsable = localStorage.getItem("user"); 
@@ -69,6 +70,12 @@
          dataUrl: ''
        };
        vm.fileReaderSupported = window.FileReader != null;
+       
+       imagenInicial("../Imagenes/descarga.jpg");
+
+       function imagenInicial(image){
+         vm.thumbnail.dataUrl = image ;
+       }
 
        $scope.photoChanged = function(files){
           if (files != null) {

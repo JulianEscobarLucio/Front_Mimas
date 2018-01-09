@@ -35,8 +35,12 @@
             if(vm.usuario == undefined || vm.usuario == ''){
                vm.mensajeUsuario = 'Ingrese un valor válido';
                return;
-            }
-
+              }
+              
+              if(!/^\w+([\.\+\-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/.test(vm.usuario)){
+                vm.mensajeUsuario   = "Ingrese un correo valido";
+                return;
+              }
 
             if(vm.contrasena == undefined || vm.contrasena == ''){
                vm.mensajeContrasena = 'Ingrese un valor válido';
