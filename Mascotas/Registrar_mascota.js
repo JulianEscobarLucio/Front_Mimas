@@ -57,7 +57,6 @@
         vm.functionPersonalidad = functionPersonalidad;
         vm.functionEstadoSalud = functionEstadoSalud;
         vm.showConfirm = showConfirm;
-        vm.imagenInicial = imagenInicial;
         vm.cancelar = cancelar;
         vm.DisabledCancelar = true;
         vm.IdResponsable = localStorage.getItem("user"); 
@@ -71,11 +70,18 @@
        };
        vm.fileReaderSupported = window.FileReader != null;
        
-       imagenInicial("../Imagenes/descarga.jpg");
 
-       function imagenInicial(image){
-         vm.thumbnail.dataUrl = image ;
-       }
+       function getBase64Image(img) {
+        var canvas = document.createElement("canvas");
+        canvas.width = img.width;
+        canvas.height = img.height;
+        var ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        var dataURL = canvas.toDataURL();
+        return dataURL;
+      }
+      
+      vm.thumbnail.dataUrl = getBase64Image(document.getElementById("img"));
 
        $scope.photoChanged = function(files){
           if (files != null) {

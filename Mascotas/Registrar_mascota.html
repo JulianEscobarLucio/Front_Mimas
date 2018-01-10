@@ -30,8 +30,9 @@
    <div class="body"  ng-controller="registrarMascotaController as vm" id="dialogContainer" >
          <h1 class="titulo">Mascota</h1>
          <div class="row">
-          <div class="form-group col-xs-6 col-sm-6">
-         	 <img ng-src="{{ vm.thumbnail.dataUrl }}" width="150" height="150" style="border" /> 
+          <div class="form-group col-xs-6 col-sm-6 contenedorImagne">
+						<img ng-src="{{ vm.thumbnail.dataUrl }}" width="150" height="150" style="border" /> 
+						<img id="img" src="../Imagenes/gato1.jpg" style="display: none;">
            </div>
          </div>
          <br>

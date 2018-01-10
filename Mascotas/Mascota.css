@@ -60,5 +60,10 @@ footer{
     font-size: 12px;
     color: #dd2c00;
     margin-left: 15px;
-} 
+}
+.contenedorImagne{
+    width: auto !important;
+    background-color: black !important;
+    padding: 10px !important;
+}
 
