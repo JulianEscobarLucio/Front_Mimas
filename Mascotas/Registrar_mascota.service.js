@@ -9,7 +9,7 @@
 
 	function registarMascotaServices($http,$q){
          var self = this;
-        var ipserver = 'http://localhost:8092'; 
+        var ipserver = 'http://localhost:8080'; 
         self.registrarMascota = registrarMascota;
         self.consultarMascotaServices = consultarMascotaServices;
         self.actualizarMascota = actualizarMascota;

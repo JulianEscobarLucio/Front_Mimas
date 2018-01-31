@@ -33,7 +33,6 @@
         vm.mensajeEstado = "";
         vm.mensajeCaracteristicas = "";
         vm.mensajeVacunas = "";
-        vm.mensajeFechaN = "";
         vm.mensajeSenales = "";
         vm.mensajeColor = "";
         vm.mensajeColorojos = "";
@@ -72,13 +71,13 @@
        
 
        function getBase64Image(img) {
-        var canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        var ctx = canvas.getContext("2d");
-        ctx.drawImage(img, 0, 0);
-        var dataURL = canvas.toDataURL();
-        return dataURL;
+          var canvas = document.createElement("canvas");
+          canvas.width = img.width;
+          canvas.height = img.height;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          var dataURL = canvas.toDataURL();
+          return dataURL;
       }
       
       vm.thumbnail.dataUrl = getBase64Image(document.getElementById("img"));
@@ -128,7 +127,7 @@
         vm.Colorojos = "";
         vm.Personalidad = "";
         vm.EstadoSalud   = "" 
-
+        vm.thumbnail.dataUrl = getBase64Image(document.getElementById("img"));
        } 
 
         
@@ -220,8 +219,8 @@
        
 
         function functionFechaN(){
-             if(vm.FechaN.length > 0){
-               vm.mensajeFechaN ="";
+             if(vm.fechaN < new Date()){
+                vm.mensajeFecha ="";
              }
         }
 
@@ -258,31 +257,28 @@
 
 
         function registrar(){           
-              console.log(vm.thumbnail.dataUrl);
-
-             if(vm.fechaN > new Date()){
-               vm.mensajeFecha = "La fecha debe ser menor o igual a la fecha actual";
-               return;
-             }
-
-
-             if(vm.nombre == undefined  || vm.nombre  == ''){
-                   vm.mensajeNombre = "Debes ingresar un dato válido para este campo";
-                    return;
+              
+              if(vm.nombre == undefined  || vm.nombre  == ''){
+                vm.mensajeNombre = "Debes ingresar un dato válido para este campo";
+                return;
               }
-
-
+              
+              
               if(vm.IdResponsable == undefined  || vm.IdResponsable  == ''){
-                   vm.mensajeResponsable = "Debes ingresar un dato válido para este campo";
-                    return;
+                vm.mensajeResponsable = "Debes ingresar un dato válido para este campo";
+                return;
               }
-
-
-             if(vm.Especie == undefined  || vm.Especie == '0'){
-                   vm.mensajeEspecie = "Debes seleccionar una opción";
-                    return;
+              
+              
+              if(vm.Especie == undefined  || vm.Especie == '0'){
+                vm.mensajeEspecie = "Debes seleccionar una opción";
+                return;
               }
-
+              
+              if(vm.fechaN >= new Date()){
+                vm.mensajeFecha = "La fecha debe ser menor a la fecha actual";
+                return;
+              }
 
              if(vm.Genero == undefined  || vm.Genero == '0'){
                    vm.mensajeGenero = "Debes seleccionar una opción";
@@ -313,11 +309,6 @@
                     return;
               }
 
-
-           /*   if(vm.FechaN == undefined  || vm.FechaN == ''){
-                   vm.mensajeFechaN = "Debes ingresar un dato válido para este campo";
-                    return;
-              }*/
 
               if(vm.Senales == undefined  || vm.Senales == ''){
                    vm.mensajeSenales = "Debes ingresar un dato válido para este campo";
@@ -358,7 +349,7 @@
                     "tamano" : vm.Tamano,
                     "estado" : vm.Estado,
                     "caracteristicas" : vm.Caracteristicas,
-                    "fechaN" : vm.fechaN.getDate() + "/" + mes + "/" + vm.fechaN.getFullYear(),
+                    "fechaN" : "" ,
                     "senales" : vm.Senales,
                     "color" : vm.Color,
                     "colorojos" : vm.Colorojos,
@@ -366,17 +357,19 @@
                     "estadoSalud" : vm.EstadoSalud ,
                      "imagen" : vm.thumbnail.dataUrl                
                     }
-             console.log(JSON.stringify(requestJson));       
+             console.log(JSON.stringify(requestJson));
+             jQuery(window).spin();       
              registarMascotaServices.registrarMascota(requestJson).then(function(data){
-                debugger;
+              jQuery(window).spin();
+              vm.thumbnail.dataUrl = getBase64Image(document.getElementById("img"));
                 if(data.resultado[0].codRespuesta == "200") {     
                        $mdDialog.show(
                        $mdDialog.alert()
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Registrar Mascota')
-                       .textContent('!Se registró la mascota exitósamente¡, se registró con la identificación ' + data.resultado[0].id)
-                       .ariaLabel('!Se registró la mascota exitósamente¡, se registró con la identificación')
+                       .textContent('Se registró la mascota exitósamente.')
+                       .ariaLabel('Se registró la mascota exitósamente.')
                        .ok('Cerrar')                     
                       );
                       
@@ -417,8 +410,8 @@
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Registrar Mascota')
-                       .textContent('La mascota ya se encuentra registrada')
-                       .ariaLabel('La mascota ya se enuentra registrada')
+                       .textContent('La mascota ya se encuentra registrada.')
+                       .ariaLabel('La mascota ya se enuentra registrada.')
                        .ok('Cerrar')                     
                       );
                 }           
@@ -427,33 +420,33 @@
 
 
         function actualizar(){ 
-            if(vm.fechaN > new Date()){
-               vm.mensajeFecha = "La fecha debe ser menor o igual a la fecha actual";
-               return;
-             }
-
-             if(vm.Id == undefined  || vm.Id  == ''){
-                   vm.mensajeId = "Debes ingresar un dato válido para este campo";
-                   return;
-              }
-
-             if(vm.nombre == undefined  || vm.nombre  == ''){
-                   vm.mensajeNombre = "Debes ingresar un dato válido para este campo";
-                    return;
-              }
-
-
-              if(vm.IdResponsable == undefined  || vm.IdResponsable  == ''){
-                   vm.mensajeResponsable = "Debes ingresar un dato válido para este campo";
-                    return;
-              }
-
-
-             if(vm.Especie == undefined  || vm.Especie == '0'){
-                   vm.mensajeEspecie = "Debes seleccionar una opción";
-                    return;
-              }
-
+          
+          if(vm.Id == undefined  || vm.Id  == ''){
+            vm.mensajeId = "Debes ingresar un dato válido para este campo";
+            return;
+          }
+          
+          if(vm.nombre == undefined  || vm.nombre  == ''){
+            vm.mensajeNombre = "Debes ingresar un dato válido para este campo";
+            return;
+          }
+          
+          
+          if(vm.IdResponsable == undefined  || vm.IdResponsable  == ''){
+            vm.mensajeResponsable = "Debes ingresar un dato válido para este campo";
+            return;
+          }
+          
+          
+          if(vm.Especie == undefined  || vm.Especie == '0'){
+            vm.mensajeEspecie = "Debes seleccionar una opción";
+            return;
+          }
+          
+          if(vm.fechaN >= new Date()){
+             vm.mensajeFecha = "La fecha debe ser menor a la fecha actual";
+             return;
+           }
 
              if(vm.Genero == undefined  || vm.Genero == '0'){
                    vm.mensajeGenero = "Debes seleccionar una opción";
@@ -483,12 +476,6 @@
                    vm.mensajeRaza = "Debes ingresar un dato válido para este campo";
                     return;
               }
-
-
-           /*   if(vm.FechaN == undefined  || vm.FechaN == ''){
-                   vm.mensajeFechaN = "Debes ingresar un dato válido para este campo";
-                    return;
-              }*/
 
               if(vm.Senales == undefined  || vm.Senales == ''){
                    vm.mensajeSenales = "Debes ingresar un dato válido para este campo";
@@ -530,7 +517,7 @@
                     "tamano" : vm.Tamano,
                     "estado" : vm.Estado,
                     "caracteristicas" : vm.Caracteristicas,
-                    "fechaN" : vm.fechaN.getDate() + "/" + mes + "/" + vm.fechaN.getFullYear(),
+                    "fechaN" : vm.fechaN ,
                     "senales" : vm.Senales,
                     "color" : vm.Color,
                     "colorojos" : vm.Colorojos,
@@ -540,17 +527,19 @@
                     }         
 
           
-               console.log(JSON.stringify(requestJson));       
+               console.log(JSON.stringify(requestJson));
+               jQuery(window).spin();       
              registarMascotaServices.actualizarMascota(requestJson).then(function(data){
-                debugger;
+              jQuery(window).spin();
+              vm.thumbnail.dataUrl = getBase64Image(document.getElementById("img"));
                 if(data.resultado[0].codRespuesta == "200") {     
                        $mdDialog.show(
                        $mdDialog.alert()
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Actualizar mascota')
-                       .textContent('!Se actualizó la mascota exitósamente¡')
-                       .ariaLabel('!Se actualizó la mascota exitósamente¡')
+                       .textContent('Se actualizó la mascota exitósamente.')
+                       .ariaLabel('Se actualizó la mascota exitósamente.')
                        .ok('Cerrar')                     
                       );
                     vm.Id2 = "";
@@ -572,11 +561,11 @@
                     vm.thumbnail.dataUrl = vm.imagen;
                     vm.imagen = "";
          
-                     vm.idDisabled = false;
-                     vm.registrarDisabled = false;
-                     vm.consultarDisabled = false; 
-                     vm.actualizarDisabled = true;
-                     vm.eliminarDisabled = true; 
+                    vm.idDisabled = false;
+                    vm.registrarDisabled = false;
+                    vm.consultarDisabled = false; 
+                    vm.actualizarDisabled = true;
+                    vm.eliminarDisabled = true; 
                 }else{
                        $mdDialog.show(
                        $mdDialog.alert()
@@ -617,16 +606,17 @@
                     "estadoSalud" : vm.EstadoSalud ,
                     "imagen" : vm.imagen                                        
                     }
+                    jQuery(window).spin();
              registarMascotaServices.consultarMascotaServices(requestJson).then(function(data){
-                debugger;
+                   jQuery(window).spin();
                 if(data.resultado[0].codRespuesta == "200") { 
                      $mdDialog.show(
                        $mdDialog.alert()
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Consultar Mascota')
-                       .textContent('Mascota consultada')
-                       .ariaLabel('Mascota consultada')
+                       .textContent('Mascota consultada.')
+                       .ariaLabel('Mascota consultada.')
                        .ok('Cerrar')                     
                       );
                     vm.Id = vm.Id2;
@@ -661,8 +651,8 @@
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Consultar Mascota')
-                       .textContent('Masocta no consultada')
-                       .ariaLabel('Verifique el id de la mascota')
+                       .textContent('Masocta no consultada.')
+                       .ariaLabel('Verifique el id de la mascota.')
                        .ok('Cerrar')                     
                       );
 
@@ -694,16 +684,18 @@
                     "estadoSalud" : vm.EstadoSalud,
                     "imagen" : vm.imagen                                         
                     }
+             jQuery(window).spin();
              registarMascotaServices.eliminarMascota(requestJson).then(function(data){
-                debugger;
+               jQuery(window).spin();
+               vm.thumbnail.dataUrl = getBase64Image(document.getElementById("img"));
                 if(data.resultado[0].codRespuesta == "200") { 
                      $mdDialog.show(
                        $mdDialog.alert()
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Eliminar mascota')
-                       .textContent('!Mascota eliminada exitósamente¡')
-                       .ariaLabel('!Mascota eliminada exitósamente¡')
+                       .textContent('Mascota eliminada exitósamente.')
+                       .ariaLabel('Mascota eliminada exitósamente.')
                        .ok('Cerrar')                     
                       );
                     
@@ -721,12 +713,12 @@
                     vm.Colorojos = "",
                     vm.Personalidad = "",
                     vm.EstadoSalud   = "",   
-                     vm.idDisabled = false;
-                     vm.actualizarDisabled = false;
-                     vm.eliminarDisabled = false;
 
-                     vm.registrarDisabled = true;
-                     vm.consultarDisabled = true; 
+                    vm.idDisabled = false;
+                    vm.registrarDisabled = false;
+                    vm.consultarDisabled = false; 
+                    vm.actualizarDisabled = true;
+                    vm.eliminarDisabled = true; 
 
                 }else {
                       $mdDialog.show(
@@ -734,8 +726,8 @@
                        .parent(angular.element(document.querySelector('#dialogContainer')))
                        .clickOutsideToClose(true)
                        .title('Eliminar Mascota')
-                       .textContent('Mascota no eliminada')
-                       .ariaLabel('Mascota no eliminada')
+                       .textContent('Mascota no eliminada.')
+                       .ariaLabel('Mascota no eliminada.')
                        .ok('Cerrar')                     
                       );
 

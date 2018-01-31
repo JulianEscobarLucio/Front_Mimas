@@ -31,7 +31,7 @@
          <h1 class="titulo">Mascota</h1>
          <div class="row">
           <div class="form-group col-xs-6 col-sm-6 contenedorImagne">
-						<img ng-src="{{ vm.thumbnail.dataUrl }}" width="150" height="150" style="border" /> 
+						<img ng-src="{{ vm.thumbnail.dataUrl }}" width="150" height="150"  /> 
 						<img id="img" src="../Imagenes/gato1.jpg" style="display: none;">
            </div>
          </div>
@@ -60,9 +60,9 @@
 	            <p class="mensajeError"  ng-bind="vm.mensajeEspecie"></p>	           
 	         </div>
 	         <div  class="form-group col-xs-6 col-sm-6"  flex-gt-xs>    
-                    <div flex-gt-xs>
+                    <div flex-gt-xs>	
 				       <label for="usr">Fecha de nacimiento*</label>  
-				     <md-datepicker ng-model="vm.fechaN" md-placeholder="Enter date"></md-datepicker> 
+				     <md-datepicker ng-model="vm.fechaN" md-placeholder="Enter date" ng-change="vm.functionFechaN()"></md-datepicker> 
 				     <p class="mensajeError"  ng-bind="vm.mensajeFecha"></p>
 				   </div>    
 		    </div>	
@@ -159,22 +159,22 @@
 	           <button type="button" class="btn btn-success" ng-disabled="vm.registrarDisabled"  ng-click="vm.registrar()">Registrar</button>
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
+	            <button type="button" class="btn btn-info" ng-disabled="vm.consultarDisabled" ng-click="vm.consultar()">Consultar</button>
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3  identificacion">	       
 	              <input type="text" class="form-control" ng-model="vm.Id2" ng-Disabled="vm.idDisabled" oninput="this.value=this.value.replace(/[^0-9]/g,'');" ng-keyup="vm.functionId2()" placeholder="Identificador">
 	           <p class="mensajeError"  ng-bind="vm.mensajeId2"></p>	
 	         </div>
 	         <div class="form-group col-xs-3 col-sm-3">
-		            <button type="button" class="btn btn-success" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
+		            <button type="button" class="btn btn-primary" ng-disabled="vm.actualizarDisabled" ng-click="vm.actualizar()">Actualizar</button>
 	         </div>
    	    </div>
    	    <div class="row botones">
    	       	  <div class="form-group col-xs-3 col-sm-3">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.eliminarDisabled" ng-click="vm.showConfirm($event)">Eliminar</button>
+	            <button type="button" class="btn btn-danger" ng-disabled="vm.eliminarDisabled" ng-click="vm.showConfirm($event)">Eliminar</button>
 	         </div> 
 	          <div class="form-group col-xs-3 col-sm-3">
-	            <button type="button" class="btn btn-success" ng-disabled="vm.DisabledCancelar" ng-click="vm.cancelar()">Cancelar</button>
+	            <button type="button" class="btn btn-warning" ng-disabled="vm.DisabledCancelar" ng-click="vm.cancelar()">Cancelar</button>
 	         </div>   	    	
    	    </div>   	 
         <md-content>       
@@ -200,5 +200,6 @@
 	<script src="../angular-route.min.js"></script>
 	<script src="Registrar_mascota.js"></script>
 	<script src="Registrar_mascota.service.js"></script>
+	<script src="../jQuery.Spin.js"></script>
 </body>
 </html>

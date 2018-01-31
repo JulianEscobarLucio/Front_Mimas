@@ -63,7 +63,14 @@ footer{
 }
 .contenedorImagne{
     width: auto !important;
-    background-color: black !important;
-    padding: 10px !important;
+    background-color: rgb(204, 202, 202) !important;
+    padding: 3px  !important;
+    -webkit-box-shadow: 10px 11px 5px 0px rgba(219,210,219,1);
+-moz-box-shadow: 10px 11px 5px 0px rgba(219,210,219,1);
+box-shadow: 10px 11px 5px 0px rgba(219,210,219,1);
+}
+
+.md-calendar-month-label {
+    padding: 0 0 0 50px !important;
 }
 
