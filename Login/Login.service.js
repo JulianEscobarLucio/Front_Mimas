@@ -5,7 +5,7 @@
 	loginServices.$inject = ['$http','$q'];
 	function loginServices($http,$q){
         var self = this;
-        var ipserver = 'http://localhost:8092'; 
+        var ipserver = 'http://localhost:8080'; 
         self.login = login;
         self.consultarUsuario = consultarUsuario;
 
